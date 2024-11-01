@@ -1,0 +1,863 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     30354,        855]
+NotebookOptionsPosition[     26301,        718]
+NotebookOutlinePosition[     27487,        759]
+CellTagsIndexPosition[     27267,        751]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["Binary number system ", "Title",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.599441979712408*^9, 3.599442001782341*^9}, {
+   3.722795940043385*^9, 3.722795941580415*^9}, {3.7227960214526863`*^9, 
+   3.72279602294215*^9}, {3.735144797982223*^9, 3.735144812910596*^9}, 
+   3.752420506252256*^9}],
+
+Cell["", "Title",
+ WholeCellGroupOpener->True,
+ CellMargins->{{20.23046875, 33.9296875}, {20., 2.}},
+ CellChangeTimes->{{3.599442007477312*^9, 3.5994420237599983`*^9}, {
+   3.599448431287435*^9, 3.5994484316501637`*^9}, {3.6623879610047207`*^9, 
+   3.662387967257205*^9}, {3.72279594437036*^9, 3.722795961380762*^9}, 
+   3.722796010952304*^9, {3.735144797982635*^9, 3.735144812910986*^9}, {
+   3.752420475507311*^9, 3.752420479410009*^9}}],
+
+Cell["\<\
+Binary number system 
+
+The modern binary number system is usually attributed to Leibniz (1646-1716) \
+but its antecedent was known as far back as the origin of the  I-Ching.  It \
+is a base 2 system whose \[OpenCurlyDoubleQuote]alphabet\
+\[CloseCurlyDoubleQuote] is denoted by two symbols 0, 1.  Numbers are \
+represented by proper placement. \
+\>", "Text",
+ WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.599442027566787*^9, 3.5994420611961317`*^9}, {
+  3.599442094113839*^9, 3.599442094325742*^9}, {3.7345342739293003`*^9, 
+  3.7345342809466057`*^9}, {3.7351447979827757`*^9, 3.7351448129111223`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[IndentingNewLine]", GridBox[{
+     {"Decimal", "Binary", "Expansion"},
+     {"0", "0000", "0"},
+     {"1", "0001", 
+      SuperscriptBox["2", "0"]},
+     {"2", "0010", 
+      RowBox[{" ", 
+       RowBox[{
+        RowBox[{"1", "\[Cross]", 
+         SuperscriptBox["2", "1"]}], "+", " ", 
+        RowBox[{"0", " ", "\[Cross]", " ", 
+         SuperscriptBox["2", "0"]}]}]}]},
+     {"3", "0011", 
+      RowBox[{
+       RowBox[{"1", " ", "\[Cross]", " ", 
+        SuperscriptBox["2", "1"]}], "+", " ", 
+       RowBox[{"1", "\[Cross]", 
+        SuperscriptBox["2", "0"]}]}]},
+     {"4", "0100", 
+      RowBox[{
+       RowBox[{"1", "\[Cross]", 
+        SuperscriptBox["2", "2"]}], "+", 
+       RowBox[{"0", " ", "\[Cross]", " ", 
+        SuperscriptBox["2", "1"]}], "+", " ", 
+       RowBox[{"0", "\[Cross]", 
+        SuperscriptBox["2", "0"]}]}]},
+     {"5", "0101", 
+      RowBox[{
+       RowBox[{"1", "\[Cross]", 
+        SuperscriptBox["2", "2"]}], "+", 
+       RowBox[{"0", " ", "\[Cross]", " ", 
+        SuperscriptBox["2", "1"]}], "+", " ", 
+       RowBox[{"1", "\[Cross]", 
+        SuperscriptBox["2", "0"]}]}]},
+     {"6", "0110", 
+      RowBox[{
+       RowBox[{"1", "\[Cross]", 
+        SuperscriptBox["2", "2"]}], "+", 
+       RowBox[{"1", " ", "\[Cross]", " ", 
+        SuperscriptBox["2", "1"]}], "+", " ", 
+       RowBox[{"0", "\[Cross]", 
+        SuperscriptBox["2", "0"]}]}]},
+     {"7", "0111", 
+      RowBox[{
+       RowBox[{"1", "\[Cross]", 
+        SuperscriptBox["2", "2"]}], "+", 
+       RowBox[{"1", " ", "\[Cross]", " ", 
+        SuperscriptBox["2", "1"]}], "+", " ", 
+       RowBox[{"1", "\[Cross]", 
+        SuperscriptBox["2", "0"]}]}]},
+     {"8", "1000", 
+      RowBox[{
+       RowBox[{"1", "\[Cross]", 
+        SuperscriptBox["2", "3"]}], "+", 
+       RowBox[{"0", " ", "\[Cross]", " ", 
+        SuperscriptBox["2", "2"]}], "+", " ", 
+       RowBox[{"0", "\[Cross]", 
+        SuperscriptBox["2", "1"]}], "+", " ", 
+       RowBox[{"0", "\[Cross]", 
+        SuperscriptBox["2", "0"]}]}]},
+     {"9", "1001", 
+      RowBox[{
+       RowBox[{"1", "\[Cross]", 
+        SuperscriptBox["2", "3"]}], "+", 
+       RowBox[{"0", " ", "\[Cross]", " ", 
+        SuperscriptBox["2", "2"]}], "+", " ", 
+       RowBox[{"0", "\[Cross]", 
+        SuperscriptBox["2", "1"]}], "+", " ", 
+       RowBox[{"0", "\[Cross]", 
+        SuperscriptBox["2", "0"]}]}]}
+    },
+    GridBoxDividers->{
+     "Columns" -> {True, {False}, True}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {True, {False}, True}, "RowsIndexed" -> {}}]}], 
+  TraditionalForm]], "Text",
+ WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.5994426934139214`*^9, 3.599442798776002*^9}, {
+   3.599442854517585*^9, 3.599442884033382*^9}, {3.599443165972684*^9, 
+   3.599443189343586*^9}, {3.599443254720109*^9, 3.599443532559882*^9}, {
+   3.5994435710949507`*^9, 3.599443687468893*^9}, {3.599443742271432*^9, 
+   3.5994438240440903`*^9}, {3.599443859296859*^9, 3.599443879489176*^9}, {
+   3.599444002234703*^9, 3.5994440272699842`*^9}, {3.599444119773097*^9, 
+   3.5994441369230013`*^9}, {3.599472685383545*^9, 3.599472687623797*^9}, {
+   3.599751361503536*^9, 3.599751366350268*^9}, {3.5997514277431927`*^9, 
+   3.59975143126439*^9}, 3.734534214027766*^9, {3.734534309004261*^9, 
+   3.734534310219274*^9}, {3.734562471197301*^9, 3.734562502201494*^9}, {
+   3.735144797982869*^9, 3.73514481291119*^9}}],
+
+Cell["\<\
+Find the binary representation of the following integers (Toggle for the \
+answers)\
+\>", "Item",
+ WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.59944423437591*^9, 3.599444284925541*^9}, {
+  3.734562351980872*^9, 3.734562352462556*^9}, {3.734563310600124*^9, 
+  3.734563320184029*^9}, {3.734563434732292*^9, 3.734563457303583*^9}, {
+  3.734563508756353*^9, 3.734563549986662*^9}, {3.734563623394569*^9, 
+  3.7345636441779203`*^9}, {3.73513516172966*^9, 3.7351351704024563`*^9}, {
+  3.735135355241205*^9, 3.735135387356452*^9}, {3.735144797983644*^9, 
+  3.735144812911364*^9}, {3.7351449409781427`*^9, 3.735144952531536*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["16", "Text",
+ CellChangeTimes->{{3.7351561488301888`*^9, 3.735156149414633*^9}}],
+
+Cell["10000", "Text",
+ CellChangeTimes->{{3.735156159292753*^9, 3.735156164365919*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["17", "Text",
+ CellChangeTimes->{{3.7351561778104897`*^9, 3.735156178586094*^9}}],
+
+Cell["10001", "Text",
+ CellChangeTimes->{{3.735156191333023*^9, 3.735156194369931*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["101", "Text",
+ CellChangeTimes->{{3.735156218805811*^9, 3.7351562203351994`*^9}}],
+
+Cell["1100101", "Text",
+ CellChangeTimes->{{3.735156236907173*^9, 3.735156239302883*^9}}]
+}, Closed]],
+
+Cell[TextData[{
+ "Fractions work in a similar, but more complicated, manner\n\n",
+ Cell[BoxData[GridBox[{
+    {
+     RowBox[{"Decimal", " "}], 
+     RowBox[{"Binary", " "}], "Expansion"},
+    {
+     RowBox[{"1", "/", "1"}], 
+     RowBox[{" ", 
+      RowBox[{"0.1111", "..."}]}], 
+     RowBox[{
+      RowBox[{
+       RowBox[{"1", "/", "2"}], " ", "+", 
+       RowBox[{"1", "/", "4"}], "+", 
+       RowBox[{"1", "/", "8"}], "+", 
+       RowBox[{"1", "/", "16"}], " ", "+"}], " ", "..."}]},
+    {
+     RowBox[{"1", "/", "2"}], 
+     RowBox[{"0.1000", "      "}], 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"1", "/", "2"}], "+", 
+        RowBox[{
+         RowBox[{"0", " ", "\[Cross]", "1"}], "/", "4"}], "+", 
+        RowBox[{
+         RowBox[{"0", "\[Cross]", "1"}], "/", "8"}], "+", 
+        RowBox[{"0", "/", "16"}], "+"}], "..."}], "\[IndentingNewLine]"}]},
+    {"0.625", 
+     RowBox[{"0.101", "  "}], 
+     RowBox[{
+      RowBox[{"1", "/", "2"}], "+", 
+      RowBox[{
+       RowBox[{"0", " ", "\[Cross]", "1"}], "/", "4"}], "+", 
+      RowBox[{
+       RowBox[{"1", " ", "\[Cross]", " ", "1"}], "/", "8"}]}]}
+   },
+   GridBoxDividers->{
+    "Columns" -> {True, {False}, True}, "ColumnsIndexed" -> {}, 
+     "Rows" -> {True, {False}, True}, "RowsIndexed" -> {}}]]]
+}], "Text",
+ WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.599445088305255*^9, 3.599445220093588*^9}, {
+  3.599445261021488*^9, 3.599445515551111*^9}, {3.599445578618231*^9, 
+  3.5994455924824123`*^9}, {3.599446062068411*^9, 3.5994460943913527`*^9}, {
+  3.59947269520925*^9, 3.599472697290556*^9}, {3.735141400708229*^9, 
+  3.7351414027892*^9}, {3.735144797985692*^9, 3.7351448129133253`*^9}}],
+
+Cell["\<\
+Luckily, Mathematica features expressions that can convert binary numbers to \
+decimal form, and vice versa.
+The commands for those functions are \
+\>", "Text",
+ WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.599444404216422*^9, 3.5994444154624968`*^9}, {
+   3.599444551209221*^9, 3.5994446194136047`*^9}, {3.5994446566661367`*^9, 
+   3.599444657800187*^9}, {3.599444959106469*^9, 3.5994450403344793`*^9}, {
+   3.599445898086801*^9, 3.599445942812338*^9}, {3.599446084642894*^9, 
+   3.599446086623313*^9}, 3.7345342140301027`*^9, {3.7351447979857817`*^9, 
+   3.7351448129133987`*^9}, {3.735157832529949*^9, 3.735157848639472*^9}, {
+   3.735157878756794*^9, 3.7351579851317*^9}, 3.735158104297676*^9, 
+   3.7351581720217047`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "BaseForm"}]], "Input",
+ CellChangeTimes->{{3.735158062300791*^9, 3.7351580753391657`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"BaseForm\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"n\\\", \\\
+\"TI\\\"]}], \\\"]\\\"}]\\) prints with the numbers in \
+\\!\\(\\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\\) given in base \
+\\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/BaseForm"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760709184122828*^9},
+ CellTags->"Info1093760680384-9389473"]
+}, Closed]],
+
+Cell["\<\
+So if we want to convert the decimal form 13.625 to a binary number, all we \
+need to do is call\
+\>", "Text",
+ WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.599444404216422*^9, 3.5994444154624968`*^9}, {
+   3.599444551209221*^9, 3.5994446194136047`*^9}, {3.5994446566661367`*^9, 
+   3.599444657800187*^9}, {3.599444959106469*^9, 3.5994450403344793`*^9}, {
+   3.599445898086801*^9, 3.599445942812338*^9}, {3.599446084642894*^9, 
+   3.599446086623313*^9}, 3.7345342140301027`*^9, {3.7351447979857817`*^9, 
+   3.7351448129133987`*^9}, {3.735157832529949*^9, 3.735157848639472*^9}, {
+   3.735157878756794*^9, 3.735157974167274*^9}, {3.735158146766523*^9, 
+   3.735158155889666*^9}, {3.735158212623418*^9, 3.7351582489915447`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BaseForm", "[", 
+  RowBox[{"13.625", ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.735158261629747*^9, 3.7351582717318563`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  InterpretationBox[
+   SubscriptBox["\<\"1101.101\"\>", "2"],
+   13.625,
+   AutoDelete->True],
+  BaseForm[#, 2]& ]], "Output",
+ CellChangeTimes->{3.760709184379249*^9}]
+}, Closed]],
+
+Cell["\<\
+Likewise, given the binary number  13.652 we could use the command\
+\>", "Text",
+ WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.599444404216422*^9, 3.5994444154624968`*^9}, {
+   3.599444551209221*^9, 3.5994446194136047`*^9}, {3.5994446566661367`*^9, 
+   3.599444657800187*^9}, {3.599444959106469*^9, 3.5994450403344793`*^9}, {
+   3.599445898086801*^9, 3.599445942812338*^9}, {3.599446084642894*^9, 
+   3.599446086623313*^9}, 3.7345342140301027`*^9, {3.7351447979857817`*^9, 
+   3.7351448129133987`*^9}, {3.735157832529949*^9, 3.735157848639472*^9}, {
+   3.735157878756794*^9, 3.735157974167274*^9}, {3.735158146766523*^9, 
+   3.735158155889666*^9}, {3.735158212623418*^9, 3.735158242414336*^9}, {
+   3.7351583156414003`*^9, 3.7351583773363934`*^9}, {3.735176162486979*^9, 
+   3.735176169599815*^9}, {3.735176208903392*^9, 3.735176221104806*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "RealDigits"}]], "Input",
+ CellChangeTimes->{{3.735176238548293*^9, 3.735176258207245*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"RealDigits\\\", \\\"[\\\", \
+StyleBox[\\\"x\\\", \\\"TI\\\"], \\\"]\\\"}]\\) gives a list of the digits in \
+the approximate real number \\!\\(\\*StyleBox[\\\"x\\\", \\\"TI\\\"]\\), \
+together with the number of digits that are to the left of the decimal point. \
+\\n\\!\\(\\*RowBox[{\\\"RealDigits\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) gives a list of base\[Hyphen]\\!\\(\\*StyleBox[\
+\\\"b\\\", \\\"TI\\\"]\\) digits in \\!\\(\\*StyleBox[\\\"x\\\", \
+\\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\\\"RealDigits\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"len\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) \
+gives a list of \\!\\(\\*StyleBox[\\\"len\\\", \\\"TI\\\"]\\) digits. \
+\\n\\!\\(\\*RowBox[{\\\"RealDigits\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"len\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) gives \
+\\!\\(\\*StyleBox[\\\"len\\\", \\\"TI\\\"]\\) digits starting with the \
+coefficient of \\!\\(\\*SuperscriptBox[StyleBox[\\\"b\\\", \\\"TI\\\"], \
+StyleBox[\\\"n\\\", \\\"TI\\\"]]\\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/RealDigits"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760709184572792*^9},
+ CellTags->"Info1113760680384-9389473"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RealDigits", "[", "1101.101", "]"}]], "Input",
+ CellChangeTimes->{{3.735176570122169*^9, 3.7351765866706123`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "0", ",", "1", ",", "1", ",", "0", ",", "1", ",", "0",
+      ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
+     ",", "0"}], "}"}], ",", "4"}], "}"}]], "Output",
+ CellChangeTimes->{3.760709184768018*^9}]
+}, Closed]],
+
+Cell["\<\
+which can be converted to a base 10 number as a rational fraction using\
+\>", "Text",
+ WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.599444404216422*^9, 3.5994444154624968`*^9}, {
+   3.599444551209221*^9, 3.5994446194136047`*^9}, {3.5994446566661367`*^9, 
+   3.599444657800187*^9}, {3.599444959106469*^9, 3.5994450403344793`*^9}, {
+   3.599445898086801*^9, 3.599445942812338*^9}, {3.599446084642894*^9, 
+   3.599446086623313*^9}, 3.7345342140301027`*^9, {3.7351447979857817`*^9, 
+   3.7351448129133987`*^9}, {3.735157832529949*^9, 3.735157848639472*^9}, {
+   3.735157878756794*^9, 3.735157974167274*^9}, {3.735158146766523*^9, 
+   3.735158155889666*^9}, {3.735158212623418*^9, 3.735158242414336*^9}, {
+   3.7351583156414003`*^9, 3.7351583773363934`*^9}, {3.735176162486979*^9, 
+   3.735176169599815*^9}, {3.735176208903392*^9, 3.7351762120376377`*^9}, {
+   3.735176637206197*^9, 3.7351766873370953`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "FromDigits"}]], "Input",
+ CellChangeTimes->{{3.7351767027721453`*^9, 3.7351767371529408`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"FromDigits\\\", \\\"[\\\", \
+StyleBox[\\\"list\\\", \\\"TI\\\"], \\\"]\\\"}]\) constructs an integer from \
+the list of its decimal digits. \\n\!\(\*RowBox[{\\\"FromDigits\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\
+\"b\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) takes the digits to be given in base \!\
+\(\*StyleBox[\\\"b\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"FromDigits\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"list\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"MixedRadix\\\", \\\"[\\\", StyleBox[\\\"blist\\\", \\\"TI\\\"], \
+\\\"]\\\"}]}], \\\"]\\\"}]\) uses the mixed radix with list of bases \
+\!\(\*StyleBox[\\\"blist\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"FromDigits\\\", \\\"[\\\", \
+StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\\\\\"\
+TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\"]\\\"}]\) \
+constructs an integer from a string of digits.\\n\!\(\*RowBox[{\\\"FromDigits\
+\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"\\\\\\\"\\\\!\\\\(\\\\*StyleBox[\\\\\\\"string\\\\\\\",\\\
+\\\\\"TI\\\\\\\"]\\\\)\\\\\\\"\\\", ShowStringCharacters->True], \\\",\\\", \
+StyleBox[\\\"\\\\\\\"Roman\\\\\\\"\\\",ShowStringCharacters->True]}], \\\"]\\\
+\"}]\) constructs an integer from Roman numerals.\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/FromDigits"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760709184961986*^9},
+ CellTags->"Info1133760680384-9389473"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FromDigits", "[", 
+  RowBox[{
+   RowBox[{"RealDigits", "[", "1101.1101", "]"}], ",", "2"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.73517676843861*^9, 3.735176806327909*^9}, {
+  3.735176871569647*^9, 3.7351768996365967`*^9}}],
+
+Cell[BoxData[
+ FractionBox["221", "16"]], "Output",
+ CellChangeTimes->{3.760709185155898*^9}]
+}, Closed]],
+
+Cell["Exercises", "Subsection",
+ CellChangeTimes->{{3.73517696421383*^9, 3.7351769671371937`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Construct a function that uses the Mathematica functions described above to \
+express a base 2 number into its base 10 form\
+\>", "Text",
+ WholeCellGroupOpener->True,
+ CellChangeTimes->{{3.599444404216422*^9, 3.5994444154624968`*^9}, {
+   3.599444551209221*^9, 3.5994446194136047`*^9}, {3.5994446566661367`*^9, 
+   3.599444657800187*^9}, {3.599444959106469*^9, 3.5994450403344793`*^9}, {
+   3.599445898086801*^9, 3.599445942812338*^9}, {3.599446084642894*^9, 
+   3.599446086623313*^9}, 3.7345342140301027`*^9, {3.7351447979857817`*^9, 
+   3.7351448129133987`*^9}, {3.735157832529949*^9, 3.735157848639472*^9}, {
+   3.735157878756794*^9, 3.735157974167274*^9}, {3.735158146766523*^9, 
+   3.735158155889666*^9}, {3.735158212623418*^9, 3.735158242414336*^9}, {
+   3.7351583156414003`*^9, 3.7351583773363934`*^9}, {3.735176162486979*^9, 
+   3.735176169599815*^9}, {3.735176208903392*^9, 3.7351762120376377`*^9}, {
+   3.735176637206197*^9, 3.735176666534808*^9}, {3.735176988801571*^9, 
+   3.735177028832549*^9}, {3.735177069737247*^9, 3.7351771524592447`*^9}, {
+   3.735177519037788*^9, 3.735177574647663*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"base10", "[", "base2_", "]"}], ":=", 
+   RowBox[{"N", "[", 
+    RowBox[{"FromDigits", "[", 
+     RowBox[{
+      RowBox[{"RealDigits", "[", "base2", "]"}], ",", "2"}], "]"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.735177591513097*^9, 3.735177625055421*^9}, {
+  3.735177661128496*^9, 3.735177674987198*^9}, {3.7351779992270603`*^9, 
+  3.7351780027242002`*^9}}]
+}, Closed]],
+
+Cell["\<\
+Use that function to express the following in base 10 decimal form\
+\>", "Text",
+ CellChangeTimes->{{3.7351779228946857`*^9, 3.735177960962017*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["100010.01101", "Text",
+ CellChangeTimes->{{3.7351779733511963`*^9, 3.7351779756117973`*^9}, {
+  3.735178015278825*^9, 3.735178027496997*^9}, {3.7351780999812393`*^9, 
+  3.7351781118841667`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"base10", "[", "100010.01101", "]"}]], "Input",
+ CellChangeTimes->{{3.735177984546516*^9, 3.735177991643341*^9}, {
+  3.735178031806024*^9, 3.735178043685973*^9}}],
+
+Cell[BoxData["34.40625`"], "Output",
+ CellChangeTimes->{3.7607091853397408`*^9}]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["100101.00000", "Text",
+ CellChangeTimes->{{3.735178209512285*^9, 3.7351782194231443`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"base10", "[", "100101.0", "]"}]], "Input",
+ CellChangeTimes->{{3.7351782316005287`*^9, 3.735178264277245*^9}}],
+
+Cell[BoxData["37.`"], "Output",
+ CellChangeTimes->{3.760709185640785*^9}]
+}, Closed]]
+}, Closed]],
+
+Cell["Adding binary integers", "Subsection",
+ CellChangeTimes->{{3.735178348393404*^9, 3.73517836939675*^9}, {
+  3.752421037851376*^9, 3.752421041721348*^9}, {3.7524212046688843`*^9, 
+  3.752421206940243*^9}}],
+
+Cell[TextData[{
+ "When adding binary numbers, we use the following rules\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    RowBox[{"0", "+", "0"}], "=", "0"}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{"0", "+", "1"}], "=", "1"}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", "0"}], "=", "1"}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", "1"}], "=", 
+    RowBox[{
+    "0", " ", "with", " ", "a", " ", "carry", " ", "bit", " ", "value", " ", 
+     "1"}]}], TraditionalForm]}],
+  FormatType->"TraditionalForm"],
+ " "
+}], "Text",
+ CellChangeTimes->{{3.752418691804916*^9, 3.752418839509678*^9}}],
+
+Cell["For example, using these rules", "Text",
+ CellChangeTimes->{{3.7524188562586184`*^9, 3.752418858934808*^9}, {
+  3.75241898422863*^9, 3.7524189891323147`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[Cell["\<\
+  10001101
++ 00001111\
+\>"]], "Input",
+ CellChangeTimes->{{3.752418849269639*^9, 3.7524188634691*^9}, {
+  3.752419020567704*^9, 3.752419062800802*^9}, {3.752421012125443*^9, 
+  3.7524210323532352`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["\<\
+  10001101
++ 00001111\
+\>"],
+  TextCell["  10001101\n+ 00001111"]]], "Output",
+ CellChangeTimes->{3.760709185811389*^9}]
+}, Closed]],
+
+Cell[TextData[{
+ "is equal to 100111",
+ Cell[BoxData[
+  FormBox["00", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", and which we check below"
+}], "Text",
+ CellChangeTimes->{{3.752419050615348*^9, 3.75241905276262*^9}, {
+  3.7524190843543253`*^9, 3.752419112512087*^9}, {3.752419796642132*^9, 
+  3.752419804305133*^9}, {3.752420086680682*^9, 3.752420097130416*^9}, {
+  3.752420322201137*^9, 3.752420325991026*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"FromDigits", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", "0", ",", "0", ",", "0", ",", "1", ",", "1", ",", "0", ",", 
+       "1"}], "}"}], ",", "2"}], "]"}], "+", 
+   RowBox[{"FromDigits", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", "0", ",", "0", ",", "0", ",", "1", ",", "1", ",", "1", ",", 
+       "1"}], "}"}], ",", "2"}], "]"}]}], "\[Equal]", 
+  RowBox[{"FromDigits", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "1", ",", "0", ",", "0", ",", "1", ",", "1", ",", "1", ",", "0", ",", 
+      "0"}], "}"}], ",", "2"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.75241931315786*^9, 3.752419443320806*^9}, {
+  3.75241969570566*^9, 3.752419783985708*^9}, {3.7524199381459217`*^9, 
+  3.752420076273258*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.7607091859916763`*^9}]
+}, Closed]],
+
+Cell[TextData[{
+ "Often we use the circle-plus operator ",
+ Cell[BoxData[
+  FormBox["\[CirclePlus]", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " to carry out the so-called modular sum of two binary numbers. The rules\n\
+for it are the same as the plus \[Divide] operator, except for the fact there \
+is no carry bit, i.e.\n\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    RowBox[{"0", "\[CirclePlus]", "0"}], "=", "0"}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{"0", "\[CirclePlus]", "1"}], "=", "1"}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "\[CirclePlus]", "0"}], "=", "1"}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "\[CirclePlus]", "1"}], "=", "0", " "}], TraditionalForm]}],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.7524201216569653`*^9, 3.752420286698003*^9}}],
+
+Cell["Thus  ", "Text",
+ CellChangeTimes->{{3.752420348807508*^9, 3.752420351596159*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[Cell[TextData[{
+   "  10001101\n",
+   Cell[BoxData[
+    FormBox["\[CirclePlus]", TraditionalForm]]],
+   " 00001111"
+  }]], InputForm]], "Input",
+ CellChangeTimes->{{3.752420390263818*^9, 3.752420392890998*^9}, {
+  3.760709460704256*^9, 3.7607094679934473`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.760709477143857*^9, 3.760709477148576*^9}}]
+}, Closed]],
+
+Cell["equates to the value 10000010", "Text",
+ CellChangeTimes->{{3.752420408106805*^9, 3.752420430313203*^9}}],
+
+Cell["\<\
+Mathematica has a command for this operator, also called the Exclusive OR \
+operator, \
+\>", "Text",
+ CellChangeTimes->{{3.752420446818169*^9, 3.752420457346841*^9}, {
+  3.752420664631155*^9, 3.752420711823913*^9}, {3.752420853700037*^9, 
+  3.752420868436289*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "BitXor"}]], "Input",
+ CellChangeTimes->{{3.752420876461001*^9, 3.752420881418977*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"BitXor\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"]\\\"}]\) gives the bitwise XOR of the integers \
+\!\(\*SubscriptBox[StyleBox[\\\"n\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/BitXor"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760709186577085*^9},
+ CellTags->"Info1213760680386-9389473"]
+}, Closed]],
+
+Cell["So ", "Text",
+ CellChangeTimes->{{3.75242097124081*^9, 3.7524209721510077`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BitXor", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "0", ",", "0", ",", "1", ",", "1", ",", "0", ",", 
+     "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "0", ",", "0", ",", "0", ",", "1", ",", "1", ",", "1", ",", 
+     "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.752420773821774*^9, 3.752420794242235*^9}, {
+  3.752420891827323*^9, 3.7524209451171303`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "1", ",", "0"}],
+   "}"}]], "Output",
+ CellChangeTimes->{3.760709186844366*^9}]
+}, Closed]]
+},
+ScreenStyleEnvironment->"Working",
+CellGrouping->Manual,
+WindowSize->{866, 960},
+WindowMargins->{{275, Automatic}, {-26, Automatic}},
+ShowCellBracket->Automatic,
+ShowGroupOpener->True,
+ShowCellLabel->False,
+ShowCellTags->True,
+FontFamily->"Chalkboard",
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info1093760680384-9389473"->{
+  Cell[9216, 250, 611, 14, 54, "Print",
+   CellTags->"Info1093760680384-9389473"]},
+ "Info1113760680384-9389473"->{
+  Cell[11981, 319, 1610, 27, 131, "Print",
+   CellTags->"Info1113760680384-9389473"]},
+ "Info1133760680384-9389473"->{
+  Cell[15174, 388, 1605, 28, 131, "Print",
+   CellTags->"Info1133760680384-9389473"]},
+ "Info1213760680386-9389473"->{
+  Cell[24794, 673, 742, 15, 54, "Print",
+   CellTags->"Info1213760680386-9389473"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info1093760680384-9389473", 26805, 736},
+ {"Info1113760680384-9389473", 26921, 739},
+ {"Info1133760680384-9389473", 27040, 742},
+ {"Info1213760680386-9389473", 27159, 745}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 338, 6, 100, "Title"],
+Cell[898, 28, 439, 7, 74, "Title"],
+Cell[1340, 37, 616, 12, 106, "Text"],
+Cell[1959, 51, 3398, 88, 290, "Text"],
+Cell[5360, 141, 638, 11, 30, "Item"],
+Cell[CellGroupData[{
+Cell[6023, 156, 86, 1, 30, "Text"],
+Cell[6112, 159, 87, 1, 30, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[6236, 165, 86, 1, 27, "Text"],
+Cell[6325, 168, 87, 1, 30, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[6449, 174, 87, 1, 27, "Text"],
+Cell[6539, 177, 89, 1, 30, "Text"]
+}, Closed]],
+Cell[6643, 181, 1682, 46, 174, "Text"],
+Cell[8328, 229, 741, 13, 49, "Text"],
+Cell[CellGroupData[{
+Cell[9094, 246, 119, 2, 32, "Input"],
+Cell[9216, 250, 611, 14, 54, "Print",
+ CellTags->"Info1093760680384-9389473"]
+}, Closed]],
+Cell[9842, 267, 741, 12, 27, "Text"],
+Cell[CellGroupData[{
+Cell[10608, 283, 157, 3, 32, "Input"],
+Cell[10768, 288, 192, 7, 32, "Output"]
+}, Closed]],
+Cell[10975, 298, 859, 13, 27, "Text"],
+Cell[CellGroupData[{
+Cell[11859, 315, 119, 2, 32, "Input"],
+Cell[11981, 319, 1610, 27, 131, "Print",
+ CellTags->"Info1113760680384-9389473"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[13628, 351, 138, 2, 26, "Input"],
+Cell[13769, 355, 321, 8, 32, "Output"]
+}, Closed]],
+Cell[14105, 366, 918, 14, 27, "Text"],
+Cell[CellGroupData[{
+Cell[15048, 384, 123, 2, 32, "Input"],
+Cell[15174, 388, 1605, 28, 131, "Print",
+ CellTags->"Info1133760680384-9389473"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[16816, 421, 250, 6, 26, "Input"],
+Cell[17069, 429, 93, 2, 45, "Output"]
+}, Closed]],
+Cell[17177, 434, 98, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[17300, 439, 1116, 17, 46, "Text"],
+Cell[18419, 458, 417, 11, 32, "Input"]
+}, Closed]],
+Cell[18851, 472, 158, 3, 27, "Text"],
+Cell[CellGroupData[{
+Cell[19034, 479, 200, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[19259, 486, 185, 3, 32, "Input"],
+Cell[19447, 491, 80, 1, 70, "Output"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[19576, 498, 96, 1, 27, "Text"],
+Cell[CellGroupData[{
+Cell[19697, 503, 134, 2, 32, "Input"],
+Cell[19834, 507, 73, 1, 70, "Output"]
+}, Closed]]
+}, Closed]],
+Cell[19934, 512, 209, 3, 36, "Subsection"],
+Cell[20146, 517, 722, 24, 108, "Text"],
+Cell[20871, 543, 164, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[21060, 549, 225, 6, 56, "Input"],
+Cell[21288, 557, 163, 6, 56, "Output"]
+}, Closed]],
+Cell[21466, 566, 424, 10, 28, "Text"],
+Cell[CellGroupData[{
+Cell[21915, 580, 810, 23, 54, "Input"],
+Cell[22728, 605, 75, 1, 32, "Output"]
+}, Closed]],
+Cell[22818, 609, 935, 26, 144, "Text"],
+Cell[23756, 637, 88, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[23869, 642, 284, 8, 56, "Input"],
+Cell[24156, 652, 92, 1, 32, InheritFromParent]
+}, Closed]],
+Cell[24263, 656, 111, 1, 27, "Text"],
+Cell[24377, 659, 274, 6, 30, "Text"],
+Cell[CellGroupData[{
+Cell[24676, 669, 115, 2, 32, "Input"],
+Cell[24794, 673, 742, 15, 54, "Print",
+ CellTags->"Info1213760680386-9389473"]
+}, Closed]],
+Cell[25551, 691, 86, 1, 27, "Text"],
+Cell[CellGroupData[{
+Cell[25662, 696, 439, 12, 32, "Input"],
+Cell[26104, 710, 181, 5, 32, "Output"]
+}, Closed]]
+}
+]
+*)
+
