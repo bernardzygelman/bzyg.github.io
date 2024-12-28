@@ -1,0 +1,974 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     30937,        966]
+NotebookOptionsPosition[     29528,        916]
+NotebookOutlinePosition[     29911,        933]
+CellTagsIndexPosition[     29868,        930]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["An Introduction to Probability Theory", "Title",
+ CellChangeTimes->{{3.7351789229460793`*^9, 3.735178939978695*^9}}],
+
+Cell["\<\
+Since quantum measurements are probabilistic, it is useful to review some \
+ideas in probability theory. The collection of all possible results of a \
+measurement, for a physical system, is called a SAMPLE  space. \
+\>", "Text",
+ CellChangeTimes->{{3.606663882176402*^9, 3.6066640252569637`*^9}, {
+   3.606664360152339*^9, 3.60666436141512*^9}, 3.606748641918683*^9, {
+   3.73517884924863*^9, 3.735178865885314*^9}, {3.73517958039229*^9, 
+   3.735179589998686*^9}, {3.760839355661893*^9, 3.760839371006867*^9}, {
+   3.7608821180677977`*^9, 3.7608821307665462`*^9}}],
+
+Cell[TextData[{
+ "Example: \n\nConsider flipping a coin, there are many ways of \
+characterizing the physical state of the system. Let\[CloseCurlyQuote]s \
+ignore what the coin does before it lands on the table. We could characterize \
+it\[CloseCurlyQuote]s state by the location of each of its approximately ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["10", "23"], TraditionalForm]]],
+ " atoms, or we could specify the orientation of a given point on the coin \
+with respect to an axis. Thus,  sample space not only depends on the \
+qualities of the system, but on the type of measurements we ",
+ StyleBox["choose",
+  FontVariations->{"Underline"->True}],
+ " to make. It is common to choose heads (H) or tails (T) to characterize the \
+physical state of the coin.  For that case, the sample space are the two \
+possible outcomes H or T."
+}], "Text",
+ CellChangeTimes->{{3.606664372304018*^9, 3.606664510073683*^9}, {
+   3.606664634812923*^9, 3.606664948977789*^9}, 3.606748643467132*^9, {
+   3.735178950205578*^9, 3.735178950800609*^9}, {3.7351790843422747`*^9, 
+   3.73517908485977*^9}, {3.760839073733075*^9, 3.7608390764231977`*^9}, {
+   3.760839386982258*^9, 3.7608394596353893`*^9}, {3.760882168713525*^9, 
+   3.76088217293215*^9}, {3.760882845719469*^9, 3.760882898898975*^9}}],
+
+Cell["\<\
+Suppose we have two coins, again we define a measurement as the determination \
+of whether the coins are in the H or T states.  According to this definition \
+we allow the following outcomes
+
+HH
+HT
+TH
+TT
+
+Each of these outcomes is then a member of the sample space.\
+\>", "Text",
+ CellChangeTimes->{{3.60666496134723*^9, 3.6066650941005096`*^9}, {
+   3.6066655330616302`*^9, 3.6066655382761917`*^9}, 3.606666685154821*^9, 
+   3.606748650154902*^9, {3.735179623760174*^9, 3.735179643976632*^9}, {
+   3.7608391244386387`*^9, 3.7608391263540583`*^9}, {3.760882201574774*^9, 
+   3.76088235558817*^9}}],
+
+Cell["\<\
+Question: Five coins are tossed. How many points are in the sample space if \
+we define measurements as above?
+
+Question: In addition to measuring for H or T,  one also measures it\
+\[CloseCurlyQuote]s electrical conductivity, and thermal expansion constant. \
+How many points are there in this sample space ?\
+\>", "Text",
+ CellChangeTimes->{{3.606665547141635*^9, 3.606665594477318*^9}, {
+  3.60666564536653*^9, 3.606665751296508*^9}, {3.73517898468519*^9, 
+  3.735179000279717*^9}, {3.735179039744957*^9, 3.735179069705132*^9}, {
+  3.760882383421163*^9, 3.760882409678955*^9}, {3.7608829389375143`*^9, 
+  3.76088294223357*^9}}],
+
+Cell[TextData[{
+ "We use the symbol S to specify a sample space. ",
+ StyleBox["An event ",
+  FontVariations->{"Underline"->True}],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", " "}], TraditionalForm]],
+  FormatType->"TraditionalForm",
+  FontVariations->{"Underline"->True}],
+ StyleBox["is a set of sample points",
+  FontVariations->{"Underline"->True}],
+ ". So for the sample space of two coins, possible events could be\n\n{HH}\n\
+{HT}\n{TH}\n{TT}\n\nbut we could also have the following events (sets of \
+points in S)\n\n{HH,TT}, \n{HH,TH},\n{HH,HT},\n{TT,TH},\n{TT,HT},\n{TT,HH},\n\
+\netc.\n\n{HH,HT,TH,TT}\n\nHowever there are restrictions on the sets that \
+are allowed to be events (not all sets in S are events). \
+Let\[CloseCurlyQuote]s call the family of allowed events  ",
+ Cell[BoxData[
+  FormBox["F", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".  It should have  the following properties.\n\n(i) S belongs in ",
+ Cell[BoxData[
+  FormBox["F", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n(ii) to",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", "F"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " belongs the complement of any set ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " that belongs in ",
+ Cell[BoxData[
+  FormBox["F", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n(iii) to",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", "F"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " belongs the union of any sequence ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["E", "1"], TraditionalForm]]],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["E", "2"], TraditionalForm]]],
+ " ... that are in ",
+ Cell[BoxData[
+  FormBox["F", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.6066658863320208`*^9, 3.606666194768177*^9}, {
+  3.6066662355692463`*^9, 3.606666336154847*^9}, {3.606668529042132*^9, 
+  3.606668567802993*^9}, {3.606696046859899*^9, 3.606696071450013*^9}, {
+  3.6066961155279007`*^9, 3.606696286663726*^9}, {3.735179074317905*^9, 
+  3.735179074891842*^9}, {3.7608824230287333`*^9, 3.760882452429484*^9}, {
+  3.7608825203140163`*^9, 3.760882636059671*^9}, {3.7608826678475437`*^9, 
+  3.760882722505742*^9}, {3.760882987065852*^9, 3.7608829905646477`*^9}}],
+
+Cell[TextData[{
+ "We should be able to define a function for event ",
+ Cell[BoxData[
+  FormBox["E", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", called ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", 
+    RowBox[{"(", "E", ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", which obeys the following axioms.\n\nAxiom 1: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     RowBox[{"P", 
+      RowBox[{"(", "E", ")"}]}], " ", "\[GreaterSlantEqual]", " ", "0"}]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\nAxiom 2:  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"P", 
+     RowBox[{"(", "S", ")"}]}], " ", "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\nAxiom 3: For any sequence of events  ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["E", "1"], TraditionalForm]]],
+ " , ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["E", "2"], TraditionalForm]]],
+ " ... ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["E", "n"], TraditionalForm]]],
+ " that are mutually exclusive (disjoint)",
+ Cell[BoxData[
+  FormBox["\[IndentingNewLine]", TraditionalForm]]],
+ "\nP [ ",
+ Cell[BoxData[
+  FormBox[
+   UnderoverscriptBox["\[Union]", 
+    RowBox[{"n", "=", "1"}], "\[Infinity]"], TraditionalForm]]],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["E", "n"], TraditionalForm]]],
+ "]   = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{Cell[TextData[Cell[BoxData[
+     FormBox[
+      UnderoverscriptBox[
+       RowBox[{"  ", "\[Sum]"}], 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], TraditionalForm]]]]], " ", 
+    RowBox[{"P", "[", 
+     SubscriptBox["E", "n"]}]}], TraditionalForm]]],
+ "]"
+}], "Text",
+ CellChangeTimes->{{3.606667136098391*^9, 3.606667174706039*^9}, {
+  3.7351792919799137`*^9, 3.7351793971623173`*^9}, {3.760839221287936*^9, 
+  3.760839252226664*^9}, {3.760882729535823*^9, 3.7608827502810907`*^9}, {
+  3.7608830132669697`*^9, 3.7608830159221067`*^9}}],
+
+Cell[TextData[{
+ "Let's call ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "1"], TraditionalForm]]],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "2"], TraditionalForm]]],
+ " ... the points in sample space S, then we can define\n\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["p", "1"], TraditionalForm]]],
+ " = P[",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "1"], TraditionalForm]]],
+ "]   ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["p", "2"], TraditionalForm]]],
+ " = P[",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "2"], TraditionalForm]]],
+ "]   etc.,  Then, for any event ",
+ Cell[BoxData[
+  FormBox["E", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", 
+    RowBox[{"(", "E", ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    UnderscriptBox[
+     RowBox[{"\[Sum]", " "}], "i"], " ", 
+    SubscriptBox["p", "i"]}], TraditionalForm]]],
+ ", where index ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"i", " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "counts all sample points in event ",
+ Cell[BoxData[
+  FormBox["E", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.606668848385016*^9, 3.606668902448567*^9}, {
+   3.606668958076874*^9, 3.6066689992262983`*^9}, {3.606673475292182*^9, 
+   3.6066734752944603`*^9}, {3.606673549847105*^9, 3.606673657236011*^9}, {
+   3.6066771955161324`*^9, 3.6066773530219107`*^9}, {3.606696417547332*^9, 
+   3.606696650944427*^9}, {3.60669672461267*^9, 3.606696777102172*^9}, 
+   3.6066968118287573`*^9, 3.606748659379096*^9, {3.7608392674948883`*^9, 
+   3.760839320100377*^9}, {3.760882767098213*^9, 3.760882815022162*^9}}],
+
+Cell[TextData[{
+ "If it is possible to reproduce the sample space with a number N of \
+independent trials, then after N trials of the experiment, the  number of \
+occurrences  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", 
+    RowBox[{"(", "E", ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " of event ",
+ Cell[BoxData[
+  FormBox["E", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", gives an approximate  value for  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"P", 
+     RowBox[{"(", "E", ")"}]}], " ", "=", " ", 
+    RowBox[{"f", 
+     RowBox[{
+      RowBox[{"(", "E", ")"}], "/", "N"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".  "
+}], "Text",
+ CellChangeTimes->{{3.606668848385016*^9, 3.606668902448567*^9}, {
+  3.606668958076874*^9, 3.6066689992262983`*^9}, {3.606673475292182*^9, 
+  3.6066734752944603`*^9}, {3.606673549847105*^9, 3.606673657236011*^9}, {
+  3.6066771955161324`*^9, 3.6066773530219107`*^9}, {3.606696417547332*^9, 
+  3.606696650944427*^9}, {3.60669672461267*^9, 3.606696777102172*^9}, {
+  3.6066968118287573`*^9, 3.606696896780344*^9}, {3.606748665531147*^9, 
+  3.606748671275251*^9}, {3.7608828239194603`*^9, 3.760882824467935*^9}, {
+  3.760883061037977*^9, 3.760883070962199*^9}}],
+
+Cell[TextData[{
+ "It is useful to define a random variable ",
+ Cell[BoxData[
+  FormBox["X", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and assign a number to each outcome in S. If only certain values of ",
+ Cell[BoxData[
+  FormBox["X", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " are allowed, it is called a discrete random variable. Otherwise it is \
+continuous."
+}], "Text",
+ CellChangeTimes->{{3.606677366894071*^9, 3.606677384157436*^9}, {
+   3.606677414798032*^9, 3.606677426173805*^9}, {3.606677464878448*^9, 
+   3.6066776189769363`*^9}, {3.6066776495143137`*^9, 
+   3.6066776552120333`*^9}, {3.606678084672517*^9, 3.606678088703518*^9}, {
+   3.606678166033938*^9, 3.60667821040139*^9}, {3.6066792027617483`*^9, 
+   3.606679218104705*^9}, {3.606748678179372*^9, 3.606748684571444*^9}, 
+   3.735179419672659*^9, {3.760883078601286*^9, 3.760883086566072*^9}}],
+
+Cell[TextData[{
+ "Example I: Consider a single coin toss sample space consisting of sample \
+points H,T.   For H we assign ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and for T we assign ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", "=", "0"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Of course this is arbitrary we could have given ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "other values.\n\nIf we have a fair coin toss then we should get ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"P", 
+     RowBox[{"(", 
+      RowBox[{"X", "=", "1"}], ")"}]}], "=", 
+    RowBox[{"1", "/", "2"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"P", 
+     RowBox[{"(", 
+      RowBox[{"X", "=", "0"}], ")"}]}], " ", "=", " ", 
+    RowBox[{"1", "/", "2"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\nExample II: Consider a two coin toss. We could assign \n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " for HH\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", "=", "0"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " for TT\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", "=", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " for HT\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", "=", "3"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " for TH\n\nbut ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "is usually assigned in a meaningful way. Perhaps",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", "X"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " denotes the number of heads for a sample point then\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"X", 
+     RowBox[{"(", "HH", ")"}]}], "=", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"X", 
+     RowBox[{"(", "TT", ")"}]}], "=", " ", "0"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"X", 
+     RowBox[{"(", "HT", ")"}]}], "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"X", 
+     RowBox[{"(", "TH", ")"}]}], "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "                                                                            \
+          \n\nNotice that with this definition X can have the same value for \
+different sample points.\nFor a sample space we could have several different \
+random variables. In the example \nabove X is a number that gives the number \
+of heads. We could then define Y as the number of\ntails and so\n\nY(HH)=0\n\
+Y(TT)=2\nY(HT)=1\nY(TH)=1"
+}], "Text",
+ CellChangeTimes->{{3.606678251755621*^9, 3.606678441069025*^9}, {
+  3.606678496421805*^9, 3.606678569294989*^9}, {3.6066792248331127`*^9, 
+  3.60667923368915*^9}, {3.606696940711792*^9, 3.606697199474584*^9}, {
+  3.60669728129638*^9, 3.6066972845139112`*^9}, {3.7351794411269417`*^9, 
+  3.735179530216002*^9}, {3.7608830990278378`*^9, 3.760883106653983*^9}, {
+  3.760883142204211*^9, 3.760883352428831*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Some external, foundations of probability theory, resources", "Section",
+ CellGroupingRules->{"SectionGrouping", Inherited},
+ CellChangeTimes->{{3.606679406446126*^9, 3.606679461655149*^9}, {
+  3.606680461774633*^9, 3.606680467735874*^9}, {3.735179662202235*^9, 
+  3.735179751505608*^9}, {3.735180042420384*^9, 3.735180045750279*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Hyperlink", "[", 
+  "\"\<http://www.zweigmedia.com/RealWorld/tutstats/frames8_1.html\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.606679406446126*^9, 3.606679461655149*^9}, {
+  3.606680461774633*^9, 3.606680467735874*^9}, {3.735179662202235*^9, 
+  3.735179667842019*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  ButtonBox[
+   PaneSelectorBox[{
+    False->"\<\"http://www.zweigmedia.com/RealWorld/tutstats/frames8_1.html\"\
+\>", True->
+    StyleBox["\<\"http://www.zweigmedia.com/RealWorld/tutstats/frames8_1.html\
+\"\>", "HyperlinkActive"]}, Dynamic[
+     CurrentValue["MouseOver"]],
+    BaseStyle->{"Hyperlink"},
+    FrameMargins->0,
+    ImageSize->Automatic],
+   BaseStyle->"Hyperlink",
+   ButtonData->{
+     URL["http://www.zweigmedia.com/RealWorld/tutstats/frames8_1.html"], None},
+   ButtonNote->"http://www.zweigmedia.com/RealWorld/tutstats/frames8_1.html"],
+  
+  Annotation[#, "http://www.zweigmedia.com/RealWorld/tutstats/frames8_1.html",
+    "Hyperlink"]& ]], "Output",
+ CellChangeTimes->{3.606679407043944*^9, 3.6066794637340517`*^9, 
+  3.7351798178228483`*^9, 3.760709683322303*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Hyperlink", "[", 
+  "\"\<http://www.math.uah.edu/stat/prob/Experiments.html\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.606680487375202*^9, 3.606680511685359*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  ButtonBox[
+   PaneSelectorBox[{
+    False->"\<\"http://www.math.uah.edu/stat/prob/Experiments.html\"\>", True->
+    
+    StyleBox["\<\"http://www.math.uah.edu/stat/prob/Experiments.html\"\>", 
+     "HyperlinkActive"]}, Dynamic[
+     CurrentValue["MouseOver"]],
+    BaseStyle->{"Hyperlink"},
+    FrameMargins->0,
+    ImageSize->Automatic],
+   BaseStyle->"Hyperlink",
+   ButtonData->{
+     URL["http://www.math.uah.edu/stat/prob/Experiments.html"], None},
+   ButtonNote->"http://www.math.uah.edu/stat/prob/Experiments.html"],
+  Annotation[#, "http://www.math.uah.edu/stat/prob/Experiments.html", 
+   "Hyperlink"]& ]], "Output",
+ CellChangeTimes->{3.735179553253915*^9, 3.760709683466382*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Random variables and expectation values", "Section",
+ CellChangeTimes->{{3.735179872218978*^9, 3.735179878102435*^9}, {
+  3.735180021303866*^9, 3.7351800282776423`*^9}}],
+
+Cell[TextData[{
+ "\nFor a random variable ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", ","}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " the \"equation\"  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"X", 
+     RowBox[{"(", "w", ")"}]}], " ", "=", " ", "a"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "  (",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", "=", "a"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " for short ) defines an event, as it asks which points ",
+ Cell[BoxData[
+  FormBox["w", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " satisfy the equality. For example, the equality ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", "=", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is satisfied with the points ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "1"], TraditionalForm]]],
+ "=HT and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "2"], TraditionalForm]]],
+ "=TH, and so the set {HT,TH} is an event. We can also state inequalities \
+such as  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", " ", "<", " ", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", which is satisfied by the set {TT,HT,TH}. \n\nWe define a probability \
+function on the random variable",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", "X"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " so that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", 
+    RowBox[{"(", 
+     RowBox[{"X", "=", "a"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    UnderscriptBox[
+     RowBox[{"\[Sum]", " "}], "i"], " ", 
+    SubscriptBox["p", "i"]}], TraditionalForm]]],
+ "  where the sum is over sample points in that event."
+}], "Text",
+ CellChangeTimes->{{3.606697499244877*^9, 3.606697815775399*^9}, {
+  3.606698048258109*^9, 3.60669810986303*^9}, {3.606698306535734*^9, 
+  3.606698359827883*^9}, {3.6067486896356773`*^9, 3.606748692147726*^9}, {
+  3.73517971634851*^9, 3.735179717935155*^9}, {3.735179903729836*^9, 
+  3.735179917691028*^9}, {3.760883377850889*^9, 3.760883818530779*^9}}],
+
+Cell[TextData[{
+ "We can also define functions of the random variable. Suppose we have two \
+random variables in our sample space, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"X", ",", " ", "Y"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". We define ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"Z", "=", 
+    RowBox[{"X", "+", "Y"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", which is a new random variable so that for sample point ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "i"], TraditionalForm]]],
+ "\n\nZ(",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "i"], TraditionalForm]]],
+ ") = X(",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "i"], TraditionalForm]]],
+ ")+Y(",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "i"], TraditionalForm]]],
+ ").\n\nExpressions, such as  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"2", " ", "X"}], ",", " ", 
+    SuperscriptBox["X", "2"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " ... etc.  are defined in a similar manner as those of ordinary variables."
+}], "Text",
+ CellChangeTimes->{{3.606698382396553*^9, 3.6066984025557823`*^9}, {
+  3.606698455217286*^9, 3.606698679194561*^9}, {3.735179921516075*^9, 
+  3.735179928367127*^9}, {3.760883828599532*^9, 3.760883871722735*^9}, {
+  3.760883903914633*^9, 3.760883963453822*^9}}],
+
+Cell[TextData[{
+ "Example:  Consider three consecutive throws of a coin. Let ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["X", "i"], TraditionalForm]]],
+ "= 1 if the",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", "i", " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ StyleBox["th",
+  IgnoreSpellCheck->True],
+ " throw is a head and zero\notherwise.\n\n",
+ Cell[BoxData[GridBox[{
+    {"1", "2", "3", 
+     RowBox[{"   ", 
+      SubscriptBox["X", "1"]}], 
+     SubscriptBox["X", "2"], 
+     SubscriptBox["X", "3"], 
+     RowBox[{
+      SubscriptBox["X", "1"], "+", 
+      SubscriptBox["X", "2"], "+", 
+      SubscriptBox["X", "3"]}], 
+     RowBox[{
+      SubscriptBox["X", "1"], 
+      SubscriptBox["X", "2"], 
+      SubscriptBox["X", "3"]}]},
+    {"H", "H", "H", 
+     RowBox[{" ", "1"}], "1", "1", "3", "1"},
+    {"H", "H", 
+     RowBox[{"T", " "}], 
+     RowBox[{" ", "1"}], "1", "0", "2", "0"},
+    {"H", "T", "H", 
+     RowBox[{" ", "1"}], "0", "1", "2", "0"},
+    {"T", "H", "H", 
+     RowBox[{" ", "0"}], "1", "1", "2", "0"},
+    {"H", "T", "T", 
+     RowBox[{" ", "1"}], "0", "0", "1", "0"},
+    {"T", "H", "T", 
+     RowBox[{" ", "0"}], "1", "0", "1", "0"},
+    {"T", "T", "H", 
+     RowBox[{" ", "0"}], "0", "1", "1", "0"},
+    {"T", "T", "T", 
+     RowBox[{" ", "0"}], "0", "0", "0", "0"}
+   }]]]
+}], "Text",
+ CellChangeTimes->{{3.606699684186039*^9, 3.606699873926675*^9}, {
+  3.60669992627662*^9, 3.6067001140406313`*^9}, {3.7351799374358673`*^9, 
+  3.735180001695368*^9}, {3.760883986078418*^9, 3.760884012455316*^9}}],
+
+Cell[TextData[{
+ "Let  \[DoubleStruckCapitalX] = {",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "1"], TraditionalForm]]],
+ ",",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "2"], TraditionalForm]]],
+ ", ... } be a discrete sample space with probability measure P assigning the \
+values ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["p", "i"], TraditionalForm]]],
+ " to the sample points ",
+ Cell[BoxData[
+  RowBox[{" ", 
+   SubscriptBox["w", "i"]}]]],
+ ". If ",
+ Cell[BoxData[
+  FormBox["X", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is a random variable, then the expectation value of ",
+ Cell[BoxData[
+  FormBox["X", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", denoted by ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "[", "X"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "] or simply ",
+ Cell[BoxData[
+  FormBox["EX", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", is defined as \n\n",
+ Cell[BoxData[
+  FormBox["X", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "(",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "1"], TraditionalForm]]],
+ ") ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["p", "1"], TraditionalForm]]],
+ " + ",
+ Cell[BoxData[
+  FormBox["X", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "(",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "2"], TraditionalForm]]],
+ ")  ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["p", "2"], TraditionalForm]]],
+ " + ...\n\nWe assume that this series converges to a definite value. Among \
+physicists, the notation  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[LeftAngleBracket]", "X", "\[RightAngleBracket]"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is commonly used in place of",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", Cell["EX"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and we adopt use of the former in the textbook. \n\nAnother important \
+global property of our sample space is called the variance ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Sigma]", "2"], TraditionalForm]]],
+ ". It's defined as\n\n",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Sigma]", "2"], TraditionalForm]]],
+ " = E[ ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"(", Cell["X-EX"], ")"}], "2"], TraditionalForm]]],
+ "]\n\ni.e.  define a new random variable  ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"(", Cell[TextData[Cell[BoxData[
+      FormBox[
+       RowBox[{"X", "-", "EX"}], TraditionalForm]],
+      FormatType->"TraditionalForm"]]], ")"}], "2"], TraditionalForm]]],
+ " and take its expectation value. Notice we can simplify this expression \
+since\n\n",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"X", "-", "EX"}], ")"}], "2"], TraditionalForm]]],
+ " = ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["X", "2"], TraditionalForm]]],
+ " - X EX - EX X + ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["EX", "2"], TraditionalForm]]],
+ "\n\nand so \n\nE[",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"X", "-", "EX"}], ")"}], "2"], TraditionalForm]]],
+ "]= E[",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["X", "2"], TraditionalForm]]],
+ "]-E[X] EX- EX E[X] + ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["EX", "2"], TraditionalForm]]],
+ "=  E[",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["X", "2"], TraditionalForm]]],
+ "]-2 ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["EX", "2"], TraditionalForm]]],
+ "+ ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["EX", "2"], TraditionalForm]]],
+ "\n\nor\n\n",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Sigma]", "2"], TraditionalForm]]],
+ " = E[",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["X", "2"], TraditionalForm]]],
+ "] - ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["EX", "2"], TraditionalForm]]],
+ "  \n\nthat is,  ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["\[Sigma]", "2"], TraditionalForm]]],
+ " is the difference between the expectation value of ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["X", "2"], TraditionalForm]]],
+ " and the square of the expectation value ",
+ Cell[BoxData[
+  FormBox["EX", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n\n"
+}], "Text",
+ CellChangeTimes->{{3.60670130981996*^9, 3.606701313857645*^9}, {
+  3.606701373891273*^9, 3.606701578272101*^9}, {3.606701624443362*^9, 
+  3.6067017691998672`*^9}, {3.606701941609559*^9, 3.606701972828476*^9}, {
+  3.606702033028635*^9, 3.6067025574562902`*^9}, {3.6067487057084217`*^9, 
+  3.6067487082764397`*^9}, {3.735180097490552*^9, 3.735180195376651*^9}, {
+  3.760884047742672*^9, 3.76088422615615*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Conditional probability", "Subsection",
+ CellChangeTimes->{{3.606702583570073*^9, 3.606702591544138*^9}, 
+   3.6067028097974*^9}],
+
+Cell[TextData[{
+ "Up to now we have considered probability measure such as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", 
+    RowBox[{"(", "A", ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " where ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is a set in our sample space. According to the frequency Interpretation it \
+is roughly equal to the number of times event ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " occurs in ",
+ Cell[BoxData[
+  FormBox["N", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " independent trials, divided by ",
+ Cell[BoxData[
+  FormBox["N", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Suppose we have more information than that. If we know that ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " must occur in ",
+ Cell[BoxData[
+  FormBox["B", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " then we can define something called  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", 
+    RowBox[{"(", 
+     RowBox[{"A", "|", "B"}], ")"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". It is the conditional probability of event ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " given ",
+ Cell[BoxData[
+  FormBox["B", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". \n\nP(A|B) =  P(A \[Intersection] B)/P(B)"
+}], "Text",
+ CellChangeTimes->{{3.606702791550894*^9, 3.6067030784286823`*^9}, {
+  3.606748710748105*^9, 3.606748716772192*^9}, {3.75431304216416*^9, 
+  3.7543130517931347`*^9}, {3.7608842460578403`*^9, 3.760884297942204*^9}},
+ TextJustification->1]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{969, 800},
+WindowMargins->{{433, Automatic}, {Automatic, 19}},
+ShowGroupOpener->True,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 122, 1, 92, "Title"],
+Cell[704, 25, 575, 9, 49, "Text"],
+Cell[1282, 36, 1287, 22, 145, "Text"],
+Cell[2572, 60, 607, 16, 182, "Text"],
+Cell[3182, 78, 640, 12, 87, "Text"],
+Cell[3825, 92, 2322, 63, 530, "Text"],
+Cell[6150, 157, 1926, 66, 170, "Text"],
+Cell[8079, 225, 1753, 59, 123, "Text"],
+Cell[9835, 286, 1256, 32, 50, "Text"],
+Cell[11094, 320, 888, 18, 50, "Text"],
+Cell[11985, 340, 3380, 105, 546, "Text"],
+Cell[CellGroupData[{
+Cell[15390, 449, 340, 4, 64, "Section",
+ CellGroupingRules->{"SectionGrouping", Inherited}],
+Cell[CellGroupData[{
+Cell[15755, 457, 298, 6, 32, "Input"],
+Cell[16056, 465, 806, 20, 34, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16899, 490, 191, 4, 32, "Input"],
+Cell[17093, 496, 714, 18, 34, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17856, 520, 175, 2, 64, "Section"],
+Cell[18034, 524, 2110, 67, 142, "Text"],
+Cell[20147, 593, 1327, 41, 131, "Text"],
+Cell[21477, 636, 1539, 48, 237, "Text"],
+Cell[23019, 686, 4602, 165, 550, "Text"],
+Cell[CellGroupData[{
+Cell[27646, 855, 135, 2, 44, "Subsection"],
+Cell[27784, 859, 1704, 52, 131, "Text"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
