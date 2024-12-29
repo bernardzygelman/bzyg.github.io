@@ -1,0 +1,1402 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     44707,       1394]
+NotebookOptionsPosition[     39726,       1231]
+NotebookOutlinePosition[     40651,       1263]
+CellTagsIndexPosition[     40472,       1256]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Matrix Manipulations and Operations with Mathematica ", "Title",
+ CellChangeTimes->{{3.599441979712408*^9, 3.599442001782341*^9}, {
+  3.599759263067683*^9, 3.59975927641947*^9}, {3.599760773923173*^9, 
+  3.599760781053742*^9}, {3.599766017965308*^9, 3.599766018471789*^9}, {
+  3.746815440014914*^9, 3.7468154632904263`*^9}, {3.746815504984356*^9, 
+  3.746815525206616*^9}, {3.755040532412887*^9, 3.755040538585237*^9}}],
+
+Cell["Introduction", "Subtitle",
+ CellChangeTimes->{{3.7468329279733152`*^9, 3.746832938187376*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "In Chapter 2 of the text we introduced three types of matrices; column, row \
+and square matrices. In general a so-called ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"m", " ", "\[Times]", " ", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " matrix contains m rows and n columns. So a ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "\[Times]", "3"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " matrix would look something like this"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellGroupingRules->{"GroupTogetherGrouping", 0},
+ CellChangeTimes->{{3.7468329612064133`*^9, 3.7468330321713247`*^9}, {
+  3.746833063390225*^9, 3.746833085969199*^9}, {3.7468331233994083`*^9, 
+  3.746833184072754*^9}, {3.760891329385594*^9, 3.760891336034767*^9}}],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", GridBox[{
+       {"a", "b"},
+       {"c", "d"},
+       {"e", "f"}
+      }], ")"}], " "}], TraditionalForm]]],
+ "   "
+}], "Text",
+ CellChangeTimes->{{3.746832944454617*^9, 3.746832946648636*^9}, {
+  3.7468331923957853`*^9, 3.746833315699222*^9}, {3.746833658366832*^9, 
+  3.746833672829836*^9}}],
+
+Cell[TextData[{
+ "We will only be working with matrices of the type ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", "\[Times]", " ", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", " ", "\[Times]", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", " ", "\[Times]", " ", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".  Kets are represented by column matrices and in Mathematica they are \
+expressed as a list"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468336976375427`*^9, 3.74683385930013*^9}, {
+  3.760891294765439*^9, 3.760891322996599*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "List"}]], "Input",
+ CellChangeTimes->{{3.746833873223432*^9, 3.746833880381922*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]\) is a list of elements. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/List"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.7607103078366623`*^9},
+ CellTags->"Info1833760681507-9389473"]
+}, Closed]],
+
+Cell[TextData[{
+ "A single qubit e.g.  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"a"},
+      {"b"}
+     }], ")"}], TraditionalForm]]],
+ "  is represented by the Mathematica list"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468339494032*^9, 3.746834011288814*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ket1", "=", 
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.746834015337716*^9, 3.7468340244629374`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"a", ",", "b"}], "}"}]], "Output",
+ CellChangeTimes->{{3.746834026368724*^9, 3.746834047334447*^9}, 
+   3.760710096288535*^9, 3.760710150060507*^9, 3.7607103080152197`*^9}]
+}, Closed]],
+
+Cell[TextData[{
+ "A two-qubit state   ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"a"},
+      {"b"},
+      {"c"},
+      {"d"}
+     }], ")"}], TraditionalForm]]],
+ "  would be represented by"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746834056504051*^9, 3.746834108129551*^9}, {
+  3.746834174010251*^9, 3.7468341787576847`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ket2", "=", 
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.746833935541251*^9, 3.746833941066312*^9}, {
+  3.746834115172224*^9, 3.746834127749943*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}]], "Output",
+ CellChangeTimes->{3.746834129343519*^9, 3.7607100964282827`*^9, 
+  3.760710150222528*^9, 3.760710308161583*^9}]
+}, Closed]],
+
+Cell["\<\
+You might ask yourself; the list expressions given above do not look at all \
+like column matrices. If anything, they resemble row matrices. However, as we \
+will see in the examples below, in operations involving matrices the \
+Mathematica kernel treats these lists as if they are
+column matrices. If you still feel uncomfortable with this notation, you can \
+apply the  \
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468341358508587`*^9, 3.7468342189880333`*^9}, {
+  3.7468342556182737`*^9, 3.746834444473222*^9}, {3.746835162916016*^9, 
+  3.746835166054981*^9}, {3.760891365774922*^9, 3.760891370127426*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.74683445017651*^9, 3.746834457366117*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"MatrixForm\\\", \\\"[\\\", \
+StyleBox[\\\"list\\\", \\\"TI\\\"], \\\"]\\\"}]\) prints with the elements of \
+\!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\) arranged in a regular array. \"\>",
+    "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/MatrixForm"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760710308340227*^9},
+ CellTags->"Info1863760681508-9389473"]
+}, Closed]],
+
+Cell["operation on the above lists.  So", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746834469382028*^9, 3.746834488089974*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", "ket1", "]"}]], "Input",
+ CellChangeTimes->{{3.746834490970351*^9, 3.7468344971128883`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {"a"},
+      {"b"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7468344980572357`*^9, 3.7607100967907352`*^9, 
+  3.7607101505600653`*^9, 3.760710308506215*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", "ket2", "]"}]], "Input",
+ CellChangeTimes->{{3.746834502941378*^9, 3.746834510455283*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {"a"},
+      {"b"},
+      {"c"},
+      {"d"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7468345110451612`*^9, 3.76071009692799*^9, 
+  3.760710150754716*^9, 3.760710308660069*^9}]
+}, Closed]],
+
+Cell[TextData[{
+ "They look just like the column matrices you intended them to be.  So how \
+are row matrices, represented bra vectors, expressed ? Answer:  Exactly in \
+the same way!  So the row matrices\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"a", "b"}
+     }], ")"}], TraditionalForm]]],
+ "   and   ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"(", GridBox[{
+       {"a", "b", "c", "d"}
+      }], ")"}], " "}], TraditionalForm]]],
+ "   \n\nare given by\n "
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746834520446259*^9, 3.746834582905685*^9}, {
+  3.746834761693184*^9, 3.7468350059211807`*^9}, {3.7468350537002983`*^9, 
+  3.7468350647479343`*^9}, {3.760891384167719*^9, 3.760891387688953*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"bra1", "=", 
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"bra2", "=", 
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}]}]}], "Input",
+ CellChangeTimes->{{3.746835015293893*^9, 3.746835086865587*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"a", ",", "b"}], "}"}]], "Output",
+ CellChangeTimes->{3.746835087539097*^9, 3.760710097095191*^9, 
+  3.76071015092559*^9, 3.7607103088566*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}]], "Output",
+ CellChangeTimes->{3.746835087539097*^9, 3.760710097095191*^9, 
+  3.76071015092559*^9, 3.76071030897227*^9}]
+}, Closed]],
+
+Cell[TextData[{
+ "How does Mathematica know the difference between column and row (ket and \
+bra vectors) matrices?  Answer: Through context. Before we elaborate on this \
+answer, lets quickly review how we introduce ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", " ", "\[Times]", " ", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " square matrices.\nExample: Consider the following ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"3", " ", "\[Times]", " ", "3", " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "matrix\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"a", "b", "c"},
+      {"d", "e", "f"},
+      {"g", "h", "i"}
+     }], ")"}], TraditionalForm]]]
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746835092560029*^9, 3.746835112279217*^9}, {
+  3.746835194607449*^9, 3.7468353069734983`*^9}, {3.746835355764929*^9, 
+  3.7468355092760477`*^9}, {3.7608914040692*^9, 3.760891436836072*^9}}],
+
+Cell[TextData[{
+ "Mathematica ``",
+ StyleBox["sees\[CloseCurlyQuote]\[CloseCurlyQuote]",
+  IgnoreSpellCheck->True],
+ " this construct as three lists  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"d", ",", "e", ",", "f"}], "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"g", ",", "h", ",", "i"}], "}"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " stacked on top of each other or a ``list of  \
+lists\[CloseCurlyDoubleQuote],\ni.e."
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468355165074787`*^9, 3.74683563906583*^9}, {
+   3.7468421754348707`*^9, 3.746842198281198*^9}, 3.760891450537677*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"squarematrix", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"d", ",", "e", ",", "f"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"g", ",", "h", ",", "i"}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.746835644879608*^9, 3.746835676730454*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"d", ",", "e", ",", "f"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"g", ",", "h", ",", "i"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7468356804444637`*^9, 3.760710097391485*^9, 
+  3.760710151310318*^9, 3.760710309263763*^9}]
+}, Closed]],
+
+Cell["If we apply", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746835704552702*^9, 3.746835711312755*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", "squarematrix", "]"}]], "Input",
+ CellChangeTimes->{{3.746835715193006*^9, 3.746835727186898*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"a", "b", "c"},
+     {"d", "e", "f"},
+     {"g", "h", "i"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.746835728507194*^9, 3.760710097529355*^9, 
+  3.760710151509449*^9, 3.7607103094120913`*^9}]
+}, Closed]],
+
+Cell["\<\
+We indeed recognize the standard matrix form of this list of lists. \
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746835733825309*^9, 3.7468357387629433`*^9}, {
+  3.746835773717157*^9, 3.746835796967073*^9}, {3.746835868466345*^9, 
+  3.746835907829314*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Matrix operations", "Subsection",
+ CellChangeTimes->{{3.746835922942833*^9, 3.7468359285420237`*^9}}],
+
+Cell[TextData[{
+ "Remember, in the the text, we introduced two ways of multiplying column \
+matrices with row matrices. So, according to our definitions, the expression\n\
+\n          ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"c"},
+      {"d"}
+     }], ")"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"a", "b"}
+     }], ")"}], TraditionalForm]]],
+ " \n\nshould evaluate to a scalar product, as a row matrix (bra vector) is \
+positioned to the left of the column matrix (ket vector).\nThe Mathematica \
+command for this (scala) product is\n"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468359619997997`*^9, 3.746836061382002*^9}, {
+  3.7468360952110453`*^9, 3.746836095863461*^9}, {3.7468361454083147`*^9, 
+  3.7468362443308163`*^9}, {3.7468362772375307`*^9, 3.746836353996957*^9}, {
+  3.7608914965458107`*^9, 3.76089149947933*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b"}], "}"}], ".", 
+  RowBox[{"{", 
+   RowBox[{"c", ",", "d"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.746836378996323*^9, 3.7468363955996847`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", " ", "c"}], "+", 
+  RowBox[{"b", " ", "d"}]}]], "Output",
+ CellChangeTimes->{3.7468363967836313`*^9, 3.7607100977472897`*^9, 
+  3.760710151708457*^9, 3.760710309579544*^9}]
+}, Closed]],
+
+Cell[TextData[{
+ "Note that, internally, Mathematica did indeed treat {a,b} as a row matrix, \
+and {c,d} as a column matrix. What if we position the row matrix to the right \
+of the column matrix?, i.e.\n\n      ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"a", "b"}
+     }], ")"}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"c"},
+      {"d"}
+     }], ")"}], TraditionalForm]]]
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746836409134185*^9, 3.746836538351836*^9}, {
+  3.746836577142136*^9, 3.746836588189666*^9}, {3.746841651914901*^9, 
+  3.74684168669482*^9}}],
+
+Cell[TextData[{
+ "We learned that this product should be represented, since it corresponds, \
+to an outer product of a ket vector with a bra vector, as the square  matrix\n\
+\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {
+       RowBox[{"c", " ", "a"}], 
+       RowBox[{"c", " ", "b"}]},
+      {
+       RowBox[{"d", " ", "a"}], 
+       RowBox[{"d", " ", "b"}]}
+     }], ")"}], TraditionalForm]]]
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746841693412331*^9, 3.746841830957869*^9}}],
+
+Cell["In Mathematica we use the ", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746841840484541*^9, 3.746841850743682*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "KroneckerProduct"}]], "Input",
+ CellChangeTimes->{{3.746842033367482*^9, 3.746842038349906*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"KroneckerProduct\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"m\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"m\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"]\\\"}]\) constructs the Kronecker product of the arrays \
+\!\(\*SubscriptBox[StyleBox[\\\"m\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\).\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/KroneckerProduct"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760710309793322*^9},
+ CellTags->"Info1943760681509-9389473"]
+}, Closed]],
+
+Cell["\<\
+command to facilitate the outer product of a bra (row matrix)  with a ket  \
+(column matrix). Thus\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746842046080143*^9, 3.746842151121066*^9}, {
+  3.746842206752707*^9, 3.746842208398026*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"kronprod", "=", 
+  RowBox[{"KroneckerProduct", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"c", ",", "d"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.746842212674983*^9, 3.746842220928976*^9}, {
+  3.746842261427989*^9, 3.746842305854986*^9}, {3.746843154844576*^9, 
+  3.746843157858368*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"a", " ", "c"}], ",", 
+     RowBox[{"b", " ", "c"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"a", " ", "d"}], ",", 
+     RowBox[{"b", " ", "d"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.746842307539856*^9, 3.746843159614484*^9, 
+  3.760710098143551*^9, 3.760710152293935*^9, 3.76071030997919*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", "kronprod", "]"}]], "Input",
+ CellChangeTimes->{{3.746842323695372*^9, 3.7468423404276457`*^9}, {
+  3.7468431641810713`*^9, 3.7468431728208323`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"a", " ", "c"}], 
+      RowBox[{"b", " ", "c"}]},
+     {
+      RowBox[{"a", " ", "d"}], 
+      RowBox[{"b", " ", "d"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.746842341117992*^9, 3.7468431737841578`*^9, 
+  3.760710098282198*^9, 3.7607101524602222`*^9, 3.7607103101810827`*^9}]
+}, Closed]],
+
+Cell["\<\
+Notice that  KroneckerProduct[{c,d},{a,b}] \[NotEqual] \
+KroneckerProduct[{a,b},{c,d}] \
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746842363546275*^9, 3.746842422263603*^9}, {
+  3.746842453873432*^9, 3.7468424621971188`*^9}}],
+
+Cell["\<\
+With these definitions we can now perform all the matrix operations \
+introduced in Chapter 2 discussions.
+Below are  few examples. \
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468424705684834`*^9, 3.7468425478104763`*^9}, {
+  3.7608915242761497`*^9, 3.76089153515499*^9}}],
+
+Cell["\<\
+Example 1:  Multiplication of a square matrix (operator) on a column (ket \
+vector) should produce another ket vector (column matrix)
+e.g. what is the following product\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746842562864106*^9, 3.746842658485448*^9}, {
+  3.7607102286022797`*^9, 3.7607102342423277`*^9}, {3.760891541455072*^9, 
+  3.760891553830206*^9}}],
+
+Cell[TextData[Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", GridBox[{
+      {"a", "b", "c", "d"},
+      {"e", "f", "g", "h"},
+      {"i", "j", "k", "l"},
+      {"m", "n", "o", "p"}
+     }], ")"}], 
+   RowBox[{"(", GridBox[{
+      {"\[Alpha]"},
+      {"\[Beta]"},
+      {"\[Gamma]"},
+      {"\[Delta]"}
+     }], ")"}]}], " ", "=", " ", 
+  RowBox[{"?", "   "}]}]],
+ Evaluatable->False,
+ CellChangeTimes->{{3.746842689519925*^9, 3.746842779112903*^9}, {
+  3.760710207996067*^9, 3.7607102197549467`*^9}},
+ EmphasizeSyntaxErrors->True]], "Text",
+ CellChangeTimes->{3.7607102885118504`*^9}],
+
+Cell["Answer", "Text",
+ CellChangeTimes->{{3.746842786887097*^9, 3.746842807643314*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"matrixoperator", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"e", ",", "f", ",", "g", ",", "h"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"m", ",", "n", ",", "o", ",", "p"}], "}"}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "matrixoperator", "]"}]}], "Input",
+ CellChangeTimes->{{3.7468428423841963`*^9, 3.746842877844048*^9}, {
+  3.74684292777319*^9, 3.746842932947783*^9}, {3.746843015151271*^9, 
+  3.746843026119711*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"e", ",", "f", ",", "g", ",", "h"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"m", ",", "n", ",", "o", ",", "p"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.746842879609396*^9, {3.746842916099359*^9, 3.746842957691514*^9}, 
+   3.746843026610817*^9, 3.760710098746161*^9, 3.7607101526098433`*^9, 
+   3.760710310434339*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"a", "b", "c", "d"},
+     {"e", "f", "g", "h"},
+     {"i", "j", "k", "l"},
+     {"m", "n", "o", "p"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.746842879609396*^9, {3.746842916099359*^9, 3.746842957691514*^9}, 
+   3.746843026610817*^9, 3.760710098746161*^9, 3.7607101526098433`*^9, 
+   3.7607103105676126`*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ket", "=", 
+  RowBox[{"{", 
+   RowBox[{"\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "\[Delta]"}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "ket", "]"}]}], "Input",
+ CellChangeTimes->{{3.746842964150958*^9, 3.7468429969265327`*^9}, {
+  3.7468430307334003`*^9, 3.746843045357294*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "\[Delta]"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7468429999537373`*^9, 3.7468430459403677`*^9, 
+  3.7607100990343037`*^9, 3.760710152896537*^9, 3.7607103107326803`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {"\[Alpha]"},
+      {"\[Beta]"},
+      {"\[Gamma]"},
+      {"\[Delta]"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7468429999537373`*^9, 3.7468430459403677`*^9, 
+  3.7607100990343037`*^9, 3.760710152896537*^9, 3.760710310837599*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"productket", "=", 
+  RowBox[{"matrixoperator", ".", "ket"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "productket", "]"}]}], "Input",
+ CellChangeTimes->{{3.746843004528225*^9, 3.7468430112356653`*^9}, {
+  3.746843050971929*^9, 3.7468430831575108`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", " ", "\[Alpha]"}], "+", 
+    RowBox[{"b", " ", "\[Beta]"}], "+", 
+    RowBox[{"c", " ", "\[Gamma]"}], "+", 
+    RowBox[{"d", " ", "\[Delta]"}]}], ",", 
+   RowBox[{
+    RowBox[{"e", " ", "\[Alpha]"}], "+", 
+    RowBox[{"f", " ", "\[Beta]"}], "+", 
+    RowBox[{"g", " ", "\[Gamma]"}], "+", 
+    RowBox[{"h", " ", "\[Delta]"}]}], ",", 
+   RowBox[{
+    RowBox[{"i", " ", "\[Alpha]"}], "+", 
+    RowBox[{"j", " ", "\[Beta]"}], "+", 
+    RowBox[{"k", " ", "\[Gamma]"}], "+", 
+    RowBox[{"l", " ", "\[Delta]"}]}], ",", 
+   RowBox[{
+    RowBox[{"m", " ", "\[Alpha]"}], "+", 
+    RowBox[{"n", " ", "\[Beta]"}], "+", 
+    RowBox[{"o", " ", "\[Gamma]"}], "+", 
+    RowBox[{"p", " ", "\[Delta]"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.746843070053856*^9, 3.7468430839346027`*^9}, 
+   3.760710099368745*^9, 3.760710153342046*^9, 3.7607103110495453`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       RowBox[{
+        RowBox[{"a", " ", "\[Alpha]"}], "+", 
+        RowBox[{"b", " ", "\[Beta]"}], "+", 
+        RowBox[{"c", " ", "\[Gamma]"}], "+", 
+        RowBox[{"d", " ", "\[Delta]"}]}]},
+      {
+       RowBox[{
+        RowBox[{"e", " ", "\[Alpha]"}], "+", 
+        RowBox[{"f", " ", "\[Beta]"}], "+", 
+        RowBox[{"g", " ", "\[Gamma]"}], "+", 
+        RowBox[{"h", " ", "\[Delta]"}]}]},
+      {
+       RowBox[{
+        RowBox[{"i", " ", "\[Alpha]"}], "+", 
+        RowBox[{"j", " ", "\[Beta]"}], "+", 
+        RowBox[{"k", " ", "\[Gamma]"}], "+", 
+        RowBox[{"l", " ", "\[Delta]"}]}]},
+      {
+       RowBox[{
+        RowBox[{"m", " ", "\[Alpha]"}], "+", 
+        RowBox[{"n", " ", "\[Beta]"}], "+", 
+        RowBox[{"o", " ", "\[Gamma]"}], "+", 
+        RowBox[{"p", " ", "\[Delta]"}]}]}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.746843070053856*^9, 3.7468430839346027`*^9}, 
+   3.760710099368745*^9, 3.760710153342046*^9, 3.7607103111433992`*^9}]
+}, Closed]],
+
+Cell[TextData[{
+ "Likewise, the operation\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"\[Alpha]", "\[Beta]", "\[Gamma]", "\[Delta]"}
+     }], ")"}], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"a", "b", "c", "d"},
+      {"e", "f", "g", "h"},
+      {"i", "j", "k", "l"},
+      {"m", "n", "o", "p"}
+     }], ")"}], TraditionalForm]]],
+ "\n\nis given by"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.74684309963946*^9, 3.746843108177505*^9}, {
+   3.7468431952318707`*^9, 3.746843254518906*^9}, 3.76089156508029*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"bra", "=", 
+  RowBox[{"{", 
+   RowBox[{"\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "\[Delta]"}], 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.746843275512616*^9, 3.7468433056056833`*^9}, 
+   3.746843360023919*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]", ",", "\[Delta]"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.746843292509912*^9, 3.7468433571276217`*^9, 
+  3.760710099664674*^9, 3.760710153668159*^9, 3.76071031134728*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"bra", ".", "matrixoperator"}]], "Input",
+ CellChangeTimes->{{3.7468433628055487`*^9, 3.7468433811159077`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", " ", "\[Alpha]"}], "+", 
+    RowBox[{"e", " ", "\[Beta]"}], "+", 
+    RowBox[{"i", " ", "\[Gamma]"}], "+", 
+    RowBox[{"m", " ", "\[Delta]"}]}], ",", 
+   RowBox[{
+    RowBox[{"b", " ", "\[Alpha]"}], "+", 
+    RowBox[{"f", " ", "\[Beta]"}], "+", 
+    RowBox[{"j", " ", "\[Gamma]"}], "+", 
+    RowBox[{"n", " ", "\[Delta]"}]}], ",", 
+   RowBox[{
+    RowBox[{"c", " ", "\[Alpha]"}], "+", 
+    RowBox[{"g", " ", "\[Beta]"}], "+", 
+    RowBox[{"k", " ", "\[Gamma]"}], "+", 
+    RowBox[{"o", " ", "\[Delta]"}]}], ",", 
+   RowBox[{
+    RowBox[{"d", " ", "\[Alpha]"}], "+", 
+    RowBox[{"h", " ", "\[Beta]"}], "+", 
+    RowBox[{"l", " ", "\[Gamma]"}], "+", 
+    RowBox[{"p", " ", "\[Delta]"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{3.746843381974388*^9, 3.760710099820202*^9, 
+  3.760710153815463*^9, 3.760710311581254*^9}]
+}, Closed]],
+
+Cell["produces the correct bra (row) vector. ", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746843399769677*^9, 3.746843439425065*^9}}],
+
+Cell["Finally we want to perform operations such as", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746843446097748*^9, 3.746843465165386*^9}, {
+  3.746843586654953*^9, 3.746843591379903*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", GridBox[{
+     {"a", "b", "c"},
+     {"d", "e", "f"},
+     {"g", "h", "i"}
+    }], ")"}], 
+  RowBox[{"(", GridBox[{
+     {"\[Alpha]", "\[Beta]", "\[Gamma]"},
+     {"\[Delta]", "\[Epsilon]", "\[Zeta]"},
+     {"\[Eta]", "\[Theta]", "\[Kappa]"}
+    }], ")"}]}]], "Input",
+ CellChangeTimes->{{3.746843476913904*^9, 3.746843558206262*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"a", " ", "\[Alpha]"}], ",", 
+     RowBox[{"b", " ", "\[Beta]"}], ",", 
+     RowBox[{"c", " ", "\[Gamma]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"d", " ", "\[Delta]"}], ",", 
+     RowBox[{"e", " ", "\[Epsilon]"}], ",", 
+     RowBox[{"f", " ", "\[Zeta]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"g", " ", "\[Eta]"}], ",", 
+     RowBox[{"h", " ", "\[Theta]"}], ",", 
+     RowBox[{"i", " ", "\[Kappa]"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.760710099987442*^9, 3.760710153949844*^9, 
+  3.760710311770308*^9}]
+}, Closed]],
+
+Cell[TextData[{
+ "Which should produce another ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"3", "\[Times]", "3", " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "square matrix."
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746843566158373*^9, 3.746843625760428*^9}, {
+   3.76089124263139*^9, 3.760891244171608*^9}, 3.760891577788088*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"matrix1", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"d", ",", "e", ",", "f"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"g", ",", "h", ",", "i"}], "}"}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "matrix1", "]"}]}], "Input",
+ CellChangeTimes->{{3.746843632337186*^9, 3.746843683001258*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"d", ",", "e", ",", "f"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"g", ",", "h", ",", "i"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.746843665988596*^9, 3.74684368369184*^9}, 
+   3.760710100154559*^9, 3.7607101541441107`*^9, 3.7607103119222517`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"a", "b", "c"},
+     {"d", "e", "f"},
+     {"g", "h", "i"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.746843665988596*^9, 3.74684368369184*^9}, 
+   3.760710100154559*^9, 3.7607101541441107`*^9, 3.760710312032858*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"matrix2", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Delta]", ",", "\[Epsilon]", ",", "\[Zeta]"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Eta]", ",", "\[Theta]", ",", "\[Kappa]"}], "}"}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "matrix1", "]"}]}], "Input",
+ CellChangeTimes->{{3.746843696333664*^9, 3.746843746916424*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\[Alpha]", ",", "\[Beta]", ",", "\[Gamma]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Delta]", ",", "\[Epsilon]", ",", "\[Zeta]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Eta]", ",", "\[Theta]", ",", "\[Kappa]"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7468437501555567`*^9, 3.760710100439027*^9, 
+  3.760710154550309*^9, 3.760710312205596*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"a", "b", "c"},
+     {"d", "e", "f"},
+     {"g", "h", "i"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7468437501555567`*^9, 3.760710100439027*^9, 
+  3.760710154550309*^9, 3.7607103123195066`*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"matrix1", ".", "matrix2"}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "%", "]"}]}], "Input",
+ CellChangeTimes->{{3.7468437548176947`*^9, 3.746843776288219*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"a", " ", "\[Alpha]"}], "+", 
+      RowBox[{"b", " ", "\[Delta]"}], "+", 
+      RowBox[{"c", " ", "\[Eta]"}]}], ",", 
+     RowBox[{
+      RowBox[{"a", " ", "\[Beta]"}], "+", 
+      RowBox[{"b", " ", "\[Epsilon]"}], "+", 
+      RowBox[{"c", " ", "\[Theta]"}]}], ",", 
+     RowBox[{
+      RowBox[{"a", " ", "\[Gamma]"}], "+", 
+      RowBox[{"b", " ", "\[Zeta]"}], "+", 
+      RowBox[{"c", " ", "\[Kappa]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", " ", "\[Alpha]"}], "+", 
+      RowBox[{"e", " ", "\[Delta]"}], "+", 
+      RowBox[{"f", " ", "\[Eta]"}]}], ",", 
+     RowBox[{
+      RowBox[{"d", " ", "\[Beta]"}], "+", 
+      RowBox[{"e", " ", "\[Epsilon]"}], "+", 
+      RowBox[{"f", " ", "\[Theta]"}]}], ",", 
+     RowBox[{
+      RowBox[{"d", " ", "\[Gamma]"}], "+", 
+      RowBox[{"e", " ", "\[Zeta]"}], "+", 
+      RowBox[{"f", " ", "\[Kappa]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"g", " ", "\[Alpha]"}], "+", 
+      RowBox[{"h", " ", "\[Delta]"}], "+", 
+      RowBox[{"i", " ", "\[Eta]"}]}], ",", 
+     RowBox[{
+      RowBox[{"g", " ", "\[Beta]"}], "+", 
+      RowBox[{"h", " ", "\[Epsilon]"}], "+", 
+      RowBox[{"i", " ", "\[Theta]"}]}], ",", 
+     RowBox[{
+      RowBox[{"g", " ", "\[Gamma]"}], "+", 
+      RowBox[{"h", " ", "\[Zeta]"}], "+", 
+      RowBox[{"i", " ", "\[Kappa]"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.746843766978857*^9, 3.746843776837884*^9}, 
+   3.7607101009407682`*^9, 3.7607101549980087`*^9, 3.76071031250397*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{"a", " ", "\[Alpha]"}], "+", 
+       RowBox[{"b", " ", "\[Delta]"}], "+", 
+       RowBox[{"c", " ", "\[Eta]"}]}], 
+      RowBox[{
+       RowBox[{"a", " ", "\[Beta]"}], "+", 
+       RowBox[{"b", " ", "\[Epsilon]"}], "+", 
+       RowBox[{"c", " ", "\[Theta]"}]}], 
+      RowBox[{
+       RowBox[{"a", " ", "\[Gamma]"}], "+", 
+       RowBox[{"b", " ", "\[Zeta]"}], "+", 
+       RowBox[{"c", " ", "\[Kappa]"}]}]},
+     {
+      RowBox[{
+       RowBox[{"d", " ", "\[Alpha]"}], "+", 
+       RowBox[{"e", " ", "\[Delta]"}], "+", 
+       RowBox[{"f", " ", "\[Eta]"}]}], 
+      RowBox[{
+       RowBox[{"d", " ", "\[Beta]"}], "+", 
+       RowBox[{"e", " ", "\[Epsilon]"}], "+", 
+       RowBox[{"f", " ", "\[Theta]"}]}], 
+      RowBox[{
+       RowBox[{"d", " ", "\[Gamma]"}], "+", 
+       RowBox[{"e", " ", "\[Zeta]"}], "+", 
+       RowBox[{"f", " ", "\[Kappa]"}]}]},
+     {
+      RowBox[{
+       RowBox[{"g", " ", "\[Alpha]"}], "+", 
+       RowBox[{"h", " ", "\[Delta]"}], "+", 
+       RowBox[{"i", " ", "\[Eta]"}]}], 
+      RowBox[{
+       RowBox[{"g", " ", "\[Beta]"}], "+", 
+       RowBox[{"h", " ", "\[Epsilon]"}], "+", 
+       RowBox[{"i", " ", "\[Theta]"}]}], 
+      RowBox[{
+       RowBox[{"g", " ", "\[Gamma]"}], "+", 
+       RowBox[{"h", " ", "\[Zeta]"}], "+", 
+       RowBox[{"i", " ", "\[Kappa]"}]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.746843766978857*^9, 3.746843776837884*^9}, 
+   3.7607101009407682`*^9, 3.7607101549980087`*^9, 3.760710312615307*^9}]
+}, Closed]],
+
+Cell["Problem: Evaluate", "Text",
+ CellChangeTimes->{{3.746843795807412*^9, 3.7468438042092533`*^9}}],
+
+Cell[TextData[Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", GridBox[{
+     {"\[Alpha]", "\[Beta]", "\[Gamma]"},
+     {"\[Delta]", "\[Epsilon]", "\[Zeta]"},
+     {"\[Eta]", "\[Theta]", "\[Kappa]"}
+    }], ")"}], 
+  RowBox[{"(", GridBox[{
+     {"a", "b", "c"},
+     {"d", "e", "f"},
+     {"g", "h", "i"}
+    }], ")"}]}]],
+ CellChangeTimes->{{3.746843476913904*^9, 3.746843558206262*^9}}]], "Text",
+ CellChangeTimes->{{3.746843817437934*^9, 3.7468438295418262`*^9}}]
+}, Closed]]
+},
+WindowSize->{963, 714},
+WindowMargins->{{Automatic, 437}, {Automatic, 70}},
+ShowGroupOpener->True,
+SpellingDictionaries->{"CorrectWords"->{"Kets", "ket"}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info1833760681507-9389473"->{
+  Cell[3121, 97, 622, 14, 43, "Print",
+   CellTags->"Info1833760681507-9389473"]},
+ "Info1863760681508-9389473"->{
+  Cell[6127, 193, 521, 12, 43, "Print",
+   CellTags->"Info1863760681508-9389473"]},
+ "Info1943760681509-9389473"->{
+  Cell[16928, 537, 770, 15, 43, "Print",
+   CellTags->"Info1943760681509-9389473"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info1833760681507-9389473", 40133, 1244},
+ {"Info1863760681508-9389473", 40248, 1247},
+ {"Info1943760681509-9389473", 40364, 1250}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 425, 5, 148, "Title"],
+Cell[1007, 29, 100, 1, 51, "Subtitle"]
+}, Open  ]],
+Cell[1122, 33, 781, 18, 59, "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 0}],
+Cell[1906, 53, 365, 13, 68, "Text"],
+Cell[2274, 68, 706, 21, 58, "Text"],
+Cell[CellGroupData[{
+Cell[3005, 93, 113, 2, 32, "Input"],
+Cell[3121, 97, 622, 14, 43, "Print",
+ CellTags->"Info1833760681507-9389473"]
+}, Closed]],
+Cell[3758, 114, 306, 11, 53, "Text"],
+Cell[CellGroupData[{
+Cell[4089, 129, 167, 4, 32, "Input"],
+Cell[4259, 135, 211, 4, 32, "Output"]
+}, Closed]],
+Cell[4485, 142, 369, 14, 91, "Text"],
+Cell[CellGroupData[{
+Cell[4879, 160, 234, 5, 32, "Input"],
+Cell[5116, 167, 206, 4, 32, "Output"]
+}, Closed]],
+Cell[5337, 174, 644, 11, 73, "Text"],
+Cell[CellGroupData[{
+Cell[6006, 189, 118, 2, 32, "Input"],
+Cell[6127, 193, 521, 12, 43, "Print",
+ CellTags->"Info1863760681508-9389473"]
+}, Closed]],
+Cell[6663, 208, 147, 2, 35, "Text"],
+Cell[CellGroupData[{
+Cell[6835, 214, 134, 2, 32, "Input"],
+Cell[6972, 218, 744, 21, 58, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[7753, 244, 132, 2, 26, "Input"],
+Cell[7888, 248, 765, 23, 94, "Output"]
+}, Closed]],
+Cell[8668, 274, 757, 21, 150, "Text"],
+Cell[CellGroupData[{
+Cell[9450, 299, 287, 7, 54, "Input"],
+Cell[9740, 308, 181, 4, 32, "Output"],
+Cell[9924, 314, 202, 4, 32, "Output"]
+}, Closed]],
+Cell[10141, 321, 954, 25, 150, "Text"],
+Cell[11098, 348, 735, 20, 59, "Text"],
+Cell[CellGroupData[{
+Cell[11858, 372, 366, 10, 32, "Input"],
+Cell[12227, 384, 373, 10, 32, "Output"]
+}, Closed]],
+Cell[12615, 397, 125, 2, 35, "Text"],
+Cell[CellGroupData[{
+Cell[12765, 403, 140, 2, 32, "Input"],
+Cell[12908, 407, 730, 20, 78, "Output"]
+}, Closed]],
+Cell[13653, 430, 290, 6, 35, "Text"],
+Cell[CellGroupData[{
+Cell[13968, 440, 107, 1, 44, "Subsection"],
+Cell[14078, 443, 919, 24, 209, "Text"],
+Cell[CellGroupData[{
+Cell[15022, 471, 211, 6, 32, "Input"],
+Cell[15236, 479, 211, 5, 32, "Output"]
+}, Closed]],
+Cell[15462, 487, 645, 20, 127, "Text"],
+Cell[16110, 509, 522, 16, 110, "Text"],
+Cell[16635, 527, 140, 2, 38, "Text"],
+Cell[CellGroupData[{
+Cell[16800, 533, 125, 2, 32, "Input"],
+Cell[16928, 537, 770, 15, 43, "Print",
+ CellTags->"Info1943760681509-9389473"]
+}, Closed]],
+Cell[17713, 555, 269, 6, 35, "Text"],
+Cell[CellGroupData[{
+Cell[18007, 565, 389, 10, 32, "Input"],
+Cell[18399, 577, 407, 12, 32, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[18843, 594, 191, 3, 26, "Input"],
+Cell[19037, 599, 832, 23, 60, "Output"]
+}, Closed]],
+Cell[19884, 625, 260, 6, 35, "Text"],
+Cell[20147, 633, 308, 7, 57, "Text"],
+Cell[20458, 642, 392, 8, 57, "Text"],
+Cell[20853, 652, 589, 20, 87, "Text"],
+Cell[21445, 674, 88, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[21558, 679, 661, 16, 54, "Input"],
+Cell[22222, 697, 558, 14, 32, "Output"],
+Cell[22783, 713, 850, 23, 96, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[23670, 741, 336, 7, 48, "Input"],
+Cell[24009, 750, 264, 5, 32, "Output"],
+Cell[24276, 757, 819, 23, 92, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[25132, 785, 290, 5, 48, "Input"],
+Cell[25425, 792, 917, 24, 32, "Output"],
+Cell[26345, 818, 1557, 43, 96, "Output"]
+}, Closed]],
+Cell[27917, 864, 589, 19, 168, "Text"],
+Cell[CellGroupData[{
+Cell[28531, 887, 243, 6, 32, "Input"],
+Cell[28777, 895, 257, 5, 32, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[29071, 905, 134, 2, 26, "Input"],
+Cell[29208, 909, 888, 24, 32, "Output"]
+}, Closed]],
+Cell[30111, 936, 153, 2, 35, "Text"],
+Cell[30267, 940, 208, 3, 38, "Text"],
+Cell[CellGroupData[{
+Cell[30500, 947, 373, 12, 67, "Input"],
+Cell[30876, 961, 644, 19, 32, "Output"]
+}, Closed]],
+Cell[31535, 983, 367, 10, 36, "Text"],
+Cell[CellGroupData[{
+Cell[31927, 997, 437, 12, 54, "Input"],
+Cell[32367, 1011, 399, 10, 32, "Output"],
+Cell[32769, 1023, 754, 20, 78, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[33560, 1048, 498, 12, 48, "Input"],
+Cell[34061, 1062, 437, 11, 32, "Output"],
+Cell[34501, 1075, 732, 20, 78, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[35270, 1100, 195, 3, 48, "Input"],
+Cell[35468, 1105, 1635, 46, 54, "Output"],
+Cell[37106, 1153, 2029, 56, 78, "Output"]
+}, Closed]],
+Cell[39150, 1212, 101, 1, 27, "Text"],
+Cell[39254, 1215, 456, 13, 67, "Text"]
+}, Closed]]
+}
+]
+*)
+

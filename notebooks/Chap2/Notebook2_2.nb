@@ -1,0 +1,314 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     11915,        306]
+NotebookOptionsPosition[     11245,        279]
+NotebookOutlinePosition[     11677,        297]
+CellTagsIndexPosition[     11634,        294]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Visualizing Qubits on the Bloch Sphere Surface", "Title",
+ CellChangeTimes->{{3.599441979712408*^9, 3.599442001782341*^9}, {
+  3.599759263067683*^9, 3.59975927641947*^9}, {3.599760773923173*^9, 
+  3.599760781053742*^9}, {3.599766017965308*^9, 3.599766018471789*^9}, {
+  3.7227193992392*^9, 3.7227194109940777`*^9}, {3.7468156329844646`*^9, 
+  3.7468156596418333`*^9}, {3.7469751049620247`*^9, 3.746975135917058*^9}}],
+
+Cell[TextData[{
+ "In Section 2.1.2 of the text we introduced the Bloch sphere representation \
+of a qubit. In it, a qubit |\[Psi]\[RightAngleBracket] is represented by a \
+matrix that is parameterized by the quantities 0 \[LessEqual] ",
+ Cell[BoxData[
+  FormBox["\[Theta]", TraditionalForm]]],
+ " \[LessEqual] \[Pi],  0 \[LessEqual] ",
+ Cell[BoxData[
+  FormBox["\[Phi]", TraditionalForm]]],
+ " \[LessEqual] 2\[Pi], so that\n\n\n|\[Psi]\[RightAngleBracket] = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {
+       RowBox[{"cos", "[", 
+        RowBox[{"\[Theta]", "/", "2"}], "]"}]},
+      {
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"e", " "}], 
+         RowBox[{"I", " ", "\[Phi]"}]], 
+        RowBox[{"sin", "[", 
+         RowBox[{"\[Theta]", "/", "2"}], "]"}]}]}
+     }], ")"}], TraditionalForm]]],
+ "\n\n(up to an overall complex phase)"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746976067283121*^9, 3.7469761204054613`*^9}, {
+  3.7469761539879427`*^9, 3.746976337123055*^9}, {3.7469763929939833`*^9, 
+  3.746976485848405*^9}, {3.7608968664725723`*^9, 3.7608968670769987`*^9}}],
+
+Cell[TextData[{
+ "On the Bloch sphere surface, shown below, each point on the surface (except \
+for the poles)  is characterized by a unique value of \[Theta]\[Phi]. \
+Therefore, we can represent the ket  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[RightBracketingBar]", "\[Psi]"}], " ", 
+    "\[RightAngleBracket]"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "  by a vector ( the red arrow shown in the figure below). In the \
+visualization, you can adjust the levers to the desired values for \[Theta],\
+\[Phi] in order to graph the corresponding ket. In the figure the numerical \
+value (up to an overall complex phase) is shown."
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746976511206539*^9, 3.7469768102162046`*^9}, 
+   3.7469768568323803`*^9, {3.760896881828597*^9, 3.760896952401054*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ket", "[", 
+   RowBox[{"\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
+  RowBox[{"Format", "[", 
+   RowBox[{
+    RowBox[{"(", GridBox[{
+       {
+        RowBox[{"Chop", "[", 
+         RowBox[{"Cos", "[", 
+          RowBox[{"\[Theta]", "/", "2"}], "]"}], "]"}]},
+       {
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{"I", " ", "\[Phi]"}], "]"}], 
+         RowBox[{"Sin", "[", 
+          RowBox[{"\[Theta]", "/", "2"}], "]"}]}]}
+      }], ")"}], ",", "TraditionalForm"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vector", "[", 
+   RowBox[{"\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
+  RowBox[{"Arrow", "[", 
+   RowBox[{"Tube", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Cos", "[", "\[Phi]", "]"}], 
+          RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+          RowBox[{"Sin", "[", "\[Phi]", "]"}]}], ",", 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}]}], "}"}]}], "}"}], ",", 
+     "0.025"}], "]"}], "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.746901213773611*^9, 3.746901302178121*^9}, {
+   3.746901412600152*^9, 3.746901442570817*^9}, {3.746901480844286*^9, 
+   3.746901513030478*^9}, {3.746901558055531*^9, 3.7469015668414087`*^9}, 
+   3.7469016007720413`*^9, {3.746901673336586*^9, 3.7469019471905403`*^9}, {
+   3.746903597259246*^9, 3.746903748884534*^9}, {3.746923959336399*^9, 
+   3.746923965112289*^9}, {3.746924211720026*^9, 3.7469242166360073`*^9}, {
+   3.746976490202231*^9, 3.746976497028386*^9}, {3.7550406157739983`*^9, 
+   3.7550406400391283`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bloch", "[", 
+   RowBox[{"\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
+  RowBox[{"Show", "[", 
+   RowBox[{
+    RowBox[{"Graphics3D", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Specularity", "[", 
+        RowBox[{"White", ",", "100"}], "]"}], ",", 
+       RowBox[{"Lighting", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Point\>\"", ",", "Cyan", ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "0", ",", "1"}], "}"}]}], "}"}], "}"}]}], ",", 
+       RowBox[{"Opacity", "[", "0.2", "]"}], ",", 
+       RowBox[{"Sphere", "[", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "0"}], "}"}], "]"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Graphics3D", "[", 
+     RowBox[{"{", 
+      RowBox[{"Red", ",", 
+       RowBox[{"vector", "[", 
+        RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}], ",", 
+       RowBox[{"Inset", "[", 
+        RowBox[{
+         RowBox[{"ket", "[", 
+          RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0", ",", 
+           RowBox[{"-", "0.5"}]}], "}"}]}], "]"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Boxed", "->", "False"}], ",", 
+    RowBox[{"ViewPoint", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"Infinity", ",", "0", ",", "0"}], "}"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdzDlIQgEAh/GnaASBQ4XkRVkN0WhEiw1Si7RJQgUNWpp220HkYFsWLnZg
+qCVIWdKglREVBAUPfa+wsoMwhEiCpGyoQaPoeP83fPy2T64f0hi4BEFImWDq
+1q7aeHlVtYpr1XBZF+yENnGItYOf18NdH28Y/soWx2F/+awVvlk4pjBjpaLP
+DLXChBMeqycWIM9GLcGbCk4QKpJNYUj4jTsw2969B1PRYhJWv+di0OI7PGM/
+dv4l7JWr7+B9hs5DbhH9BVu4ij+opEjuFqM1UCaAbsu0EGaePaPQrN0cg9LI
+lANO5h5YPW6TE+oc0TlYFxhwwfNowxqskbpCsMdbEIErlIiEvHRhDF55ZAno
+Opm5hppmcxIq4z+saUnVI5xX2rJwxEt8sD8LzUo2Pn1DX71EsM0ooFZLof+I
+FsHBi9MuSJbEDDBuXN+nGT/dbQfwH5G7D/Q=
+  "]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"bloch", "[", 
+    RowBox[{"\[Theta]", ",", "\[Phi]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]", ",", "0", ",", "Pi"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Phi]", ",", "0", ",", 
+     RowBox[{"2", "Pi"}]}], "}"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.746905057556635*^9, 3.746905109301655*^9}, {
+  3.746923168108609*^9, 3.746923194409451*^9}, {3.7469234026032352`*^9, 
+  3.746923407260853*^9}, {3.746923623375774*^9, 3.746923625241212*^9}, {
+  3.760710564890354*^9, 3.760710571165262*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Theta]$$ = 0, $CellContext`\[Phi]$$ = 0, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`\[Theta]$$], 0, Pi}, {
+      Hold[$CellContext`\[Phi]$$], 0, 2 Pi}}, Typeset`size$$ = {
+    360., {180., 184.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`\[Theta]$1063$$ = 
+    0, $CellContext`\[Phi]$1064$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Theta]$$ = 0, $CellContext`\[Phi]$$ = 0},
+       "ControllerVariables" :> {
+        Hold[$CellContext`\[Theta]$$, $CellContext`\[Theta]$1063$$, 0], 
+        Hold[$CellContext`\[Phi]$$, $CellContext`\[Phi]$1064$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> $CellContext`bloch[$CellContext`\[Theta]$$, $CellContext`\
+\[Phi]$$], 
+      "Specifications" :> {{$CellContext`\[Theta]$$, 0, 
+         Pi}, {$CellContext`\[Phi]$$, 0, 2 Pi}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{405., {239., 245.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`bloch[
+         Pattern[$CellContext`\[Theta], 
+          Blank[]], 
+         Pattern[$CellContext`\[Phi], 
+          Blank[]]] := Show[
+         Graphics3D[{
+           Specularity[White, 100], Lighting -> {{"Point", Cyan, {1, 0, 1}}}, 
+           
+           Opacity[0.2], 
+           Sphere[{0, 0, 0}]}], 
+         Graphics3D[{Red, 
+           $CellContext`vector[$CellContext`\[Theta], $CellContext`\[Phi]], 
+           Inset[
+            $CellContext`ket[$CellContext`\[Theta], $CellContext`\[Phi]], {
+            0, 0, -0.5}]}], Boxed -> False, 
+         ViewPoint -> {Infinity, 0, 0}], $CellContext`vector[
+         Pattern[$CellContext`\[Theta], 
+          Blank[]], 
+         Pattern[$CellContext`\[Phi], 
+          Blank[]]] := Arrow[
+         Tube[{{0, 0, 0}, {
+           Cos[$CellContext`\[Phi]] Sin[$CellContext`\[Theta]], 
+            Sin[$CellContext`\[Theta]] Sin[$CellContext`\[Phi]], 
+            Cos[$CellContext`\[Theta]]}}, 0.025]], $CellContext`ket[
+         Pattern[$CellContext`\[Theta], 
+          Blank[]], 
+         Pattern[$CellContext`\[Phi], 
+          Blank[]]] := Format[{{
+           Chop[
+            Cos[$CellContext`\[Theta]/2]]}, {
+          Exp[I $CellContext`\[Phi]] Sin[$CellContext`\[Theta]/2]}}, 
+         TraditionalForm]}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.746905110137269*^9, 3.746921181423101*^9, 3.746921221410928*^9, 
+   3.746921881144545*^9, {3.746921911486601*^9, 3.746921941222664*^9}, 
+   3.74692205566474*^9, 3.746922118150799*^9, 3.746922175108408*^9, 
+   3.7469226403638277`*^9, 3.746923219083178*^9, 3.746923408691403*^9, 
+   3.746923626473516*^9, 3.746923668336047*^9, 3.746975145368782*^9, 
+   3.755040605946423*^9, 3.75504064716061*^9, 3.758504349446229*^9, 
+   3.760710579946384*^9, 3.7608968535448723`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7469227924381*^9, 3.74692289980829*^9}, {
+   3.746922977625842*^9, 3.746922993635028*^9}, 3.7469239534115353`*^9}]
+}, Open  ]]
+},
+WindowSize->{1102, 845},
+WindowMargins->{{389, Automatic}, {Automatic, 0}},
+ShowGroupOpener->True,
+SpellingDictionaries->{"CorrectWords"->{"ket"}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 422, 5, 92, "Title"],
+Cell[1004, 29, 1134, 29, 176, "Text"],
+Cell[2141, 60, 844, 17, 78, "Text"],
+Cell[2988, 79, 1862, 46, 114, "Input"],
+Cell[4853, 127, 1843, 46, 75, "Input"],
+Cell[CellGroupData[{
+Cell[6721, 177, 637, 14, 32, "Input"],
+Cell[7361, 193, 3690, 78, 501, "Output"]
+}, Open  ]],
+Cell[11066, 274, 163, 2, 32, "Input"]
+}, Open  ]]
+}
+]
+*)
+

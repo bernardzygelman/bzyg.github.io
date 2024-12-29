@@ -1,0 +1,1046 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     32994,       1038]
+NotebookOptionsPosition[     29093,        906]
+NotebookOutlinePosition[     29822,        934]
+CellTagsIndexPosition[     29690,        928]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Experimenting with Uncertainty ", "Title",
+ CellChangeTimes->{{3.599441979712408*^9, 3.599442001782341*^9}, {
+  3.599759263067683*^9, 3.59975927641947*^9}, {3.599760773923173*^9, 
+  3.599760781053742*^9}, {3.599766017965308*^9, 3.599766018471789*^9}, {
+  3.7227200600339212`*^9, 3.7227200682235737`*^9}, {3.746815952502852*^9, 
+  3.746815970712172*^9}}],
+
+Cell[TextData[{
+ "Consider a single qubit in a given state ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{Cell["|\[Psi] \[RightAngleBracket]"], "."}], TraditionalForm]]],
+ " We perform measurements with the spin-1/2 operators"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.75267818912495*^9, 3.752678290398601*^9}, {
+  3.752678394240674*^9, 3.7526783960967073`*^9}, {3.752786315074461*^9, 
+  3.752786331577286*^9}, {3.752795175787562*^9, 3.7527951768762913`*^9}, {
+  3.7608979150030193`*^9, 3.760897928225945*^9}}],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[GridBox[{
+    {
+     RowBox[{
+      RowBox[{GridBox[{
+         {
+          SubscriptBox["S", "x"]}
+        },
+        GridBoxAlignment->{"Columns" -> {{"="}}}], "=", " ", 
+       RowBox[{
+        FractionBox["\[HBar]", "2"], " ", 
+        RowBox[{"(", GridBox[{
+           {"0", "1"},
+           {"1", "0"}
+          }], ")"}]}]}], "  ", ",", "  ", 
+      RowBox[{
+       RowBox[{"and", "   ", GridBox[{
+          {
+           SubscriptBox["S", "y"]}
+         },
+         GridBoxAlignment->{"Columns" -> {{"="}}}]}], "=", " ", 
+       RowBox[{
+        FractionBox["\[HBar]", "2"], " ", 
+        RowBox[{"(", GridBox[{
+           {"0", 
+            RowBox[{"-", "i"}]},
+           {"i", "0"}
+          }], ")"}], " "}]}]}]}
+   },
+   GridBoxItemSize->{"Columns" -> {{
+        Scaled[0.96]}}}], TraditionalForm]]]], "Text",
+ CellChangeTimes->{{3.752678290441852*^9, 3.752678387283195*^9}}],
+
+Cell["Define an arbitrary qubit state vector", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.75267841732165*^9, 3.752678454895636*^9}, {
+  3.7527863422199087`*^9, 3.752786355022416*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Theta]", "=", 
+   RowBox[{"Random", "[", 
+    RowBox[{"Real", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"2", "Pi"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Phi]", "=", 
+   RowBox[{"Random", "[", 
+    RowBox[{"Real", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"2", "Pi"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Beta]", "=", 
+   RowBox[{"Random", "[", 
+    RowBox[{"Real", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"2", "Pi"}]}], "}"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.752678473515875*^9, 3.752678475562222*^9}, {
+  3.752678510573696*^9, 3.752678579604836*^9}, {3.752679742469274*^9, 
+  3.7526798214810123`*^9}, {3.755040964099456*^9, 3.7550409871370697`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"psi", "=", 
+  RowBox[{
+   RowBox[{"Exp", "[", 
+    RowBox[{"I", " ", "\[Beta]"}], "]"}], 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Cos", "[", 
+      RowBox[{"\[Theta]", "/", "2"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"Exp", "[", 
+       RowBox[{"I", " ", "\[Phi]"}], "]"}], " ", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"\[Theta]", "/", "2"}], "]"}]}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.752678473515875*^9, 3.752678475562222*^9}, {
+  3.752678510573696*^9, 3.752678579604836*^9}, {3.752679742469274*^9, 
+  3.7526798214810123`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"0.3448930606009714`", "\[VeryThinSpace]", "+", 
+    RowBox[{"0.1360057941073048`", " ", "\[ImaginaryI]"}]}], ",", 
+   RowBox[{
+    RowBox[{"-", "0.9021893451918808`"}], "+", 
+    RowBox[{"0.22046674611102168`", " ", "\[ImaginaryI]"}]}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.760711244386837*^9, 3.76089816157268*^9, {3.760898233833201*^9, 
+   3.76089824617098*^9}}]
+}, Closed]],
+
+Cell[TextData[{
+ "We use the Born rule to calculate the probability that a measurement with \
+",
+ Cell[BoxData[
+  FormBox[Cell[TextData[Cell[BoxData[
+    FormBox[
+     SubscriptBox["S", "x"], TraditionalForm]]]]], TraditionalForm]]],
+ " yields \[PlusMinus]\[HBar]/2 (below we set \[HBar]=1, in order to simplify \
+the arithmetic)"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752679848107972*^9, 3.7526798894521313`*^9}, {
+  3.752679976802589*^9, 3.752680013697229*^9}, {3.752786370716228*^9, 
+  3.7527863946679564`*^9}, {3.752795198757519*^9, 3.75279520207629*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[HBar]", "=", "1"}], ";"}]], "Input",
+ CellChangeTimes->{{3.752779876061323*^9, 3.752779880088005*^9}}],
+
+Cell[TextData[{
+ "Eigenstate for ",
+ Cell[BoxData[
+  FormBox[Cell[TextData[Cell[BoxData[
+    FormBox[
+     SubscriptBox["S", "x"], TraditionalForm]]]]], TraditionalForm]]],
+ "= \[HBar]/2"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7526800489558363`*^9, 3.752680080916321*^9}, {
+  3.752774446414084*^9, 3.752774478837072*^9}, {3.7527745234941893`*^9, 
+  3.752774528989297*^9}, {3.760897959575405*^9, 3.760897966572012*^9}}],
+
+Cell[TextData[Cell[BoxData[
+ RowBox[{
+  RowBox[{"psixplus", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}], "/", 
+    RowBox[{"Sqrt", "[", "2", "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7526800861700277`*^9, 3.7526801178183517`*^9}}]], "Text",\
+
+ CellFrame->{{0, 0}, {0, 0}},
+ Evaluatable->True,
+ CellChangeTimes->{{3.7526800489558363`*^9, 3.752680080916321*^9}, {
+   3.752774446414084*^9, 3.752774478837072*^9}, {3.7527745234941893`*^9, 
+   3.7527745390731583`*^9}, 3.752774664610983*^9}],
+
+Cell[TextData[{
+ "Eigenstate for ",
+ Cell[BoxData[
+  FormBox[Cell[TextData[Cell[BoxData[
+    FormBox[
+     SubscriptBox["S", "x"], TraditionalForm]]]]], TraditionalForm]]],
+ "= -\[HBar]/2"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7526800489558363`*^9, 3.752680080916321*^9}, {
+   3.752774446414084*^9, 3.752774478837072*^9}, {3.7527745234941893`*^9, 
+   3.7527745390731583`*^9}, 3.752774669587459*^9, 3.7608979693946743`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"psixminus", "=", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"-", "1"}]}], "}"}], "/", 
+     RowBox[{"Sqrt", "[", "2", "]"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"pxplus", "=", 
+   RowBox[{
+    RowBox[{"Abs", "[", 
+     RowBox[{"psixplus", ".", "psi"}], "]"}], "^", "2"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pxminus", "=", 
+   RowBox[{
+    RowBox[{"Abs", "[", 
+     RowBox[{"psixminus", ".", "psi"}], "]"}], "^", "2"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pxplus", "+", "pxminus"}], "\[Equal]", "1"}]}], "Input",
+ CellChangeTimes->{{3.752680156511507*^9, 3.752680174134741*^9}, 
+   3.7527744137314997`*^9}]], "Text",
+ Evaluatable->True,
+ CellChangeTimes->{{3.7526800489558363`*^9, 3.752680080916321*^9}, {
+   3.752774446414084*^9, 3.752774478837072*^9}, {3.7527745234941893`*^9, 
+   3.752774535464135*^9}, 3.752776128444116*^9}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.760711244665648*^9, 3.7608981618375807`*^9, {3.7608982340637074`*^9, 
+   3.760898246354774*^9}}]
+}, Closed]],
+
+Cell[TextData[{
+ "Define measurement device ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["S", "x"], TraditionalForm]]]
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7526803099018373`*^9, 3.7526803115773163`*^9}, {
+  3.752680412726555*^9, 3.75268043587432*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SXmeasurement", ":=", 
+   RowBox[{"RandomChoice", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pxplus", ",", "pxminus"}], "}"}], "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[HBar]", "/", "2"}], ",", 
+       RowBox[{
+        RowBox[{"-", "\[HBar]"}], "/", "2"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.752680442073214*^9, 3.7526804509655447`*^9}, {
+   3.75268061744589*^9, 3.752680668723605*^9}, {3.752680701721107*^9, 
+   3.752680705993924*^9}, {3.752680798215825*^9, 3.752680838576429*^9}, 
+   3.752681054793006*^9}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s take a set of 10 independent measurements with  ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["S", "x"], TraditionalForm]]],
+ " (assuming for each measurement the system is in state |\[Psi]\
+\[RightAngleBracket])."
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752680847307108*^9, 3.752680933436861*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{"SXmeasurement", ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7526809374478273`*^9, 3.752680946064242*^9}, {
+  3.75268099238737*^9, 3.752680998102515*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], ",", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], ",", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], ",", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], ",", 
+   FractionBox["1", "2"], ",", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], ",", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], ",", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], ",", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], ",", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.760711244836327*^9, 3.7608981620254173`*^9, {3.760898234266242*^9, 
+   3.760898246537599*^9}}]
+}, Closed]],
+
+Cell[TextData[{
+ "As expected, because state |\[Psi] \[RightAngleBracket] is not necessarily \
+an eigenstate of  ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["S", "x"], TraditionalForm]]],
+ ", and the result of a measurement is probabilistic. In order to attain a \
+higher quality of statistics we need to make more that just 10 measurements. \
+Lets construct a sample space with 100 elements,"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752681082737928*^9, 3.752681139528192*^9}, {
+   3.7526811940562572`*^9, 3.7526813394186897`*^9}, 3.760711319164177*^9, {
+   3.76089818130367*^9, 3.760898181962319*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sample", "=", "100"}], ";"}]], "Input",
+ CellChangeTimes->{{3.75268134302468*^9, 3.752681350140285*^9}, 
+   3.752778960122435*^9, {3.752779447613472*^9, 3.752779447839279*^9}, {
+   3.752780067853096*^9, 3.752780070733975*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sxsamples", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"SXmeasurement", ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "sample"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7526813540949287`*^9, 3.752681396265995*^9}}],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s take the average, or mean, value \[LeftAngleBracket]",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["S", "x"], TraditionalForm]]],
+ "\[RightAngleBracket] "
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752682737952691*^9, 3.752682778059416*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Mean"}]], "Input",
+ CellChangeTimes->{{3.7527629518584003`*^9, 3.752762953150742*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Mean\\\", \\\"[\\\", StyleBox[\\\"list\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\) gives the statistical mean of the elements in \!\(\
+\*StyleBox[\\\"list\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Mean\\\", \
+\\\"[\\\", StyleBox[\\\"dist\\\", \\\"TI\\\"], \\\"]\\\"}]\) gives the mean \
+of the symbolic distribution \!\(\*StyleBox[\\\"dist\\\", \\\"TI\\\"]\).\"\>",
+    "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Mean"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760898246768744*^9},
+ CellTags->"Info1073760869446-4501304"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"xmean", "=", 
+  RowBox[{"Mean", "[", "Sxsamples", "]"}]}]], "Input",
+ CellChangeTimes->{{3.752681414204315*^9, 3.7526814212305593`*^9}, {
+  3.752682798546402*^9, 3.752682800828615*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox["9", "50"]}]], "Output",
+ CellChangeTimes->{
+  3.760711245271883*^9, 3.760898162636277*^9, {3.760898234718377*^9, 
+   3.7608982470241613`*^9}}]
+}, Closed]],
+
+Cell["We also find the variance of this distribution", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7527630378755617`*^9, 3.752763060680303*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Variance"}]], "Input",
+ CellChangeTimes->{{3.752763065353224*^9, 3.7527630706127*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Variance\\\", \\\"[\\\", \
+StyleBox[\\\"list\\\", \\\"TI\\\"], \\\"]\\\"}]\) gives the sample variance \
+of the elements in \!\(\*StyleBox[\\\"list\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"Variance\\\", \\\"[\\\", StyleBox[\\\"dist\\\", \\\"TI\\\
+\"], \\\"]\\\"}]\) gives the variance of the symbolic distribution \
+\!\(\*StyleBox[\\\"dist\\\", \\\"TI\\\"]\).\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Variance"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760898247730404*^9},
+ CellTags->"Info1093760869447-4501304"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"varx", "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"Variance", "[", "Sxsamples", "]"}], ",", 
+    RowBox[{"Assumptions", "\[Rule]", 
+     RowBox[{"\[HBar]", " ", "\[Element]", " ", "Reals"}]}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.752763075794326*^9, 3.7527631382594347`*^9}, 
+   3.7527636774106216`*^9}],
+
+Cell[BoxData[
+ FractionBox["544", "2475"]], "Output",
+ CellChangeTimes->{
+  3.760711245742729*^9, 3.760898163084866*^9, {3.760898235553368*^9, 
+   3.76089824814417*^9}}]
+}, Closed]],
+
+Cell[TextData[{
+ "By definition, the uncertainty (the square-root of the variance), can be \
+calculated using the relation",
+ "\n",
+ Cell[BoxData[
+  FormBox[GridBox[{
+     {
+      RowBox[{
+       SubscriptBox["\[CapitalDelta]S", "x"], "\[Congruent]", 
+       SqrtBox[GridBox[{
+          {
+           RowBox[{
+            RowBox[{"\[LeftAngleBracket]", 
+             SuperscriptBox[
+              SubscriptBox["S", "x"], "2"], "\[RightAngleBracket]"}], "  ", 
+            "-", " ", 
+            SuperscriptBox[
+             RowBox[{"\[LeftAngleBracket]", "  ", 
+              SubscriptBox["S", "x"], " ", "\[RightAngleBracket]"}], "2"]}]}
+         },
+         GridBoxAlignment->{"Columns" -> {{"="}}}]]}]}
+    },
+    GridBoxItemSize->{"Columns" -> {{
+         Scaled[0.96]}}}], TraditionalForm]]],
+ "\n",
+ "But the Mathematica command ",
+ StyleBox["Variance ",
+  FontSlant->"Italic"],
+ "evaluates it directly from the distribution of values"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7527631512426853`*^9, 3.752763178601954*^9}, {
+   3.752763241071168*^9, 3.752763517510971*^9}, 3.752763650330907*^9, {
+   3.75277857868941*^9, 3.752778624509761*^9}, 3.7527867172134027`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"deltaSx", "=", 
+  RowBox[{"Sqrt", "[", "varx", "]"}]}]], "Input",
+ CellChangeTimes->{{3.7527636600512543`*^9, 3.752763730036869*^9}, {
+  3.752778198279623*^9, 3.75277821833707*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"4", " ", 
+   SqrtBox[
+    FractionBox["34", "11"]]}], "15"]], "Output",
+ CellChangeTimes->{
+  3.76071124592325*^9, 3.760898163275189*^9, {3.7608982357756433`*^9, 
+   3.760898248391625*^9}}]
+}, Closed]],
+
+Cell[TextData[{
+ "Now repeat the above steps to calculate ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[CapitalDelta]S", "y"], TraditionalForm]]],
+ "\n",
+ "Eigenstate for ",
+ Cell[BoxData[
+  FormBox[Cell[TextData[Cell[BoxData[
+    FormBox[
+     SubscriptBox["S", "y"], TraditionalForm]]]]], TraditionalForm]]],
+ "=\[HBar]/2"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7527637480601254`*^9, 3.752763769074253*^9}, {
+  3.752774241624247*^9, 3.752774274816247*^9}, {3.752786738327243*^9, 
+  3.752786768325013*^9}}],
+
+Cell[TextData[Cell[BoxData[
+ RowBox[{
+  RowBox[{"psiyplus", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "I"}], "}"}], "/", 
+    RowBox[{"Sqrt", "[", "2", "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7526800861700277`*^9, 3.7526801178183517`*^9}}]], "Text",\
+
+ Evaluatable->True,
+ CellChangeTimes->{{3.7526800489558363`*^9, 3.752680080916321*^9}, {
+   3.752774446414084*^9, 3.752774478837072*^9}, {3.7527745234941893`*^9, 
+   3.7527745390731583`*^9}, {3.752774620755426*^9, 3.75277462752675*^9}, 
+   3.7527749544137506`*^9}],
+
+Cell[TextData[{
+ "Eigenstate for ",
+ Cell[BoxData[
+  FormBox[Cell[TextData[Cell[BoxData[
+    FormBox[
+     SubscriptBox["S", "y"], TraditionalForm]]]]], TraditionalForm]]],
+ "=-\[HBar]/2"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7526800489558363`*^9, 3.752680080916321*^9}, {
+   3.752774446414084*^9, 3.752774478837072*^9}, {3.7527745234941893`*^9, 
+   3.7527745390731583`*^9}, {3.752774620755426*^9, 3.75277462752675*^9}, {
+   3.752779144197445*^9, 3.752779144539308*^9}, 3.760898042015218*^9}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"psiyminus", "=", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"-", "I"}]}], "}"}], "/", 
+     RowBox[{"Sqrt", "[", "2", "]"}]}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pyplus", "=", 
+   RowBox[{
+    RowBox[{"Abs", "[", 
+     RowBox[{
+      RowBox[{"Conjugate", "[", "psiyplus", "]"}], ".", "psi"}], "]"}], "^", 
+    "2"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pyminus", "=", 
+   RowBox[{
+    RowBox[{"Abs", "[", 
+     RowBox[{
+      RowBox[{"Conjugate", "[", "psiyminus", "]"}], ".", "psi"}], "]"}], "^", 
+    "2"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pyplus", "+", "pyminus"}], "\[Equal]", "1"}]}], "Input",
+ CellChangeTimes->{{3.752680156511507*^9, 3.752680174134741*^9}, 
+   3.7527744137314997`*^9}]], "Text",
+ Evaluatable->True,
+ CellChangeTimes->{{3.7526800489558363`*^9, 3.752680080916321*^9}, {
+   3.752774446414084*^9, 3.752774478837072*^9}, {3.7527745234941893`*^9, 
+   3.752774535464135*^9}, {3.752774633092825*^9, 3.75277463906662*^9}, {
+   3.752775127219996*^9, 3.752775140449156*^9}, {3.752779025835507*^9, 
+   3.752779031338934*^9}, {3.752779341006528*^9, 3.752779364003525*^9}, 
+   3.760898051149062*^9}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.7607112461237288`*^9, 3.760898163479835*^9, {3.760898236062889*^9, 
+   3.76089824859511*^9}}]
+}, Closed]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SYmeasurement", ":=", 
+   RowBox[{"RandomChoice", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pyplus", ",", "pyminus"}], "}"}], "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[HBar]", "/", "2"}], ",", 
+       RowBox[{
+        RowBox[{"-", "\[HBar]"}], "/", "2"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7527752189418497`*^9, 3.752775230291787*^9}, {
+  3.752775460818722*^9, 3.7527754614136744`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sysamples", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"SYmeasurement", ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "sample"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7527754539449053`*^9, 3.752775466127366*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vary", "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"Variance", "[", "Sysamples", "]"}], ",", 
+    RowBox[{"Assumptions", "\[Rule]", 
+     RowBox[{"\[HBar]", " ", "\[Element]", " ", "Reals"}]}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.752775574028277*^9, 3.7527755744545403`*^9}, {
+  3.752778493920899*^9, 3.7527784944702063`*^9}}],
+
+Cell[BoxData[
+ FractionBox["2059", "9900"]], "Output",
+ CellChangeTimes->{
+  3.7607112463193607`*^9, 3.760898163722837*^9, {3.760898236289672*^9, 
+   3.76089824879104*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"deltaSy", "=", 
+  RowBox[{"Sqrt", "[", "vary", "]"}]}]], "Input",
+ CellChangeTimes->{{3.752775982091449*^9, 3.752775992834031*^9}, {
+  3.752778165193399*^9, 3.7527781777579727`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SqrtBox[
+   FractionBox["2059", "11"]], "30"]], "Output",
+ CellChangeTimes->{
+  3.7607112467085*^9, 3.7608981638898363`*^9, {3.760898236473321*^9, 
+   3.7608982489605083`*^9}}]
+}, Closed]],
+
+Cell[TextData[{
+ "Finally, in order to check the validity of the uncertainty    relations\n\n",
+ Cell[BoxData[
+  FormBox[GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{GridBox[{
+           {
+            SubscriptBox["\[CapitalDelta]S", "x"]}
+          },
+          GridBoxAlignment->{"Columns" -> {{"="}}}], " ", 
+         SubscriptBox["\[CapitalDelta]S", "y"]}], " ", "\[GreaterEqual]", " ", 
+        RowBox[{
+         RowBox[{"1", "/", "2"}], " ", 
+         RowBox[{"\[LeftAngleBracket]", 
+          RowBox[{"[", 
+           RowBox[{
+            SubscriptBox["S", "x"], ",", 
+            SubscriptBox["S", "y"]}], "]"}], "\[RightAngleBracket]"}]}]}], 
+       "=", 
+       RowBox[{
+        RowBox[{"\[HBar]", "/", "2"}], " ", 
+        RowBox[{"\[LeftAngleBracket]", 
+         SubscriptBox["S", "z"], "\[RightAngleBracket]"}]}]}]}
+    },
+    GridBoxItemSize->{"Columns" -> {{
+         Scaled[0.96]}}}], TraditionalForm]]],
+ "\nWe need to evaluate ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[LeftAngleBracket]", 
+    SubscriptBox["S", "z"], "\[RightAngleBracket]"}], TraditionalForm]]],
+ "\n\n",
+ "Eigenstate for ",
+ Cell[BoxData[
+  FormBox[Cell[TextData[Cell[BoxData[
+    FormBox[
+     SubscriptBox["S", "z"], TraditionalForm]]]]], TraditionalForm]]],
+ "= \[HBar]/2 "
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.75277641043828*^9, 3.752776461709593*^9}, {
+  3.752776623447391*^9, 3.7527766362713346`*^9}, {3.752786824999446*^9, 
+  3.7527868574745197`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"psizplus", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.752776966440542*^9, 3.752776977227541*^9}}],
+
+Cell[TextData[{
+ "Eigenstate for ",
+ Cell[BoxData[
+  FormBox[Cell[TextData[Cell[BoxData[
+    FormBox[
+     SubscriptBox["S", "z"], TraditionalForm]]]]], TraditionalForm]]],
+ "= -\[HBar]/2 "
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{
+  3.752776537466819*^9, 3.752776642391335*^9, {3.752776931497199*^9, 
+   3.752776947684722*^9}, 3.752776988040153*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"psizminus", "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.75277699959415*^9, 3.752777012339446*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "\n",
+ Cell[BoxData[{
+  RowBox[{
+   RowBox[{"pzplus", "=", 
+    RowBox[{
+     RowBox[{"Abs", "[", 
+      RowBox[{"psizplus", ".", "psi"}], "]"}], "^", "2"}]}], 
+   ";"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"pzminus", "=", 
+    RowBox[{
+     RowBox[{"Abs", "[", 
+      RowBox[{"psizminus", ".", "psi"}], "]"}], "^", "2"}]}], 
+   ";"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"pzplus", "+", "pzminus"}], "\[Equal]", "1"}]}], "Input",
+  CellChangeTimes->{{3.752680156511507*^9, 3.752680174134741*^9}, 
+    3.7527744137314997`*^9}]
+}], "Text",
+ Evaluatable->True,
+ CellChangeTimes->{{3.7526800489558363`*^9, 3.752680080916321*^9}, {
+  3.752774446414084*^9, 3.752774478837072*^9}, {3.7527745234941893`*^9, 
+  3.752774535464135*^9}, {3.752774633092825*^9, 3.75277463906662*^9}, {
+  3.752775127219996*^9, 3.752775140449156*^9}, {3.7527770760498943`*^9, 
+  3.752777136959408*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.760711247004184*^9, 3.760898164123871*^9, {3.760898236793807*^9, 
+   3.760898249261464*^9}}]
+}, Closed]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SZmeasurement", ":=", 
+   RowBox[{"RandomChoice", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pzplus", ",", "pzminus"}], "}"}], "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[HBar]", "/", "2"}], ",", 
+       RowBox[{
+        RowBox[{"-", "\[HBar]"}], "/", "2"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.752777162889276*^9, 3.752777172439178*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"zsamples", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"SZmeasurement", ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "sample"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.752777218678205*^9, 3.752777236317799*^9}}],
+
+Cell["Evaluate the left hand side of the uncertainty relation", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752797661729149*^9, 3.752797684016083*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lefthandside", "=", 
+  RowBox[{"N", "[", 
+   RowBox[{"deltaSx", " ", 
+    RowBox[{"deltaSy", "/", 
+     RowBox[{"\[HBar]", "^", "2"}]}]}], " ", "]"}]}]], "Input",
+ CellChangeTimes->{{3.752777584917967*^9, 3.75277760088859*^9}, {
+  3.75277830239849*^9, 3.752778373373179*^9}, {3.752778403447247*^9, 
+  3.752778465761148*^9}, {3.752778938658749*^9, 3.7527789431806583`*^9}, {
+  3.752779393747425*^9, 3.752779394038412*^9}, {3.752779999790783*^9, 
+  3.752780003299301*^9}, {3.752797708484825*^9, 3.752797720840837*^9}}],
+
+Cell[BoxData["0.21380724832135967`"], "Output",
+ CellChangeTimes->{
+  3.760711247205819*^9, 3.760898164426099*^9, {3.760898237077877*^9, 
+   3.760898249676589*^9}}]
+}, Closed]],
+
+Cell["Evaluate the right hand side of the uncertainty relation", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752797661729149*^9, 3.752797684016083*^9}, {
+  3.752797743157147*^9, 3.752797747194968*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"righthandside", "=", 
+  RowBox[{"N", "[", 
+   RowBox[{"Abs", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Mean", "[", "zsamples", "]"}], "/", "\[HBar]"}], "/", "2"}], 
+    "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.752777584917967*^9, 3.75277760088859*^9}, {
+  3.75277830239849*^9, 3.752778373373179*^9}, {3.752778403447247*^9, 
+  3.752778465761148*^9}, {3.752778938658749*^9, 3.7527789431806583`*^9}, {
+  3.752779393747425*^9, 3.752779394038412*^9}, {3.752779999790783*^9, 
+  3.752780003299301*^9}, {3.752797708484825*^9, 3.752797720840837*^9}}],
+
+Cell[BoxData["0.19`"], "Output",
+ CellChangeTimes->{
+  3.760711247377535*^9, 3.7608981645899076`*^9, {3.760898237227057*^9, 
+   3.7608982498184347`*^9}}]
+}, Closed]],
+
+Cell["Check if the uncertainty relation holds", "Text",
+ CellChangeTimes->{{3.7527978122436657`*^9, 3.752797828409336*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"lefthandside", " ", ">", " ", "righthandside"}]], "Input",
+ CellChangeTimes->{{3.752778897828722*^9, 3.752778910001933*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.7607112475618763`*^9, 3.7608981649266043`*^9, {3.760898237396274*^9, 
+   3.760898250046536*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Exercises", "Section",
+ CellChangeTimes->{{3.752796981211478*^9, 3.7527969869530783`*^9}}],
+
+Cell[TextData[{
+ "(1) Repeat the calculations for various states ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{Cell["|\[Psi]\[RightAngleBracket]"], ","}], TraditionalForm]]],
+ " chosen, as above randomly. For every experiment you perform, does the \
+above equality always hold. If not, why ? If you find the latter does that \
+invalidate the uncertainty relation ?  (Hint: try using a larger value for \
+the sample size)"
+}], "Text",
+ CellChangeTimes->{{3.752796993935464*^9, 3.7527970369432487`*^9}, {
+  3.752797121465029*^9, 3.752797275839027*^9}, {3.760898071652727*^9, 
+  3.760898071652775*^9}}],
+
+Cell[TextData[{
+ "(2) Instead of operators ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["S", "x"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",",
+ Cell[BoxData[
+  FormBox[Cell[TextData[Cell[BoxData[
+    FormBox[
+     SubscriptBox["S", "y"], TraditionalForm]],
+    FormatType->"TraditionalForm"]]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "perform measurements with the operator  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["S", "x"], 
+    SubscriptBox["S", "y"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "  and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["S", "y"], 
+    SubscriptBox["S", "x"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".  Derive an uncertainty relation for this pair of measurements."
+}], "Text",
+ CellChangeTimes->{{3.7527972938734407`*^9, 3.7527975264796267`*^9}}]
+}, Closed]]
+}, Open  ]]
+},
+CellGrouping->Manual,
+WindowSize->{1015, 728},
+WindowMargins->{{Automatic, 442}, {Automatic, 9}},
+ShowGroupOpener->True,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info1073760869446-4501304"->{
+  Cell[11785, 367, 682, 14, 63, "Print",
+   CellTags->"Info1073760869446-4501304"]},
+ "Info1093760869447-4501304"->{
+  Cell[13222, 410, 698, 15, 63, "Print",
+   CellTags->"Info1093760869447-4501304"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info1073760869446-4501304", 29465, 919},
+ {"Info1093760869447-4501304", 29582, 922}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 359, 5, 92, "Title"],
+Cell[941, 29, 527, 11, 40, "Text"],
+Cell[1471, 42, 923, 31, 50, "Text"],
+Cell[2397, 75, 202, 3, 38, "Text"],
+Cell[2602, 80, 937, 27, 96, "Input"],
+Cell[CellGroupData[{
+Cell[3564, 111, 575, 16, 32, "Input"],
+Cell[4142, 129, 426, 11, 32, "Output"]
+}, Closed]],
+Cell[4583, 143, 587, 13, 39, "Text"],
+Cell[5173, 158, 139, 3, 32, "Input"],
+Cell[5315, 163, 445, 11, 42, "Text"],
+Cell[5763, 176, 522, 13, 31, "Text",
+ Evaluatable->True],
+Cell[6288, 191, 450, 11, 42, "Text"],
+Cell[CellGroupData[{
+Cell[6763, 206, 992, 29, 116, "Text",
+ Evaluatable->True],
+Cell[7758, 237, 152, 3, 32, "Output"]
+}, Closed]],
+Cell[7925, 243, 280, 8, 37, "Text"],
+Cell[8208, 253, 597, 16, 32, "Input"],
+Cell[8808, 271, 364, 9, 40, "Text"],
+Cell[CellGroupData[{
+Cell[9197, 284, 269, 6, 32, "Input"],
+Cell[9469, 292, 672, 24, 44, "Output"]
+}, Closed]],
+Cell[10156, 319, 629, 13, 56, "Text"],
+Cell[10788, 334, 261, 5, 32, "Input"],
+Cell[11052, 341, 284, 8, 32, "Input"],
+Cell[11339, 351, 303, 8, 40, "Text"],
+Cell[CellGroupData[{
+Cell[11667, 363, 115, 2, 32, "Input"],
+Cell[11785, 367, 682, 14, 63, "Print",
+ CellTags->"Info1073760869446-4501304"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[12504, 386, 209, 4, 26, "Input"],
+Cell[12716, 392, 186, 5, 45, "Output"]
+}, Closed]],
+Cell[12917, 400, 162, 2, 35, "Text"],
+Cell[CellGroupData[{
+Cell[13104, 406, 115, 2, 32, "Input"],
+Cell[13222, 410, 698, 15, 63, "Print",
+ CellTags->"Info1093760869447-4501304"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[13957, 430, 352, 9, 26, "Input"],
+Cell[14312, 441, 169, 4, 45, "Output"]
+}, Closed]],
+Cell[14496, 448, 1197, 33, 98, "Text"],
+Cell[CellGroupData[{
+Cell[15718, 485, 205, 4, 32, "Input"],
+Cell[15926, 491, 228, 7, 70, "Output"]
+}, Closed]],
+Cell[16169, 501, 536, 16, 64, "Text"],
+Cell[16708, 519, 543, 13, 31, "Text",
+ Evaluatable->True],
+Cell[17254, 534, 520, 12, 44, "Text"],
+Cell[CellGroupData[{
+Cell[17799, 550, 1271, 34, 116, "Text",
+ Evaluatable->True],
+Cell[19073, 586, 149, 3, 32, "Output"]
+}, Closed]],
+Cell[19237, 592, 477, 14, 26, "Input"],
+Cell[19717, 608, 284, 8, 32, "Input"],
+Cell[CellGroupData[{
+Cell[20026, 620, 375, 9, 32, "Input"],
+Cell[20404, 631, 172, 4, 45, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[20613, 640, 206, 4, 26, "Input"],
+Cell[20822, 646, 206, 6, 70, "Output"]
+}, Closed]],
+Cell[21043, 655, 1494, 44, 158, "Text"],
+Cell[22540, 701, 189, 5, 32, "Input"],
+Cell[22732, 708, 372, 11, 42, "Text"],
+Cell[23107, 721, 189, 5, 32, "Input"],
+Cell[CellGroupData[{
+Cell[23321, 730, 907, 25, 90, "Text",
+ Evaluatable->True],
+Cell[24231, 757, 148, 3, 32, "Output"]
+}, Closed]],
+Cell[24394, 763, 424, 13, 26, "Input"],
+Cell[24821, 778, 281, 8, 32, "Input"],
+Cell[25105, 788, 169, 2, 38, "Text"],
+Cell[CellGroupData[{
+Cell[25299, 794, 540, 10, 32, "Input"],
+Cell[25842, 806, 164, 3, 32, "Output"]
+}, Closed]],
+Cell[26021, 812, 219, 3, 35, "Text"],
+Cell[CellGroupData[{
+Cell[26265, 819, 578, 12, 32, "Input"],
+Cell[26846, 833, 153, 3, 32, "Output"]
+}, Closed]],
+Cell[27014, 839, 123, 1, 27, "Text"],
+Cell[CellGroupData[{
+Cell[27162, 844, 148, 2, 32, "Input"],
+Cell[27313, 848, 152, 3, 32, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[27502, 856, 96, 1, 50, "Section"],
+Cell[27601, 859, 593, 12, 51, "Text"],
+Cell[28197, 873, 868, 29, 55, "Text"]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+

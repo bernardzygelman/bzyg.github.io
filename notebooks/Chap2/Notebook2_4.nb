@@ -1,0 +1,390 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14644,        382]
+NotebookOptionsPosition[     13827,        348]
+NotebookOutlinePosition[     14260,        367]
+CellTagsIndexPosition[     14217,        364]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["Visualizing Polarization of Light", "Title",
+ CellChangeTimes->{{3.7350906306832047`*^9, 3.735090651608522*^9}, 
+   3.735140961179843*^9, {3.7351555569964437`*^9, 3.735155585446533*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Efield", "[", 
+    RowBox[{"t_", ",", " ", "\[Theta]_", ",", " ", "\[Delta]_"}], "]"}], " ", 
+   "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], ",", " ", 
+       RowBox[{
+        RowBox[{"Sin", "[", "\[Theta]", "]"}], " ", 
+        RowBox[{"Exp", "[", 
+         RowBox[{"I", " ", "\[Delta]"}], "]"}]}]}], "}"}], " ", 
+     RowBox[{"Exp", "[", 
+      RowBox[{"I", " ", "\[Omega]", " ", "t"}], "]"}]}], " ", "/.", " ", 
+    RowBox[{"\[Omega]", "\[Rule]", 
+     RowBox[{"2", "Pi"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"v", "[", 
+    RowBox[{"t_", ",", " ", "\[Theta]_", ",", " ", "\[Delta]_"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Arrowheads", "[", "Large", "]"}], ",", 
+     RowBox[{"Arrow", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"Re", "[", 
+         RowBox[{"Efield", "[", 
+          RowBox[{"t", ",", " ", "\[Theta]", ",", " ", "\[Delta]"}], "]"}], 
+         "]"}]}], "}"}], "]"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"par", "[", 
+    RowBox[{"\[Theta]_", ",", "\[Delta]_"}], "]"}], ":=", 
+   RowBox[{"ParametricPlot", "[", 
+    RowBox[{
+     RowBox[{"Re", "[", 
+      RowBox[{"Efield", "[", 
+       RowBox[{"t", ",", "\[Theta]", ",", "\[Delta]"}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Orange", ",", "Dashed"}], "}"}]}], ",", 
+     RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+     RowBox[{"Ticks", "->", "None"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}]}]}], "]"}]}], 
+  ";"}]}], "Input",
+ Evaluatable->True,
+ CellOpen->False,
+ CellGroupingRules->"NormalGrouping",
+ InitializationCell->True,
+ CellChangeTimes->{{3.734907699707842*^9, 3.734907812144902*^9}, {
+   3.7349080299469547`*^9, 3.734908110329001*^9}, {3.734908224675638*^9, 
+   3.734908227203196*^9}, {3.734909699942419*^9, 3.734909760241151*^9}, {
+   3.73491002869236*^9, 3.7349100290392733`*^9}, {3.734910204418928*^9, 
+   3.734910204641757*^9}, {3.7349126092726593`*^9, 3.734912609833571*^9}, {
+   3.734912786955502*^9, 3.73491278732605*^9}, {3.734913962276053*^9, 
+   3.73491396257885*^9}, {3.7349181221730013`*^9, 3.734918206907619*^9}, {
+   3.7349182788084507`*^9, 3.7349182816536083`*^9}, {3.73491839414456*^9, 
+   3.73491841783046*^9}, {3.734918506381772*^9, 3.734918550722372*^9}, {
+   3.734919996598727*^9, 3.734920010814229*^9}, 3.734920590840666*^9, {
+   3.734958341370719*^9, 3.734958343392522*^9}, {3.7350014805446367`*^9, 
+   3.735001483805694*^9}, {3.735001755047263*^9, 3.735001759324539*^9}, {
+   3.735090320811119*^9, 3.7350903443909187`*^9}, {3.735090410889*^9, 
+   3.7350904175040083`*^9}, {3.735090561627331*^9, 3.73509059712624*^9}, 
+   3.735090901898361*^9, {3.735090976766543*^9, 3.735090989165732*^9}, {
+   3.735091021723514*^9, 3.735091036753848*^9}, {3.735091081123746*^9, 
+   3.735091093512513*^9}, 3.735096539979054*^9, {3.755040854466901*^9, 
+   3.755040895910255*^9}}],
+
+Cell[TextData[{
+ "In textbook equation (2.37), we gave an expression for the electric field \
+vector associated with an electromagnetic wave travelling along an axis that \
+is perpendicular to the plane of this page. The electric field vector is  \
+given by\n                                   \n                               \
+      Cos(\[Theta]) Cos(\[Omega] t) ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox[
+    StyleBox["i",
+     FontWeight->"Bold",
+     FontSlant->"Plain"], "^"], TraditionalForm]]],
+ " + Sin(\[Theta]) Cos(\[Omega] t + \[Delta])  ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox[
+    StyleBox["j",
+     FontWeight->"Bold",
+     FontSlant->"Plain"], "^"], TraditionalForm]]],
+ " \n\nwhere we have set the parameters ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Delta]", "0"], TraditionalForm]]],
+ "= 0, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["E", "0"], TraditionalForm]]],
+ "=1, and ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox[
+    StyleBox["i",
+     FontWeight->"Bold",
+     FontSlant->"Plain"], "^"], TraditionalForm]]],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox[
+    StyleBox["j",
+     FontWeight->"Bold",
+     FontSlant->"Plain"], "^"], TraditionalForm]]],
+ " are unit vectors along the horizontal and vertical axis respectively. In \
+the simulation below we illustrate how that electric field evolves in time \
+within the polarization plane (the plane perpendicular to the propagation \
+axis, which in this case is the plane of the paper)."
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellMargins->{{66., 23.87890625}, {7., 7.}},
+ CellChangeTimes->{{3.73513206678662*^9, 3.735132072137232*^9}, {
+  3.7351327801037073`*^9, 3.73513279596581*^9}, {3.735133015871523*^9, 
+  3.7351330174906397`*^9}, {3.735141000183844*^9, 3.7351411439706287`*^9}, {
+  3.735155774236211*^9, 3.7351557850330667`*^9}, {3.739150360577771*^9, 
+  3.7391503759898853`*^9}, {3.7608977888108873`*^9, 3.7608977923411922`*^9}, {
+  3.760897833168756*^9, 3.7608978397149687`*^9}},
+ Background->GrayLevel[0.85]],
+
+Cell[CellGroupData[{
+
+Cell["Start Simulation", "Subsection",
+ CellChangeTimes->{{3.7351383445580177`*^9, 3.7351383546598*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"par", "[", 
+      RowBox[{"\[Theta]", ",", "\[Delta]"}], "]"}], ",", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"Red", ",", "Thick", ",", 
+         RowBox[{"v", "[", 
+          RowBox[{"t", ",", " ", "\[Theta]", ",", " ", "\[Delta]"}], "]"}]}], 
+        "}"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}]}]}], "]"}]}], 
+    "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"Pi", "/", "4"}], ",", 
+       RowBox[{"Pi", "/", "2"}], ",", 
+       RowBox[{"3", 
+        RowBox[{"Pi", "/", "4"}]}], ",", "Pi"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Delta]", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "Pi"}], "/", "2"}], ",", 
+       RowBox[{
+        RowBox[{"-", "Pi"}], "/", "4"}], ",", "0", ",", 
+       RowBox[{"Pi", "/", "4"}], ",", 
+       RowBox[{"Pi", "/", "2"}]}], "}"}]}], "}"}], ",", 
+   RowBox[{"ContentSize", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"400", ",", "400"}], "}"}]}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7349131539641523`*^9, 3.734913170638617*^9}, {
+   3.734913211252933*^9, 3.734913371599135*^9}, {3.734913665128039*^9, 
+   3.7349136671048717`*^9}, {3.7349137040632153`*^9, 3.734913720284317*^9}, {
+   3.734918036673747*^9, 3.734918110090068*^9}, {3.734918576058322*^9, 
+   3.7349185976591*^9}, {3.734918672831798*^9, 3.73491869113492*^9}, {
+   3.734918837444634*^9, 3.734918846374916*^9}, {3.73491888394107*^9, 
+   3.734918917049218*^9}, {3.734919035355629*^9, 3.734919049259017*^9}, {
+   3.7349197035420837`*^9, 3.7349197713334427`*^9}, {3.734920150428275*^9, 
+   3.734920159203*^9}, {3.734920253266429*^9, 3.7349202540926123`*^9}, {
+   3.734920345021984*^9, 3.734920349340501*^9}, {3.734920929497776*^9, 
+   3.73492093176842*^9}, {3.734921044551956*^9, 3.734921048960703*^9}, {
+   3.7349584605875483`*^9, 3.7349584661584787`*^9}, {3.735001512864999*^9, 
+   3.735001630191956*^9}, 3.735090218906446*^9, {3.735131597766144*^9, 
+   3.735131598080435*^9}, 3.7351319276556787`*^9, {3.735138207713176*^9, 
+   3.735138260660109*^9}, {3.760710882515079*^9, 3.760710889032126*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`t$$ = 0., $CellContext`\[Delta]$$ = 
+    Rational[-1, 2] Pi, $CellContext`\[Theta]$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`t$$], 0, 1}, {
+      Hold[$CellContext`\[Theta]$$], {
+      0, Rational[1, 4] Pi, Rational[1, 2] Pi, Rational[3, 4] Pi, Pi}}, {
+      Hold[$CellContext`\[Delta]$$], {
+      Rational[-1, 2] Pi, Rational[-1, 4] Pi, 0, Rational[1, 4] Pi, 
+       Rational[1, 2] Pi}}}, Typeset`size$$ = {360., {178., 182.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`t$80362$$ = 0, $CellContext`\[Theta]$80363$$ = 
+    0, $CellContext`\[Delta]$80364$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`t$$ = 0, $CellContext`\[Delta]$$ = 
+        Rational[-1, 2] Pi, $CellContext`\[Theta]$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$80362$$, 0], 
+        Hold[$CellContext`\[Theta]$$, $CellContext`\[Theta]$80363$$, 0], 
+        Hold[$CellContext`\[Delta]$$, $CellContext`\[Delta]$80364$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`par[$CellContext`\[Theta]$$, $CellContext`\[Delta]$$], 
+        Graphics[{Red, Thick, 
+          $CellContext`v[$CellContext`t$$, $CellContext`\[Theta]$$, \
+$CellContext`\[Delta]$$]}, PlotRange -> {{-1, 1}, {-1, 1}}]], 
+      "Specifications" :> {{$CellContext`t$$, 0, 
+         1}, {$CellContext`\[Theta]$$, {
+         0, Rational[1, 4] Pi, Rational[1, 2] Pi, Rational[3, 4] Pi, 
+          Pi}}, {$CellContext`\[Delta]$$, {
+         Rational[-1, 2] Pi, Rational[-1, 4] Pi, 0, Rational[1, 4] Pi, 
+          Rational[1, 2] Pi}}}, "Options" :> {ContentSize -> {400, 400}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{414., {265., 271.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`par[
+         Pattern[$CellContext`\[Theta]$, 
+          Blank[]], 
+         Pattern[$CellContext`\[Delta]$, 
+          Blank[]]] := ParametricPlot[
+         Re[
+          $CellContext`Efield[$CellContext`t$$, $CellContext`\[Theta]$, \
+$CellContext`\[Delta]$]], {$CellContext`t$$, 0, 1}, 
+         PlotStyle -> {Orange, Dashed}, Axes -> True, Ticks -> None, 
+         PlotRange -> {{-1, 1}, {-1, 1}}], $CellContext`Efield[
+         Pattern[$CellContext`t, 
+          Blank[]], 
+         Pattern[$CellContext`\[Theta], 
+          Blank[]], 
+         Pattern[$CellContext`\[Delta], 
+          Blank[]]] = {
+        E^(((2 I) Pi) $CellContext`t) Cos[$CellContext`\[Theta]], 
+         E^(((2 I) Pi) $CellContext`t + I $CellContext`\[Delta]) 
+         Sin[$CellContext`\[Theta]]}, $CellContext`v[
+         Pattern[$CellContext`t, 
+          Blank[]], 
+         Pattern[$CellContext`\[Theta], 
+          Blank[]], 
+         Pattern[$CellContext`\[Delta], 
+          Blank[]]] := {
+         Arrowheads[Large], 
+         Arrow[{{0, 0}, 
+           Re[
+            $CellContext`Efield[$CellContext`t, $CellContext`\[Theta], \
+$CellContext`\[Delta]]]}]}}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.735138521575137*^9, 3.735141175725486*^9, 
+  3.735155599433742*^9, 3.739150279586398*^9, 3.746815894108576*^9, 
+  3.755040914824635*^9, 3.760710897082362*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exercises", "Subsection",
+ CellChangeTimes->{{3.7351322989048*^9, 3.735132302830379*^9}, 
+   3.735132468905024*^9}],
+
+Cell["\<\
+Use the above simulation to find the appropriate values of \[Theta] and \
+\[Delta],  for
+
+  (a) Horizontal polarized light
+  (b) Vertical polarized light
+  (c) Linear polarized light at an angle of 45 degrees above the horizontal
+  (d) Right circular polarized light
+  (e) Left circular polarized light
+  (f) Elliptic polarized light  
+  \
+\>", "Text",
+ CellChangeTimes->{{3.735132315127482*^9, 3.7351324370210733`*^9}, {
+  3.735132473651308*^9, 3.735132710836948*^9}, {3.7351556794078903`*^9, 
+  3.735155680263021*^9}},
+ LineSpacing->{1.5, 3}]
+}, Closed]]
+},
+WindowToolbars->"RulerBar",
+CellGrouping->Manual,
+WindowSize->{855, 821},
+WindowMargins->{{493, Automatic}, {Automatic, 27}},
+ShowGroupOpener->True,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 192, 2, 92, "Title"],
+Cell[753, 24, 3462, 83, 19, "Input",
+ Evaluatable->True,
+ CellOpen->False,
+ CellGroupingRules->"NormalGrouping",
+ InitializationCell->True],
+Cell[4218, 109, 2021, 54, 190, "Text"],
+Cell[CellGroupData[{
+Cell[6264, 167, 104, 1, 44, "Subsection"],
+Cell[CellGroupData[{
+Cell[6393, 172, 2643, 62, 75, "Input"],
+Cell[9039, 236, 4045, 84, 553, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13133, 326, 121, 2, 44, "Subsection"],
+Cell[13257, 330, 554, 15, 246, "Text"]
+}, Closed]]
+}
+]
+*)
+

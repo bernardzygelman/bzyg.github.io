@@ -1,0 +1,1422 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     47254,       1414]
+NotebookOptionsPosition[     41516,       1229]
+NotebookOutlinePosition[     43215,       1280]
+CellTagsIndexPosition[     42901,       1270]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Pauli Matrices as Unitary Gate Generators", "Title",
+ CellChangeTimes->{{3.599441979712408*^9, 3.599442001782341*^9}, {
+  3.599759263067683*^9, 3.59975927641947*^9}, {3.599760773923173*^9, 
+  3.599760781053742*^9}, {3.599766017965308*^9, 3.599766018471789*^9}, {
+  3.722719930341531*^9, 3.722719939970661*^9}, {3.74681570532292*^9, 
+  3.7468157270874777`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellOpen->False,
+ InitializationCell->True,
+ CellChangeTimes->{{3.755040709599142*^9, 3.7550407549242697`*^9}}],
+
+Cell["\<\
+In section 2.2 of the text we introduced the three Pauli matrices\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468930348073397`*^9, 3.7468930669364758`*^9}, 
+   3.7550406827672987`*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[Sigma]X", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Sigma]Y", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "I"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"I", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Sigma]Z", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "1"}]}], "}"}]}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.746893075250806*^9, 3.7468931385325813`*^9}}],
+
+Cell["Which are typically expressed in the standard form", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746893146194663*^9, 3.7468931737690153`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", "\[Sigma]X", "]"}]], "Input",
+ CellChangeTimes->{{3.746893177564966*^9, 3.746893185965128*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0", "1"},
+     {"1", "0"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7468931864011507`*^9, 3.755040798095044*^9, 
+  3.7607107071995363`*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", "\[Sigma]Y", "]"}]], "Input",
+ CellChangeTimes->{{3.746893189211193*^9, 3.746893199150692*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0", 
+      RowBox[{"-", "\[ImaginaryI]"}]},
+     {"\[ImaginaryI]", "0"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.74689320012424*^9, 3.755040798131804*^9, 
+  3.760710707366886*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", "\[Sigma]Z", "]"}]], "Input",
+ CellChangeTimes->{{3.7468932029935827`*^9, 3.746893213281023*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0"},
+     {"0", 
+      RowBox[{"-", "1"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.746893213903117*^9, 3.7550407981822643`*^9, 
+  3.7607107075334167`*^9}]
+}, Closed]],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s check if the commutation relations 2.25 are satisfied. \
+Now\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468932411693497`*^9, 3.746893305509733*^9}, {
+   3.7468933944425573`*^9, 3.7468933956355247`*^9}, {3.76089702560357*^9, 
+   3.760897028931963*^9}, 3.76089753189244*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Sigma]X", ".", "\[Sigma]Y"}], "-", 
+  RowBox[{"\[Sigma]Y", ".", "\[Sigma]X"}]}]], "Input",
+ CellChangeTimes->{{3.7468933125974627`*^9, 3.746893348992073*^9}, {
+  3.7468933811903*^9, 3.746893399426301*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"2", " ", "\[ImaginaryI]"}], ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], " ", "\[ImaginaryI]"}]}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{{3.746893356161475*^9, 3.746893400223055*^9}, 
+   3.755040798228756*^9, 3.760710707683934*^9}]
+}, Closed]],
+
+Cell["and", "Text",
+ CellChangeTimes->{{3.7468933751825027`*^9, 3.746893405141919*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"2", " ", "I", " ", "\[Sigma]Z"}]], "Input",
+ CellChangeTimes->{{3.746893408727893*^9, 3.7468934144573812`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"2", " ", "\[ImaginaryI]"}], ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], " ", "\[ImaginaryI]"}]}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.74689341542529*^9, 3.7550407982790737`*^9, 
+  3.760710707834589*^9}]
+}, Closed]],
+
+Cell["\<\
+So obviously the first of these relations is satisfied. In Mathematica there \
+is another way of testing an identity through the use of the logical equal \
+command.\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746893421286189*^9, 3.746893454271862*^9}, {
+  3.7468935472111073`*^9, 3.746893578654912*^9}, {3.760897049374866*^9, 
+  3.76089707690771*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "=="}]], "Input",
+ CellChangeTimes->{{3.7468935830282516`*^9, 3.746893583776935*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{StyleBox[\\\"lhs\\\", \\\"TI\\\"], \\\"==\\\", \
+StyleBox[\\\"rhs\\\", \\\"TI\\\"]}]\) returns True if \
+\!\(\*StyleBox[\\\"lhs\\\", \\\"TI\\\"]\) and \!\(\*StyleBox[\\\"rhs\\\", \
+\\\"TI\\\"]\) are identical. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Equal"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760710708016253*^9},
+ CellTags->"Info2283760681907-9389473"]
+}, Closed]],
+
+Cell[" Thus", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468935991527*^9, 3.74689361002069*^9}, 
+   3.760897071844253*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Sigma]X", ".", "\[Sigma]Y"}], "-", 
+   RowBox[{"\[Sigma]Y", ".", "\[Sigma]X"}]}], "\[Equal]", 
+  RowBox[{"2", " ", "I", " ", "\[Sigma]Z"}]}]], "Input",
+ CellChangeTimes->{{3.746893626086103*^9, 3.746893634580031*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.746893635506976*^9, 3.755040798410454*^9, 
+  3.76071070823472*^9}]
+}, Closed]],
+
+Cell["\<\
+Exercise: Explicitly evaluate the left and r.h.s. for the remaining \
+expressions in (2.25) to prove the identities. Repeat using the Mathematica \
+logical == command.\
+\>", "Text",
+ CellChangeTimes->{{3.746893646730421*^9, 3.746893717235684*^9}, {
+   3.746893793816813*^9, 3.7468938461523523`*^9}, 3.7468975501583147`*^9},
+ Background->RGBColor[0.9, 1, 1]],
+
+Cell[TextData[{
+ "In (2.27) we gave an expression for a general ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "\[Times]", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " unitary matrix, and in the subsequent discussion illustrated how it can be \
+expressed as a product of other unitary matrices (i.e  2.31, 2.32 ).  Below \
+we show, using the Mathematica ",
+ StyleBox["MatrixExp",
+  FontFamily->"Source Code Pro",
+  FontWeight->"Regular"],
+ " command"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746893913867908*^9, 3.746894118757832*^9}, 
+   3.760897105232214*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "MatrixExp"}]], "Input",
+ CellChangeTimes->{{3.7468941226793203`*^9, 3.746894126081483*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"MatrixExp\\\", \\\"[\\\", \
+StyleBox[\\\"m\\\", \\\"TI\\\"], \\\"]\\\"}]\) gives the matrix exponential \
+of \!\(\*StyleBox[\\\"m\\\", \\\"TI\\\"]\). \
+\\n\!\(\*RowBox[{\\\"MatrixExp\\\", \\\"[\\\", RowBox[{StyleBox[\\\"m\\\", \\\
+\"TI\\\"], \\\",\\\", StyleBox[\\\"v\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) gives \
+the matrix exponential of \!\(\*StyleBox[\\\"m\\\", \\\"TI\\\"]\) applied to \
+the vector \!\(\*StyleBox[\\\"v\\\", \\\"TI\\\"]\).\"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/MatrixExp"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760710708449559*^9},
+ CellTags->"Info2303760681908-9389473"]
+}, Closed]],
+
+Cell[TextData[{
+ "we can ",
+ StyleBox["exponentiate",
+  IgnoreSpellCheck->True],
+ " a matrix without needing to evaluate an infinite series as in definition \
+(2.28).  For example, consider the operator\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["U", "X"], " ", "\[Congruent]", " ", 
+    RowBox[{"Exp", "[", 
+     RowBox[{"i", " ", "\[Alpha]", " ", "\[Sigma]X"}], "]"}]}], 
+   TraditionalForm]]]
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746894140144803*^9, 3.7468941543422956`*^9}, {
+  3.746894185741108*^9, 3.746894347046261*^9}, {3.746894419376191*^9, 
+  3.746894421232222*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Ux", "=", 
+  RowBox[{"MatrixExp", "[", 
+   RowBox[{"I", " ", "\[Alpha]", " ", "\[Sigma]X"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "Ux", "]"}]}], "Input",
+ CellChangeTimes->{{3.74689431563212*^9, 3.746894372946929*^9}, {
+  3.746894493673298*^9, 3.746894509613647*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Cos", "[", "\[Alpha]", "]"}], ",", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      RowBox[{"Sin", "[", "\[Alpha]", "]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[ImaginaryI]", " ", 
+      RowBox[{"Sin", "[", "\[Alpha]", "]"}]}], ",", 
+     RowBox[{"Cos", "[", "\[Alpha]", "]"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.746894363918535*^9, 3.746894373973658*^9}, {
+   3.746894495828158*^9, 3.74689451052514*^9}, 3.7550407985627337`*^9, 
+   3.760710708636364*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"Cos", "[", "\[Alpha]", "]"}], 
+      RowBox[{"\[ImaginaryI]", " ", 
+       RowBox[{"Sin", "[", "\[Alpha]", "]"}]}]},
+     {
+      RowBox[{"\[ImaginaryI]", " ", 
+       RowBox[{"Sin", "[", "\[Alpha]", "]"}]}], 
+      RowBox[{"Cos", "[", "\[Alpha]", "]"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.746894363918535*^9, 3.746894373973658*^9}, {
+   3.746894495828158*^9, 3.74689451052514*^9}, 3.7550407985627337`*^9, 
+   3.760710708733944*^9}]
+}, Closed]],
+
+Cell["\<\
+Which is the same expression derived in (2.31) by series expansion methods. \
+In the same way,\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746894438884067*^9, 3.74689448640453*^9}, 
+   3.746897578751315*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Uy", "=", 
+  RowBox[{"MatrixExp", "[", 
+   RowBox[{"I", " ", "\[Alpha]", " ", "\[Sigma]Y"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "Uy", "]"}]}], "Input",
+ CellChangeTimes->{{3.746894525725307*^9, 3.746894529875558*^9}, {
+  3.746895037556081*^9, 3.7468950393323603`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Cos", "[", "\[Alpha]", "]"}], ",", 
+     RowBox[{"Sin", "[", "\[Alpha]", "]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"Sin", "[", "\[Alpha]", "]"}]}], ",", 
+     RowBox[{"Cos", "[", "\[Alpha]", "]"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.746895040505916*^9, 3.755040798627536*^9, 
+  3.760710709003282*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"Cos", "[", "\[Alpha]", "]"}], 
+      RowBox[{"Sin", "[", "\[Alpha]", "]"}]},
+     {
+      RowBox[{"-", 
+       RowBox[{"Sin", "[", "\[Alpha]", "]"}]}], 
+      RowBox[{"Cos", "[", "\[Alpha]", "]"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.746895040505916*^9, 3.755040798627536*^9, 
+  3.7607107091212473`*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Uz", "=", 
+  RowBox[{"MatrixExp", "[", 
+   RowBox[{"I", " ", "\[Alpha]", " ", "\[Sigma]Z"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "Uz", "]"}]}], "Input",
+ CellChangeTimes->{{3.746895053553811*^9, 3.746895080455635*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"\[ImaginaryI]", " ", "\[Alpha]"}]], ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Alpha]"}]]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.746895065682653*^9, 3.746895081205756*^9}, 
+   3.755040798694015*^9, 3.760710709421479*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"\[ImaginaryI]", " ", "\[Alpha]"}]], "0"},
+     {"0", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Alpha]"}]]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.746895065682653*^9, 3.746895081205756*^9}, 
+   3.755040798694015*^9, 3.7607107095403337`*^9}]
+}, Closed]],
+
+Cell["\<\
+So let\[CloseCurlyQuote]s now multiply, as in (2.33), the following three \
+matrices\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.74689509333424*^9, 3.7468951682716618`*^9}, 
+   3.746895465852477*^9, 3.746897581203876*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Uproduct", "=", 
+  RowBox[{
+   RowBox[{"MatrixExp", "[", 
+    RowBox[{"I", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"\[Phi]", "+", "\[Beta]"}], ")"}], "/", "2"}], " ", 
+     "\[Sigma]Z"}], "]"}], ".", 
+   RowBox[{"MatrixExp", "[", 
+    RowBox[{"I", " ", "\[Theta]", " ", "\[Sigma]Y"}], "]"}], ".", 
+   RowBox[{"MatrixExp", "[", " ", 
+    RowBox[{"I", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"\[Phi]", "-", "\[Beta]"}], ")"}], "/", "2"}], " ", 
+     "\[Sigma]Z"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7468951740055313`*^9, 3.746895268861188*^9}, {
+   3.746895300497057*^9, 3.7468953685602617`*^9}, 3.746895402300861*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "\[ImaginaryI]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           FractionBox["\[Beta]", "2"], "-", 
+           FractionBox["\[Phi]", "2"]}], ")"}]}], "+", 
+        RowBox[{"\[ImaginaryI]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           FractionBox["\[Beta]", "2"], "+", 
+           FractionBox["\[Phi]", "2"]}], ")"}]}]}]], " ", 
+      RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"\[ImaginaryI]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           FractionBox["\[Beta]", "2"], "-", 
+           FractionBox["\[Phi]", "2"]}], ")"}]}], "+", 
+        RowBox[{"\[ImaginaryI]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           FractionBox["\[Beta]", "2"], "+", 
+           FractionBox["\[Phi]", "2"]}], ")"}]}]}]], " ", 
+      RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "\[ImaginaryI]"}], " ", 
+          RowBox[{"(", 
+           RowBox[{
+            FractionBox["\[Beta]", "2"], "-", 
+            FractionBox["\[Phi]", "2"]}], ")"}]}], "-", 
+         RowBox[{"\[ImaginaryI]", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            FractionBox["\[Beta]", "2"], "+", 
+            FractionBox["\[Phi]", "2"]}], ")"}]}]}]]}], " ", 
+      RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"\[ImaginaryI]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           FractionBox["\[Beta]", "2"], "-", 
+           FractionBox["\[Phi]", "2"]}], ")"}]}], "-", 
+        RowBox[{"\[ImaginaryI]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           FractionBox["\[Beta]", "2"], "+", 
+           FractionBox["\[Phi]", "2"]}], ")"}]}]}]], " ", 
+      RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.746895346154475*^9, 3.74689537230793*^9}, 
+   3.746895403428846*^9, 3.755040798761249*^9, 3.760710709704855*^9}]
+}, Closed]],
+
+Cell["\<\
+Ugh, what a mess!. Luckily there are the Mathematica commands\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468954260835752`*^9, 3.746895480478589*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"??", "Simplify"}]], "Input",
+ CellChangeTimes->{{3.746895501685204*^9, 3.746895544830201*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Simplify\\\", \\\"[\\\", \
+StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"]\\\"}]\) performs a sequence of \
+algebraic and other transformations on \!\(\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\) and returns the simplest form it finds. \
+\\n\!\(\*RowBox[{\\\"Simplify\\\", \\\"[\\\", RowBox[{StyleBox[\\\"expr\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"assum\\\", \\\"TI\\\"]}], \\\"]\\\"}]\) \
+does simplification using assumptions. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Simplify"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.7607107099360237`*^9},
+ CellTags->"Info2393760681909-9389473"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     RowBox[{
+      RowBox[{"Attributes", "[", "Simplify", "]"}], "=", 
+      RowBox[{"{", "Protected", "}"}]}]},
+    {" "},
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"Options", "[", "Simplify", "]"}], "=", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Assumptions", "\[RuleDelayed]", "$Assumptions"}], ",", 
+           RowBox[{"ComplexityFunction", "\[Rule]", "Automatic"}], ",", 
+           RowBox[{"ExcludedForms", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"TimeConstraint", "\[Rule]", "300"}], ",", 
+           RowBox[{"TransformationFunctions", "\[Rule]", "Automatic"}], ",", 
+           RowBox[{"Trig", "\[Rule]", "True"}]}], "}"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[Simplify],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.76071071016078*^9},
+ CellTags->"Info2393760681909-9389473"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"??", "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.746895549924078*^9, 3.74689555519523*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"FullSimplify\\\", \\\"[\\\", \
+StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"]\\\"}]\) tries a wide range of \
+transformations on \!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) involving \
+elementary and special functions and returns the simplest form it finds. \
+\\n\!\(\*RowBox[{\\\"FullSimplify\\\", \\\"[\\\", RowBox[{StyleBox[\\\"expr\\\
+\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"assum\\\", \\\"TI\\\"]}], \
+\\\"]\\\"}]\) does simplification using assumptions. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/FullSimplify"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760710710409862*^9},
+ CellTags->"Info2403760681910-9389473"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     RowBox[{
+      RowBox[{"Attributes", "[", "FullSimplify", "]"}], "=", 
+      RowBox[{"{", "Protected", "}"}]}]},
+    {" "},
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"Options", "[", "FullSimplify", "]"}], "=", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Assumptions", "\[RuleDelayed]", "$Assumptions"}], ",", 
+           RowBox[{"ComplexityFunction", "\[Rule]", "Automatic"}], ",", 
+           RowBox[{"ExcludedForms", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"TimeConstraint", "\[Rule]", "\[Infinity]"}], ",", 
+           RowBox[{"TransformationFunctions", "\[Rule]", "Automatic"}], ",", 
+           RowBox[{"Trig", "\[Rule]", "True"}]}], "}"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[FullSimplify],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.760710710526721*^9},
+ CellTags->"Info2403760681910-9389473"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"usimplify", "=", 
+  RowBox[{"FullSimplify", "[", "Uproduct", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "%", "]"}]}], "Input",
+ CellChangeTimes->{{3.746895375804575*^9, 3.746895419704733*^9}, {
+   3.746895564529426*^9, 3.746895578232765*^9}, {3.746895613614524*^9, 
+   3.74689561669657*^9}, 3.760897389408984*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+      RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"\[ImaginaryI]", " ", "\[Beta]"}]], " ", 
+      RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Beta]"}]]}], " ", 
+      RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Phi]"}]], " ", 
+      RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.746895383073629*^9, 3.746895407064912*^9}, {
+   3.746895568908132*^9, 3.7468955786720657`*^9}, 3.746895619901189*^9, 
+   3.7550407993128*^9, 3.76071071079158*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}], 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"\[ImaginaryI]", " ", "\[Beta]"}]], " ", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}]},
+     {
+      RowBox[{
+       RowBox[{"-", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{
+          RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Beta]"}]]}], " ", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}], 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Phi]"}]], " ", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.746895383073629*^9, 3.746895407064912*^9}, {
+   3.746895568908132*^9, 3.7468955786720657`*^9}, 3.746895619901189*^9, 
+   3.7550407993128*^9, 3.760710710937313*^9}]
+}, Closed]],
+
+Cell["and which agrees with expression (2.33) in the text.", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746895584183955*^9, 3.746895589302515*^9}, {
+  3.746895623997101*^9, 3.746895651516416*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Unitarity Properties", "Subsection",
+ CellChangeTimes->{{3.7468956666481867`*^9, 3.74689567823566*^9}}],
+
+Cell["\<\
+We claimed that the operator (2.33) is a unitary operator, which implies that \
+a product with it\[CloseCurlyQuote]s conjugate transpose (also called \
+adjoint) should evaluate to an identity matrix. Let\[CloseCurlyQuote]s check \
+if that is true. To obtain the conjugate transpose we use the Mathematica \
+command\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746895686819553*^9, 3.746895717700941*^9}, {
+  3.746895749988899*^9, 3.746895753004271*^9}, {3.746896561099942*^9, 
+  3.746896661673208*^9}, {3.746896716778418*^9, 3.746896731144165*^9}, {
+  3.7468970560632753`*^9, 3.7468971172197866`*^9}, {3.746897588887554*^9, 
+  3.74689759112672*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"??", "ConjugateTranspose"}]], "Input",
+ CellChangeTimes->{{3.7468971211660223`*^9, 3.746897127286521*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"ConjugateTranspose\\\", \\\"[\\\", \
+StyleBox[\\\"m\\\", \\\"TI\\\"], \\\"]\\\"}]\) or \
+\!\(\*SuperscriptBox[StyleBox[\\\"m\\\", \\\"TI\\\"], \\\"\
+\[ConjugateTranspose]\\\"]\) gives the conjugate transpose of \!\(\*StyleBox[\
+\\\"m\\\", \\\"TI\\\"]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/ConjugateTranspose"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760710711156001*^9},
+ CellTags->"Info2433760681911-9389473"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     RowBox[{
+      RowBox[{"Attributes", "[", "ConjugateTranspose", "]"}], "=", 
+      RowBox[{"{", "Protected", "}"}]}]},
+    {" "},
+    {GridBox[{
+       {
+        RowBox[{"ConjugateTranspose", "/:", 
+         RowBox[{
+          RowBox[{"MakeBoxes", "[", 
+           RowBox[{
+            RowBox[{"ConjugateTranspose", "[", "BoxForm`list_", "]"}], 
+            ",", "\<\"TraditionalForm\"\>"}], "]"}], "/;", 
+          RowBox[{"BoxForm`sufficientVersionQ", "[", "6.1`", "]"}]}], ":=", 
+         RowBox[{"TemplateBox", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"Parenthesize", "[", 
+             RowBox[{
+             "BoxForm`list", ",", "\<\"TraditionalForm\"\>", ",", "Power", 
+              ",", "Left"}], "]"}], "}"}], ",", "\<\"ConjugateTranspose\"\>", 
+           ",", 
+           RowBox[{"SyntaxForm", "\[Rule]", "SuperscriptBox"}]}], "]"}]}]},
+       {" "},
+       {
+        RowBox[{"ConjugateTranspose", "/:", 
+         RowBox[{"MakeBoxes", "[", 
+          RowBox[{
+           RowBox[{"ConjugateTranspose", "[", "BoxForm`list_", "]"}], 
+           ",", "\<\"TraditionalForm\"\>"}], "]"}], ":=", 
+         RowBox[{"SuperscriptBox", "[", 
+          RowBox[{
+           RowBox[{"Parenthesize", "[", 
+            RowBox[{
+            "BoxForm`list", ",", "\<\"TraditionalForm\"\>", ",", "Power", ",",
+              "Left"}], "]"}], ",", "\<\"\[ConjugateTranspose]\"\>"}], "]"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]},
+    {" "},
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"Options", "[", "ConjugateTranspose", "]"}], "=", 
+         RowBox[{"{", 
+          RowBox[{"AllowedHeads", "\[Rule]", "Automatic"}], "}"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[ConjugateTranspose],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7607107113093033`*^9},
+ CellTags->"Info2433760681911-9389473"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ConjugateTranspose", "[", "usimplify", "]"}]], "Input",
+ CellChangeTimes->{{3.746897140977881*^9, 3.746897184822713*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", "\[ImaginaryI]"}], " ", 
+        RowBox[{"Conjugate", "[", "\[Phi]", "]"}]}]], " ", 
+      RowBox[{"Conjugate", "[", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"\[ImaginaryI]", " ", 
+         RowBox[{"Conjugate", "[", "\[Beta]", "]"}]}]]}], " ", 
+      RowBox[{"Conjugate", "[", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}], "]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", "\[ImaginaryI]"}], " ", 
+        RowBox[{"Conjugate", "[", "\[Beta]", "]"}]}]], " ", 
+      RowBox[{"Conjugate", "[", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}], "]"}]}], ",", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        RowBox[{"Conjugate", "[", "\[Phi]", "]"}]}]], " ", 
+      RowBox[{"Conjugate", "[", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], "]"}]}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.746897162240453*^9, 3.746897185538604*^9}, 
+   3.7550407995633*^9, 3.760710711521021*^9}]
+}, Closed]],
+
+Cell["\<\
+When evaluating taking the conjugate of complex numbers Mathematica does not \
+know which of the variables are real or complex. The command\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746897169420891*^9, 3.746897268952403*^9}, 
+   3.7608974759330797`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"??", "ComplexExpand"}]], "Input",
+ CellChangeTimes->{{3.7468972741011057`*^9, 3.746897278836989*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"ComplexExpand\\\", \\\"[\\\", \
+StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"]\\\"}]\) expands \
+\!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) assuming that all variables are \
+real. \\n\!\(\*RowBox[{\\\"ComplexExpand\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) expands \
+\!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\) assuming that variables matching \
+any of the \!\(\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"i\
+\\\", \\\"TI\\\"]]\) are complex. \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/ComplexExpand"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760710711703596*^9},
+ CellTags->"Info2453760681911-9389473"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     RowBox[{
+      RowBox[{"Attributes", "[", "ComplexExpand", "]"}], "=", 
+      RowBox[{"{", "Protected", "}"}]}]},
+    {" "},
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"Options", "[", "ComplexExpand", "]"}], "=", 
+         RowBox[{"{", 
+          RowBox[{"TargetFunctions", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+            "Re", ",", "Im", ",", "Abs", ",", "Arg", ",", "Conjugate", ",", 
+             "Sign"}], "}"}]}], "}"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[ComplexExpand],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.760710711844555*^9},
+ CellTags->"Info2453760681911-9389473"]
+}, Closed]]
+}, Closed]],
+
+Cell["allows one to expand the above expression so that", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746897301713024*^9, 3.746897314808169*^9}, 
+   3.746897593612842*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"udagger", "=", 
+  RowBox[{"FullSimplify", "[", 
+   RowBox[{"ComplexExpand", "[", 
+    RowBox[{"ConjugateTranspose", "[", "usimplify", "]"}], "]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "udagger", "]"}]}], "Input",
+ CellChangeTimes->{{3.746897320507556*^9, 3.746897387012774*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Phi]"}]], " ", 
+      RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"\[ImaginaryI]", " ", "\[Beta]"}]]}], " ", 
+      RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Beta]"}]], " ", 
+      RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+      RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.74689734637724*^9, 3.746897387766315*^9}, 
+   3.755040799806431*^9, 3.760710712089283*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Phi]"}]], " ", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"\[ImaginaryI]", " ", "\[Beta]"}]]}], " ", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}]},
+     {
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{"-", "\[ImaginaryI]"}], " ", "\[Beta]"}]], " ", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}], 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"\[ImaginaryI]", " ", "\[Phi]"}]], " ", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.74689734637724*^9, 3.746897387766315*^9}, 
+   3.755040799806431*^9, 3.7607107122195883`*^9}]
+}, Closed]],
+
+Cell["is indeed the conjugate transpose of our operator.  Now", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.746897395371484*^9, 3.74689743525364*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"udagger", ".", "usimplify"}], "\[IndentingNewLine]", 
+ RowBox[{"Simplify", "[", "%", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "%", "]"}]}], "Input",
+ CellChangeTimes->{{3.74689743852286*^9, 3.746897464482575*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], "2"], "+", 
+      SuperscriptBox[
+       RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"]}], ",", "0"}], "}"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], "2"], "+", 
+      SuperscriptBox[
+       RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"]}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.746897445092655*^9, 3.746897464864767*^9}, 
+   3.7550407998551598`*^9, 3.760710712379054*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.746897445092655*^9, 3.746897464864767*^9}, 
+   3.7550407998551598`*^9, 3.76071071249084*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "0"},
+     {"0", "1"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.746897445092655*^9, 3.746897464864767*^9}, 
+   3.7550407998551598`*^9, 3.7607107126412897`*^9}]
+}, Closed]],
+
+Cell["and so we unitarity is explicitly demonstrated.", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7468974767221327`*^9, 3.746897515366803*^9}, 
+   3.746897595615473*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{933, 727},
+WindowMargins->{{484, Automatic}, {Automatic, 63}},
+ShowGroupOpener->True,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info2283760681907-9389473"->{
+  Cell[7125, 234, 537, 12, 43, "Print",
+   CellTags->"Info2283760681907-9389473"]},
+ "Info2303760681908-9389473"->{
+  Cell[9367, 302, 778, 16, 63, "Print",
+   CellTags->"Info2303760681908-9389473"]},
+ "Info2393760681909-9389473"->{
+  Cell[19983, 625, 761, 15, 63, "Print",
+   CellTags->"Info2393760681909-9389473"],
+  Cell[20747, 642, 1390, 36, 83, "Print",
+   CellTags->"Info2393760681909-9389473"]},
+ "Info2403760681910-9389473"->{
+  Cell[22332, 690, 796, 16, 63, "Print",
+   CellTags->"Info2403760681910-9389473"],
+  Cell[23131, 708, 1411, 36, 83, "Print",
+   CellTags->"Info2403760681910-9389473"]},
+ "Info2433760681911-9389473"->{
+  Cell[28709, 862, 598, 13, 45, "Print",
+   CellTags->"Info2433760681911-9389473"],
+  Cell[29310, 877, 2659, 69, 174, "Print",
+   CellTags->"Info2433760681911-9389473"]},
+ "Info2453760681911-9389473"->{
+  Cell[33954, 1011, 1114, 20, 63, "Print",
+   CellTags->"Info2453760681911-9389473"],
+  Cell[35071, 1033, 1163, 33, 59, "Print",
+   CellTags->"Info2453760681911-9389473"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info2283760681907-9389473", 41866, 1241},
+ {"Info2303760681908-9389473", 41982, 1244},
+ {"Info2393760681909-9389473", 42098, 1247},
+ {"Info2403760681910-9389473", 42300, 1252},
+ {"Info2433760681911-9389473", 42502, 1257},
+ {"Info2453760681911-9389473", 42705, 1262}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 366, 5, 92, "Title"],
+Cell[948, 29, 189, 4, 19, "Input",
+ CellOpen->False,
+ InitializationCell->True],
+Cell[1140, 35, 219, 5, 38, "Text"],
+Cell[1362, 42, 808, 27, 75, "Input"],
+Cell[2173, 71, 166, 2, 38, "Text"],
+Cell[CellGroupData[{
+Cell[2364, 77, 137, 2, 32, "Input"],
+Cell[2504, 81, 678, 19, 58, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3219, 105, 137, 2, 26, "Input"],
+Cell[3359, 109, 719, 20, 58, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4115, 134, 139, 2, 26, "Input"],
+Cell[4257, 138, 700, 20, 58, "Output"]
+}, Closed]],
+Cell[4972, 161, 331, 7, 35, "Text"],
+Cell[CellGroupData[{
+Cell[5328, 172, 242, 5, 32, "Input"],
+Cell[5573, 179, 385, 12, 32, "Output"]
+}, Closed]],
+Cell[5973, 194, 87, 1, 27, "Text"],
+Cell[CellGroupData[{
+Cell[6085, 199, 135, 2, 32, "Input"],
+Cell[6223, 203, 361, 12, 32, "Output"]
+}, Closed]],
+Cell[6599, 218, 385, 8, 54, "Text"],
+Cell[CellGroupData[{
+Cell[7009, 230, 113, 2, 32, "Input"],
+Cell[7125, 234, 537, 12, 43, "Print",
+ CellTags->"Info2283760681907-9389473"]
+}, Closed]],
+Cell[7677, 249, 142, 3, 35, "Text"],
+Cell[CellGroupData[{
+Cell[7844, 256, 266, 6, 32, "Input"],
+Cell[8113, 264, 119, 2, 32, "Output"]
+}, Closed]],
+Cell[8247, 269, 367, 7, 62, "Text"],
+Cell[8617, 278, 602, 16, 60, "Text"],
+Cell[CellGroupData[{
+Cell[9244, 298, 120, 2, 32, "Input"],
+Cell[9367, 302, 778, 16, 63, "Print",
+ CellTags->"Info2303760681908-9389473"]
+}, Closed]],
+Cell[10160, 321, 623, 17, 91, "Text"],
+Cell[CellGroupData[{
+Cell[10808, 342, 320, 7, 54, "Input"],
+Cell[11131, 351, 574, 15, 32, "Output"],
+Cell[11708, 368, 994, 26, 60, "Output"]
+}, Closed]],
+Cell[12717, 397, 241, 6, 35, "Text"],
+Cell[CellGroupData[{
+Cell[12983, 407, 323, 7, 54, "Input"],
+Cell[13309, 416, 442, 13, 32, "Output"],
+Cell[13754, 431, 863, 24, 60, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[14654, 460, 272, 6, 48, "Input"],
+Cell[14929, 468, 485, 14, 35, "Output"],
+Cell[15417, 484, 903, 24, 64, "Output"]
+}, Closed]],
+Cell[16335, 511, 255, 6, 35, "Text"],
+Cell[CellGroupData[{
+Cell[16615, 521, 674, 18, 32, "Input"],
+Cell[17292, 541, 2323, 67, 44, "Output"]
+}, Closed]],
+Cell[19630, 611, 185, 4, 35, "Text"],
+Cell[CellGroupData[{
+Cell[19840, 619, 118, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[19983, 625, 761, 15, 63, "Print",
+ CellTags->"Info2393760681909-9389473"],
+Cell[20747, 642, 1390, 36, 83, "Print",
+ CellTags->"Info2393760681909-9389473"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[22186, 684, 121, 2, 26, "Input"],
+Cell[CellGroupData[{
+Cell[22332, 690, 796, 16, 63, "Print",
+ CellTags->"Info2403760681910-9389473"],
+Cell[23131, 708, 1411, 36, 83, "Print",
+ CellTags->"Info2403760681910-9389473"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[24591, 750, 356, 6, 48, "Input"],
+Cell[24950, 758, 1047, 28, 35, "Output"],
+Cell[26000, 788, 1481, 39, 53, "Output"]
+}, Closed]],
+Cell[27496, 830, 215, 3, 35, "Text"],
+Cell[CellGroupData[{
+Cell[27736, 837, 109, 1, 44, "Subsection"],
+Cell[27848, 840, 681, 12, 76, "Text"],
+Cell[CellGroupData[{
+Cell[28554, 856, 130, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[28709, 862, 598, 13, 45, "Print",
+ CellTags->"Info2433760681911-9389473"],
+Cell[29310, 877, 2659, 69, 174, "Print",
+ CellTags->"Info2433760681911-9389473"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[32018, 952, 145, 2, 26, "Input"],
+Cell[32166, 956, 1309, 36, 60, "Output"]
+}, Closed]],
+Cell[33490, 995, 289, 6, 54, "Text"],
+Cell[CellGroupData[{
+Cell[33804, 1005, 125, 2, 32, "Input"],
+Cell[CellGroupData[{
+Cell[33954, 1011, 1114, 20, 63, "Print",
+ CellTags->"Info2453760681911-9389473"],
+Cell[35071, 1033, 1163, 33, 59, "Print",
+ CellTags->"Info2453760681911-9389473"]
+}, Closed]]
+}, Closed]],
+Cell[36261, 1070, 189, 3, 35, "Text"],
+Cell[CellGroupData[{
+Cell[36475, 1077, 332, 7, 54, "Input"],
+Cell[36810, 1086, 974, 27, 35, "Output"],
+Cell[37787, 1115, 1409, 38, 64, "Output"]
+}, Closed]],
+Cell[39211, 1156, 168, 2, 35, "Text"],
+Cell[CellGroupData[{
+Cell[39404, 1162, 256, 4, 75, "Input"],
+Cell[39663, 1168, 626, 20, 35, "Output"],
+Cell[40292, 1190, 286, 8, 32, "Output"],
+Cell[40581, 1200, 703, 19, 58, "Output"]
+}, Closed]],
+Cell[41299, 1222, 189, 3, 35, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

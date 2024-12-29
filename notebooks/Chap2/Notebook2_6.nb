@@ -1,0 +1,741 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     23179,        733]
+NotebookOptionsPosition[     20475,        640]
+NotebookOutlinePosition[     21067,        664]
+CellTagsIndexPosition[     20979,        659]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Constructing Matrix Kronecker Products", "Title",
+ CellChangeTimes->{{3.752803390994239*^9, 3.75280341052324*^9}}],
+
+Cell["The Wolfram Mathematica command", "Text",
+ CellChangeTimes->{{3.75280341916439*^9, 3.7528034300420103`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "KroneckerProduct"}]], "Input",
+ CellChangeTimes->{{3.752803433146562*^9, 3.752803439614382*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"KroneckerProduct\\\", \\\"[\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"m\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"m\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"]\\\"}]\) constructs the Kronecker product of the arrays \
+\!\(\*SubscriptBox[StyleBox[\\\"m\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\).\"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/KroneckerProduct"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.760898929384776*^9},
+ CellTags->"Info1333760870129-1882594"]
+}, Closed]],
+
+Cell["\<\
+Allows us to easily construct direct products of qubits in order to assemble \
+a multi-qubit register. \
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752803447672092*^9, 3.752803493740303*^9}}],
+
+Cell[TextData[{
+ "We define the matrix representation for the qubit basis vectors ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+   Cell["|0 \[RightAngleBracket]"], ",", " ", Cell[
+    "|1 \[RightAngleBracket]"]}], TraditionalForm]]],
+ " in the usual way;"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7528035008511753`*^9, 3.752803542284164*^9}, {
+  3.752803602124672*^9, 3.752803649025272*^9}, {3.760898486042267*^9, 
+  3.760898494174901*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"zeroket", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"oneket", "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1"}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7528036522217617`*^9, 3.752803671975485*^9}, {
+  3.755041034615168*^9, 3.75504104631256*^9}, {3.7607114364354343`*^9, 
+  3.760711439965219*^9}}],
+
+Cell[TextData[{
+ "To construct the direct products ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+    Cell["|0 \[RightAngleBracket] \[CircleTimes] |0 \[RightAngleBracket],"], 
+     " ", Cell[
+     "|0 \[RightAngleBracket] \[CircleTimes] |1 \[RightAngleBracket]"]}], ",",
+     " ", Cell[
+    "|1 \[RightAngleBracket] \[CircleTimes] |0 \[RightAngleBracket]"], ",", 
+    " ", Cell[
+    "|1 \[RightAngleBracket] \[CircleTimes] |1 \[RightAngleBracket]"]}], 
+   TraditionalForm]]],
+ " we use a combination of the Wolfram ",
+ StyleBox["KroneckerProduct",
+  FontFamily->"Source Code Pro",
+  FontWeight->"Regular"],
+ " and ",
+ StyleBox["Flatten",
+  FontFamily->"Source Code Pro",
+  FontWeight->"Regular"],
+ " commands, as in"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7528036803239403`*^9, 3.7528037752444267`*^9}, {
+  3.7528038113331547`*^9, 3.752803866050681*^9}, {3.760898508090332*^9, 
+  3.760898564773322*^9}, {3.7608989849809513`*^9, 3.760898987881394*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"state00", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"KroneckerProduct", "[", 
+     RowBox[{"zeroket", ",", "zeroket"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"state01", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"KroneckerProduct", "[", 
+     RowBox[{"zeroket", ",", "oneket"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"state10", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"KroneckerProduct", "[", 
+     RowBox[{"oneket", ",", "zeroket"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"state11", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"KroneckerProduct", "[", 
+     RowBox[{"oneket", ",", "oneket"}], "]"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7528039404822063`*^9, 3.752804037355735*^9}, {
+  3.7528040708473577`*^9, 3.752804091065112*^9}, {3.7528061611163263`*^9, 
+  3.752806171139038*^9}}],
+
+Cell["Or", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752804099389646*^9, 3.752804107668395*^9}, 
+   3.7608986315436497`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"state00", " ", "//", " ", "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.752804110228324*^9, 3.752804169593355*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {"1"},
+      {"0"},
+      {"0"},
+      {"0"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.7528041861646023`*^9, 3.752806175168775*^9, {3.7607114276587973`*^9, 
+   3.7607114452088737`*^9}, 3.760898929750697*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"state01", " ", "//", " ", "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.752804110228324*^9, 3.752804176951228*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {"0"},
+      {"1"},
+      {"0"},
+      {"0"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.7528041886717453`*^9, 3.7528061752074413`*^9, {3.760711427847023*^9, 
+   3.760711445392048*^9}, 3.76089892988487*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"state10", " ", "//", " ", "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.752804110228324*^9, 3.75280418338575*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {"0"},
+      {"0"},
+      {"1"},
+      {"0"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.752804191379518*^9, 3.752806175257246*^9, {3.760711428006598*^9, 
+   3.760711445556715*^9}, 3.760898930033567*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"state11", " ", "//", " ", "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.752804110228324*^9, 3.75280418338575*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {"0"},
+      {"0"},
+      {"0"},
+      {"1"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.7528041242188997`*^9, 3.75280416006711*^9, 3.752804193834388*^9, 
+   3.7528061753041773`*^9, {3.7607114281715393`*^9, 3.76071144572655*^9}, 
+   3.760898930200871*^9}]
+}, Closed]],
+
+Cell[TextData[{
+ "In agreement with ",
+ StyleBox["Eqs",
+  IgnoreSpellCheck->True],
+ ". (2.55), (2.56) in the text."
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7528041992903423`*^9, 3.75280422711078*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s define the 3-qubit function", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752804235369272*^9, 3.752804269242214*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"threeQ", "[", 
+    RowBox[{"qubit3_", ",", "qubit2_", ",", "qubit1_"}], "]"}], ":=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"KroneckerProduct", "[", 
+     RowBox[{"qubit3", ",", "qubit2", ",", "qubit1"}], "]"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.752804273995305*^9, 3.752804371832011*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Exercises", "Subsection",
+ CellChangeTimes->{{3.752804505795766*^9, 3.752804509307769*^9}, 
+   3.75280458738334*^9}],
+
+Cell[TextData[{
+ "(1) Use the function",
+ StyleBox[" ",
+  FontSlant->"Italic"],
+ StyleBox["threeQ",
+  FontFamily->"Source Code Pro",
+  FontWeight->"Regular"],
+ StyleBox[" ",
+  FontSlant->"Italic"],
+ "to construct the eight basis vectors that span a 3-qubit register.\n\n(2) \
+Define a function that inputs 5 qubits and allows construction of their \
+(matrix representation) direct products. Use the latter to find the matrix \
+representation of the state"
+}], "Text",
+ CellChangeTimes->{{3.752804515542012*^9, 3.752804745830996*^9}, {
+  3.752804820858675*^9, 3.752804821802948*^9}}],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[GridBox[{
+    {
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{GridBox[{
+           {
+            RowBox[{"(", Cell["|00101\[RightAngleBracket]"]}]}
+          },
+          GridBoxAlignment->{"Columns" -> {{"="}}}], Cell[""]}], "-", " ", 
+        RowBox[{"i", "  ", Cell["|10000 \[RightAngleBracket]"]}], "+", "  ", 
+        Cell["|10101 \[RightAngleBracket]"]}], ")"}], "/", 
+      SqrtBox["3"]}]}
+   },
+   GridBoxItemSize->{"Columns" -> {{
+        Scaled[0.96]}}}], TraditionalForm]]]], "Text",
+ CellChangeTimes->{{3.752804749628482*^9, 3.7528048299369802`*^9}, {
+  3.752804883070911*^9, 3.7528049264420156`*^9}, {3.7608986513073053`*^9, 
+  3.760898726270797*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Operators", "Section",
+ CellChangeTimes->{{3.752804949939395*^9, 3.752804951977507*^9}}],
+
+Cell[TextData[{
+ "We know that the matrix representation of single qubit operators are ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", " ", "\[Times]", " ", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " square matrices, as for example the Pauli gates, \[Sigma]X,\[Sigma]Y,\
+\[Sigma]Z"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7528050235292053`*^9, 3.7528051067675877`*^9}, {
+   3.7528051688340693`*^9, 3.7528051834717073`*^9}, 3.760898768502349*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"PauliX", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PauliY", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "I"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"I", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PauliZ", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"-", "1"}]}], "}"}]}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.752805115419923*^9, 3.7528051556382236`*^9}}],
+
+Cell["Let\[CloseCurlyQuote]s also include the unit operator", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7528051910878077`*^9, 3.752805201223218*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"unit", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.752805206750326*^9, 3.7528052184249477`*^9}}],
+
+Cell[TextData[{
+ "We wish to construct the matrix representations of two-qubit operators, \
+e.g. \[Sigma]X ",
+ Cell[BoxData[
+  FormBox["\[CircleTimes]", TraditionalForm]]],
+ "\[Sigma]Y. In Mathematica this is accomplished with the ",
+ StyleBox["KroneckerProduct ",
+  FontSlant->"Italic"],
+ "command as in"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752805224871832*^9, 3.752805332894353*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"operatorXY", "=", 
+   RowBox[{"KroneckerProduct", "[", 
+    RowBox[{"PauliX", ",", "PauliY"}], "]"}]}], " ", ";"}]], "Input",
+ CellChangeTimes->{{3.752805338532881*^9, 3.7528053876048603`*^9}, {
+  3.752805461012219*^9, 3.7528054679294577`*^9}}],
+
+Cell[TextData[{
+ "and which should be expressed as a ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "\[Times]", "2"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " matrix; indeed"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.752805410397272*^9, 3.7528054426162767`*^9}, 
+   3.7608987875650263`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"operatorXY", " ", "//", " ", "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.752805445567597*^9, 3.752805453956931*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0", "0", "0", 
+      RowBox[{"-", "\[ImaginaryI]"}]},
+     {"0", "0", "\[ImaginaryI]", "0"},
+     {"0", 
+      RowBox[{"-", "\[ImaginaryI]"}], "0", "0"},
+     {"\[ImaginaryI]", "0", "0", "0"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.7528054548671083`*^9, 3.7528054717425632`*^9}, 
+   3.752806175426304*^9, {3.760711428402915*^9, 3.7607114459536877`*^9}, 
+   3.760898930485387*^9}]
+}, Closed]],
+
+Cell[TextData[{
+ "Lets check if this matrix, when acting on a 2-qubit state, transform the \
+column matrix in a way that is isomorphic to the transformation in ",
+ StyleBox["ket",
+  IgnoreSpellCheck->True],
+ " space. As an example we consider the operation"
+}], "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7528054911053*^9, 3.752805546342381*^9}, {
+  3.7528056095454597`*^9, 3.752805709322516*^9}, {3.760898792960072*^9, 
+  3.760898793420273*^9}}],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"\[Sigma]X", " ", "\[CircleTimes]", " ", "\[Sigma]Y"}], " ", 
+         Cell["|01 \[RightAngleBracket]"]}]}
+      },
+      GridBoxAlignment->{"Columns" -> {{"="}}}]}
+   },
+   GridBoxItemSize->{"Columns" -> {{
+        Scaled[0.96]}}}], TraditionalForm]]]], "Text",
+ CellChangeTimes->{{3.752805713975955*^9, 3.752805752761338*^9}, {
+  3.752805827123685*^9, 3.752805827302043*^9}, {3.760898801853223*^9, 
+  3.760898801853283*^9}}],
+
+Cell["\<\
+Using the definitions introduced in Chapter 1 of the text, the above is \
+equivalent to\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7528057612761803`*^9, 3.752805809043199*^9}, 
+   3.760898807438711*^9}],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"\[Sigma]X", " ", 
+          RowBox[{
+          Cell["|0 \[RightAngleBracket]"], " ", "\[CircleTimes]", " ", 
+           "\[Sigma]Y"}], " ", Cell["|1 \[RightAngleBracket]"]}], " ", "=", 
+         " ", 
+         RowBox[{
+          RowBox[{Cell["|1 \[RightAngleBracket]"], "\[CircleTimes]", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"-", "i"}], " ", Cell["|0 \[RightAngleBracket]"]}], 
+            ")"}]}], " ", "=", " ", 
+          RowBox[{
+           RowBox[{"-", "i"}], " ", Cell["|10 \[RightAngleBracket]"]}]}]}]}
+      },
+      GridBoxAlignment->{"Columns" -> {{"="}}}]}
+   },
+   GridBoxItemSize->{"Columns" -> {{
+        Scaled[0.96]}}}], TraditionalForm]]]], "Text",
+ CellChangeTimes->{{3.752805813855548*^9, 3.752805961639038*^9}, {
+  3.760898815410186*^9, 3.760898848722793*^9}}],
+
+Cell["Using the matrix representations,", "Text",
+ CellChangeTimes->{{3.752805973813119*^9, 3.752806021062379*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"output", "=", 
+  RowBox[{"operatorXY", ".", "state01"}]}]], "Input",
+ CellChangeTimes->{{3.752806025138626*^9, 3.7528060488278713`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "0", ",", 
+   RowBox[{"-", "\[ImaginaryI]"}], ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{{3.752806042707089*^9, 3.752806049779047*^9}, 
+   3.752806175488368*^9, {3.760711428556119*^9, 3.760711446216194*^9}, 
+   3.760898930652206*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"output", "\[Equal]", 
+  RowBox[{
+   RowBox[{"-", "I"}], " ", "state10"}]}]], "Input",
+ CellChangeTimes->{{3.752806056821473*^9, 3.752806100240858*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.752806101268157*^9, 3.752806175538741*^9, {3.760711428774156*^9, 
+   3.760711446376306*^9}, 3.760898930853675*^9}]
+}, Closed]],
+
+Cell["\<\
+And so, the matrix representation for \[Sigma]X \[CircleTimes] \[Sigma]Y \
+acting on the matrix representation of |01\[RightAngleBracket]  is isomorphic \
+to the result obtained in ket space.\
+\>", "Text",
+ CellFrame->{{3, 0}, {0, 0.5}},
+ CellChangeTimes->{{3.7528061907258883`*^9, 3.752806332037397*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Exercises", "Subsection",
+ CellChangeTimes->{{3.75280634048726*^9, 3.7528063478323793`*^9}}],
+
+Cell[TextData[{
+ "(1) Construct the matrix representations of the following 3-qubit operators \
+(here ",
+ StyleBox["1 ",
+  FontWeight->"Bold"],
+ "represents the qubit identity operator)\n     (a)  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Sigma]X", " ", "\[CircleTimes]", " ", 
+    StyleBox["1",
+     FontWeight->"Bold"], "\[CircleTimes]", " ", "\[Sigma]Y"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n     (b) \[Sigma]X ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", "\[CircleTimes]"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " \[Sigma]Y ",
+ Cell[BoxData[
+  FormBox["\[CircleTimes]", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " ",
+ StyleBox["1",
+  FontWeight->"Bold"]
+}], "Text",
+ CellChangeTimes->{{3.752806425267804*^9, 3.7528066306271467`*^9}}],
+
+Cell[TextData[{
+ "(2) Apply the above matrix operators to the matrix vector corresponding to \
+state |000\[RightAngleBracket]. Evaluate the result, first using the Dirac \
+ket formalism, and compare with the result obtained with the matrix \
+representation.\n\n(3) Construct the matrix representation for the \
+single-qubit Hadamard gate H. Construct the matrix operator ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"H", "\[CircleTimes]", "H", "\[CircleTimes]", "H"}], 
+   TraditionalForm]]],
+ ", and let it operate on state ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[LeftBracketingBar]", "000", " "}], "\[RightAngleBracket]"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Comment."
+}], "Text",
+ CellChangeTimes->{{3.752806642337816*^9, 3.752806994757497*^9}, {
+  3.760898881941901*^9, 3.7608988971300173`*^9}}]
+}, Closed]]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{963, 714},
+WindowMargins->{{468, Automatic}, {Automatic, 26}},
+ShowGroupOpener->True,
+SpellingDictionaries->{"CorrectWords"->{"ket"}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info1333760870129-1882594"->{
+  Cell[969, 34, 770, 15, 43, "Print",
+   CellTags->"Info1333760870129-1882594"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info1333760870129-1882594", 20874, 653}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 120, 1, 92, "Title"],
+Cell[702, 25, 114, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[841, 30, 125, 2, 32, "Input"],
+Cell[969, 34, 770, 15, 43, "Print",
+ CellTags->"Info1333760870129-1882594"]
+}, Closed]],
+Cell[1754, 52, 225, 5, 35, "Text"],
+Cell[1982, 59, 460, 12, 40, "Text"],
+Cell[2445, 73, 490, 12, 75, "Input"],
+Cell[2938, 87, 985, 27, 61, "Text"],
+Cell[3926, 116, 944, 26, 96, "Input"],
+Cell[4873, 144, 144, 3, 38, "Text"],
+Cell[CellGroupData[{
+Cell[5042, 151, 141, 2, 32, "Input"],
+Cell[5186, 155, 798, 24, 92, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[6021, 184, 141, 2, 26, "Input"],
+Cell[6165, 188, 795, 24, 92, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[6997, 217, 140, 2, 26, "Input"],
+Cell[7140, 221, 792, 24, 92, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[7969, 250, 140, 2, 26, "Input"],
+Cell[8112, 254, 844, 25, 92, "Output"]
+}, Closed]],
+Cell[8971, 282, 226, 7, 35, "Text"],
+Cell[9200, 291, 164, 2, 38, "Text"],
+Cell[9367, 295, 355, 9, 32, "Input"],
+Cell[CellGroupData[{
+Cell[9747, 308, 122, 2, 44, "Subsection"],
+Cell[9872, 312, 582, 15, 89, "Text"],
+Cell[10457, 329, 716, 19, 42, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[11210, 353, 94, 1, 50, "Section"],
+Cell[11307, 356, 488, 11, 39, "Text"],
+Cell[11798, 369, 799, 27, 75, "Input"],
+Cell[12600, 398, 169, 2, 38, "Text"],
+Cell[12772, 402, 293, 9, 32, "Input"],
+Cell[13068, 413, 415, 11, 58, "Text"],
+Cell[13486, 426, 279, 6, 32, "Input"],
+Cell[13768, 434, 328, 10, 39, "Text"],
+Cell[CellGroupData[{
+Cell[14121, 448, 144, 2, 32, "Input"],
+Cell[14268, 452, 921, 24, 92, "Output"]
+}, Closed]],
+Cell[15204, 479, 465, 10, 57, "Text"],
+Cell[15672, 491, 531, 14, 34, "Text"],
+Cell[16206, 507, 237, 6, 38, "Text"],
+Cell[16446, 515, 922, 24, 36, "Text"],
+Cell[17371, 541, 115, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[17511, 546, 160, 3, 32, "Input"],
+Cell[17674, 551, 288, 6, 32, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[17999, 562, 175, 4, 32, "Input"],
+Cell[18177, 568, 170, 3, 32, "Output"]
+}, Closed]],
+Cell[18362, 574, 315, 6, 57, "Text"],
+Cell[CellGroupData[{
+Cell[18702, 584, 98, 1, 44, "Subsection"],
+Cell[18803, 587, 793, 26, 70, "Text"],
+Cell[19599, 615, 836, 20, 108, "Text"]
+}, Closed]]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
