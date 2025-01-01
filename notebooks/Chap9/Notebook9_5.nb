@@ -1,0 +1,94 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2333,         86]
+NotebookOptionsPosition[      1682,         57]
+NotebookOutlinePosition[      2074,         74]
+CellTagsIndexPosition[      2031,         71]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problems and Exercises", "Title",
+ CellChangeTimes->{{3.7373856648711977`*^9, 3.737385700172738*^9}, {
+   3.755092297296661*^9, 3.755092312269329*^9}, {3.755138387580904*^9, 
+   3.7551384067323837`*^9}, {3.755138449676505*^9, 3.755138462206465*^9}, {
+   3.755138495779415*^9, 3.755138506453237*^9}, 3.756285513892077*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Notebook 9.1", "Subsection",
+ CellChangeTimes->{{3.756285604351962*^9, 3.756285612417378*^9}}],
+
+Cell["Exercise 1.", "Text",
+ CellChangeTimes->{{3.756285620810748*^9, 3.756285624646284*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Notebook 9.3", "Subsection",
+ CellChangeTimes->{{3.756285631295886*^9, 3.756285638438826*^9}}],
+
+Cell["Exercises 1-11, Problems 1-6.", "Text",
+ CellChangeTimes->{{3.756285645898501*^9, 3.7562856590264997`*^9}, 
+   3.7562857075589542`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Notebook 9.4", "Subsection",
+ CellChangeTimes->{{3.75628567261736*^9, 3.756285675991714*^9}}],
+
+Cell["Exercise 1-7, Problem 1.", "Text",
+ CellChangeTimes->{{3.756285684261169*^9, 3.756285698840776*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1176, 752},
+WindowMargins->{{Automatic, 146}, {Automatic, 17}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 327, 4, 114, "Title"],
+Cell[CellGroupData[{
+Cell[932, 30, 100, 1, 54, "Subsection"],
+Cell[1035, 33, 93, 1, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1165, 39, 100, 1, 54, "Subsection"],
+Cell[1268, 42, 141, 2, 37, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1446, 49, 99, 1, 54, "Subsection"],
+Cell[1548, 52, 106, 1, 37, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
